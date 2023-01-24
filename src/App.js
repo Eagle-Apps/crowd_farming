@@ -5,6 +5,7 @@ import {  Guest } from "./middlewares";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Project from "./pages/Project";
 
 const App = () => {
     return (
@@ -24,6 +25,14 @@ const App = () => {
                     element={
                         <Guest>
                             <Register />
+                        </Guest>
+                    }
+                />
+                <Route
+                    path="project"
+                    element={
+                        <Guest>
+                            <Project />
                         </Guest>
                     }
                 />

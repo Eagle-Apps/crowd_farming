@@ -85,7 +85,7 @@ const Home = () => {
                             <img src="/images/global-payment-icon-2.png" alt="" />
                         </div>
                         <h3 className="text-xl lg:text-2xl font-bold text-emerald-900">
-                            Business-Ready
+                            Earn at Ease
                         </h3>
                         <p className="max-w-lg">
                             Lorem ipsum dolor sit amet consectetur adipiscing elit posuere vel
@@ -126,14 +126,14 @@ const Home = () => {
                 style={{ backgroundImage: "url('/images/our-solutions-bg.png')" }}
             >
                 <h3 className="wow fadeInUp text-xl md:text-2xl text-green-400 font-bold">
-                    High speeds. Low fees. No hassle.
+                    Verified Projects. High returns. No hassle.
                 </h3>
                 <h1 className="wow fadeInUp text-3xl md:text-4xl xl:text-6xl font-bold">
-                    All Your Payments In <br className="hidden lg:block" /> One Place
+                    Legally followed and insurance cover<br className="hidden lg:block" /> all year round
                 </h1>
                 <p className="wow fadeInUp text-white font-medium text-opacity-80 text-sm md:text-base">
-                    Get used to low fees and great exchange rates on international money <br />{" "}
-                    transfers.Expand your business worldwide
+                    Purchase units of different projects to increase your returns on  <br />{" "}
+                    investment and guarantee slots for next investment
                 </p>
             </div>
 
@@ -143,7 +143,7 @@ const Home = () => {
                         <div className="flex items-center justify-center">
                             <img src="/images/our-solutions-icon-1.png" alt="" />
                         </div>
-                        <h3 className="text-xl lg:text-2xl font-bold text-emerald-900">Payments</h3>
+                        <h3 className="text-xl lg:text-2xl font-bold text-emerald-900">Investment</h3>
                         <p className="max-w-lg text-lg text-emerald-900">
                             Lorem Ipsum is simply dummy text of the printing and typesetting
                             industry.
@@ -155,7 +155,7 @@ const Home = () => {
                             <img src="/images/our-solutions-icon-2.png" alt="" />
                         </div>
                         <h3 className="text-xl lg:text-2xl font-bold text-emerald-900">
-                            Collections
+                            Payouts
                         </h3>
                         <p className="max-w-lg text-lg text-emerald-900">
                             Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -168,7 +168,7 @@ const Home = () => {
                             <img src="/images/our-solutions-icon-3.png" alt="" />
                         </div>
                         <h3 className="text-xl lg:text-2xl font-bold text-emerald-900">
-                            Conversions
+                            Project Maturity
                         </h3>
                         <p className="max-w-lg text-lg text-emerald-900">
                             Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -181,7 +181,7 @@ const Home = () => {
                             <img src="/images/our-solutions-icon-4.png" alt="" />
                         </div>
                         <h3 className="text-xl lg:text-2xl font-bold text-emerald-900">
-                            Global Account
+                            Withdrawal
                         </h3>
                         <p className="max-w-lg text-lg text-emerald-900">
                             Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -204,24 +204,24 @@ const Home = () => {
                             </h4>
 
                             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
-                                Fast, Secure Money <br className="hidden lg:block" /> Transfers
+                                Fast, Secure projects <br className="hidden lg:block" /> and farms
                             </h1>
 
                             <p className="text-sm sm:text-base">
-                                Access your account via your mobile phone. View balance, transfer{" "}
-                                <br /> funds, view transactions wherever you are.
+                                Withdrawal from your investment before maturity, attracts{" "}
+                                <br /> 2.5% breaking fee
                             </p>
                         </div>
 
                         <div className="space-y-5 text-emerald-900">
                             <div className="flex items-center space-x-3 lg:space-x-5">
                                 <img src="/images/check.png" alt="" />
-                                <p>Login with fingerprint or Face ID.</p>
+                                <p>Raise funds for your projects when you have the idea and knowledge</p>
                             </div>
 
                             <div className="flex items-center space-x-3 lg:space-x-5">
                                 <img src="/images/check.png" alt="" />
-                                <p>Simple few Taps to send money.</p>
+                                <p>Simple few Taps to start your business</p>
                             </div>
 
                             <div className="flex items-center space-x-3 lg:space-x-5">
@@ -231,7 +231,7 @@ const Home = () => {
 
                             <div className="flex items-center space-x-3 lg:space-x-5">
                                 <img src="/images/check.png" alt="" />
-                                <p>Get instant App notifications.</p>
+                                <p>Get instant notifications.</p>
                             </div>
                         </div>
 

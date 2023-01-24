@@ -65,7 +65,7 @@ const Register = () => {
         >
             <h3 className="text-center text-xl font-semibold text-gray-700">Create New Account</h3>
             <p className="text-center text-sm mt-2 mb-10">
-                Use your remail email continue with Nioboard (it's free)!
+                Create an account to start investing in crowd farming projects
             </p>
 
             <form className="space-y-5">

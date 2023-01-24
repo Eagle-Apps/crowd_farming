@@ -13,7 +13,7 @@ const AuthLayout = ({ title = "", children }) => {
                             <GiBlackcurrant className="w-9 h-9 md:w-12 md:h-12 text-emerald-600" />
                             <div>
                                 <p className="inline text-xl md:text-2xl uppercase font-bold leading-[0.5rem]">
-                                    Crowd<span className="font-[300]">Farming</span>
+                                    Ndem<span className="font-[300]">bele</span>
                                 </p>
                                 <div className="flex items-center space-x-0.5 leading-[0.5rem]">
                                     <span className="text-[0.62rem] font-bold text-emerald-600 uppercase leading-[0.5rem]">
