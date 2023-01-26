@@ -29,7 +29,7 @@ const App = () => {
                     }
                 />
                 <Route
-                    path="project"
+                    path="/project"
                     element={
                         <Guest>
                             <Project />

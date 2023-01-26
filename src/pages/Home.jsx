@@ -48,7 +48,7 @@ const Home = () => {
             <div className="wow fadeInUp text-center text-emerald-900 space-y-8 mt-28 mb-16">
                 <h4 className="text-xl lg:text-2xl font-bold">Trust, safety and reliance</h4>
 
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
+                <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
                     Bring Your projects forth <br className="hidden lg:block" /> for funding
                 </h1>
 
@@ -128,7 +128,7 @@ const Home = () => {
                 <h3 className="wow fadeInUp text-xl md:text-2xl text-green-400 font-bold">
                     Verified Projects. High returns. No hassle.
                 </h3>
-                <h1 className="wow fadeInUp text-3xl md:text-4xl xl:text-6xl font-bold">
+                <h1 className="wow fadeInUp text-2xl md:text-4xl xl:text-6xl font-bold">
                     Legally followed and insurance cover<br className="hidden lg:block" /> all year round
                 </h1>
                 <p className="wow fadeInUp text-white font-medium text-opacity-80 text-sm md:text-base">

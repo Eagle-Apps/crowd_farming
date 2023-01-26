@@ -6,10 +6,10 @@ const Project = () => {
     const [projects, setProjects] = useState([]);
     useEffect(() => {
         axios
-            .get("https://datagram-products-v1.p.rapidapi.com/test")
+            .get("https://dummyjson.com/products")
             .then((res) => {
                 setProjects(res.data);
-                console.log(res.data)
+                console.log(res.data.products)
             })
             .catch((err) => {
                 console.log(err);
@@ -21,14 +21,14 @@ const Project = () => {
 
             <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center sm:justify-center">
                 {/* map products with product cards */}
-                {projects.map((project) => (
+                {projects?.map((project) => (
                     <Project
-                        key={project.id}
-                        id={project.id}
-                        title={project.title}
-                        image={project.image}
-                        price={project.amount}
-                        rating={project.rating}
+                        key={project?.products?.id}
+                        id={project?.products?.id}
+                        title={project?.products?.title}
+                        image={project?.products?.image}
+                        price={project?.products?.amount}
+                        rating={project?.rating}
                     />
                 ))}
             </div>

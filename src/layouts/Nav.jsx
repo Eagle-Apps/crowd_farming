@@ -19,7 +19,7 @@ const Nav = () => {
     };
 
     return (
-        <nav className="text-gray-600 p-2 sm:p-0 text-base xl:text-lg font-medium bg-white py-4 lg:py-[1.1rem] xl:py-8 border-b shadow-sm fixed w-full z-50">
+        <nav className="text-gray-600 sm:p-0 text-base xl:text-lg font-medium bg-white py-4 lg:py-[1.1rem] xl:py-8 border-b shadow-sm fixed w-full z-50">
             <Container className="flex items-center justify-between py-2 xl:py-0">
                 <div className="flex items-center space-x-12">
                     <Link to="/" className="flex items-center space-x-3">
@@ -45,7 +45,7 @@ const Nav = () => {
                             Home
                         </Link>
                         <Link
-                            to="/Project"
+                            to="/project"
                             className="transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600"
                         >
                             Projects
@@ -150,7 +150,7 @@ const Nav = () => {
                         </div>
                     </Menu>
                 ) : (
-                    <div className="flex items-center space-x-3 md:block">
+                    <div className="md:flex hidden items-center space-x-3">
                         <Link
                             to="/login"
                             className="transition-all duration-300 px-3 lg:px-4 xl:px-8 font-medium py-2 xl:py-3 text-emerald-600 hover:text-gray-500"
@@ -190,16 +190,16 @@ const Nav = () => {
                                                 to="/#personal"
                                                 className="block transition-all duration-300 font-medium py-2 hover:text-emerald-600"
                                             >
-                                                Personal
+                                                Home
                                             </Link>
                                         </Menu.Item>
 
                                         <Menu.Item>
                                             <Link
-                                                to="/#business"
+                                                to="/project"
                                                 className="block transition-all duration-300 font-medium py-2 hover:text-emerald-600"
                                             >
-                                                Business
+                                                Projects
                                             </Link>
                                         </Menu.Item>
 
@@ -208,7 +208,7 @@ const Nav = () => {
                                                 to="/#how-it-work"
                                                 className="block transition-all duration-300 font-medium py-2 hover:text-emerald-600"
                                             >
-                                                How it work
+                                                Returns
                                             </Link>
                                         </Menu.Item>
 
