@@ -15,3 +15,9 @@ body {
   font-size: 1.6rem;
   font-family: 'Kumbh Sans', sans-serif;
 }
+
+@layer base {
+  button {
+    @apply border border-black rounded-xl px-5 py-1;
+  }
+}

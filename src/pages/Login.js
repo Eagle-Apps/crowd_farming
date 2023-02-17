@@ -2,68 +2,62 @@ import React, { useState } from 'react'
 import { FcGoogle } from 'react-icons/fc'
 import { RiFacebookCircleFill } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import { PrimaryButton, SecondaryButton } from '../components/buttons'
 import { Checkbox, Input } from '../components/field'
 import { Link, Loader } from '../components/utils'
-// import config from '../config'
-// import { toast } from '../helpers'
 import AuthLayout from '../layouts/AuthLayout'
 
 const Login = () => {
   const navigate = useNavigate()
-  const defaultMessage = {
-    email: [],
-    password: [],
-  }
 
   const [loading, setLoading] = useState(false)
-  const [invalid, setInvalid] = useState(false)
-  const [errorMessage, setErrorMessage] = useState(defaultMessage)
+  // const [errorMessage, setErrorMessage] = useState(null)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const login = () => {
-    //     setLoading(true)
-    //     setTimeout(() => {
-    //       const newErrorMessage = defaultMessage
-    //       if (!email) {
-    //         newErrorMessage.email = ['This field is required']
-    //       }
-    //       if (!password) {
-    //         newErrorMessage.password = ['This field is required']
-    //       }
-    //       if (
-    //         email === (process.env.REACT_APP_LOGIN || 'paydunya@gmail.com') &&
-    //         password === (process.env.REACT_APP_PASSWORD || '12345')
-    //       ) {
-    //         setInvalid(true)
-    //         toast('success', 'Successful connection')
-    //         config.AUTH.DRIVER.setItem('user', {
-    //           name: 'Paydunya',
-    //           permissions: ['reload-account', 'dashboard', 'transfer-money'],
-    //         })
-    //         navigate(config.AUTH.REDIRECT_LOGIN)
-    //       }
-    //       if (
-    //         !email ||
-    //         !password ||
-    //         email !== 'paydunya@gmail.com' ||
-    //         password !== '12345'
-    //       ) {
-    //         if (
-    //           email !== process.env.REACT_APP_LOGIN ||
-    //           password !== process.env.REACT_APP_PASSWORD
-    //         ) {
-    //           setInvalid(true)
-    //         } else {
-    //           setInvalid(false)
-    //         }
-    //         toast('error', 'Connection failed')
-    //       }
-    //       setErrorMessage(newErrorMessage)
-    //       setLoading(false)
-    //     }, 3000)
+  const handleLogin = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+
+    // Make an HTTP request to submit the data
+    const dataUser = {
+      email,
+      password,
+    }
+
+    try {
+      const res = await fetch('https://ndembele.onrender.com/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataUser),
+      })
+
+      const data = await res.json()
+      // console.log(data)
+
+      // if (res.ok) {
+      if (data) {
+        console.log(data.userID)
+        localStorage.setItem('ndembeleUserId', JSON.stringify(data.userID))
+        toast.success('Login Successful !', {
+          position: toast.POSITION.TOP_CENTER,
+        })
+      } else {
+        // throw new Error(data.message)
+        toast.error('Invalid Email or Password please try again.', {
+          position: toast.POSITION.TOP_CENTER,
+        })
+      }
+
+      setTimeout(() => {
+        setLoading(false)
+      }, 3000)
+    } catch (err) {}
   }
 
   return (
@@ -81,13 +75,14 @@ const Login = () => {
         Please sign-in to your account and start investing.
       </p>
 
-      {invalid && (
+      {/* {errorMessage && (
         <div className='my-2 text-center text-red-600 bg-red-100 py-2 rounded-md'>
           Invalid email or password
         </div>
-      )}
+      )} */}
+      <ToastContainer />
 
-      <form className='space-y-5 text-4xl'>
+      <form className='space-y-5 text-4xl' onSubmit={handleLogin}>
         <div>
           <Input
             label={'Email'}
@@ -96,7 +91,6 @@ const Login = () => {
             placeholder='Enter email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            error={errorMessage.email}
           />
         </div>
 
@@ -108,7 +102,6 @@ const Login = () => {
             placeholder='Enter password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            error={errorMessage.password}
           />
         </div>
 
@@ -118,7 +111,7 @@ const Login = () => {
           <Link href='/forgot-password'>Forgot Password?</Link>
         </div>
 
-        <PrimaryButton onClick={login} disabled={loading}>
+        <PrimaryButton type='submit' disabled={loading}>
           {loading && <Loader color={'white'} />}
           <span className='text-[1.5rem]'>Login to account</span>
         </PrimaryButton>

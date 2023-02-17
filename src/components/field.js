@@ -8,6 +8,7 @@ export const Input = ({
   required = true,
   placeholder = '',
   value = '',
+  name = '',
   disabled = false,
   error = [],
   onChange = () => {},
@@ -16,7 +17,7 @@ export const Input = ({
 
   return (
     <>
-      <label htmlFor={id} className='text-sm text-gray-700 font-semibold'>
+      <label htmlFor={id} className='block text-gray-700 font-bold mb-2'>
         {label} {required && <span className='text-red-500'>*</span>}
       </label>
 
@@ -36,7 +37,9 @@ export const Input = ({
           placeholder={placeholder}
           onChange={onChange}
           value={value}
+          name={name}
           disabled={disabled}
+          required
         />
 
         {type === 'password' && (

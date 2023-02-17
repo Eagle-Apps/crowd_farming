@@ -8,8 +8,8 @@ const Banner = () => {
   return (
     <section className='w-full overflow-hidden bg-[#f2f3f9] wow fadeInUp'>
       <div
-        className='relative bg-auto bg-no-repeat bg-[top_120px_right] md:bg-[top_70px_right] lg:bg-[top_100px_right]'
-        style={{ backgroundImage: "url('/images/banner-map.png')" }}
+        className='relative bg-cover bg-no-repeat bg-white/5 bg-[top_95px_right] md:bg-[top_45px_right] lg:bg-[top_75px_right]'
+        style={{ backgroundImage: "url('/images/1b.png')" }}
       >
         <div>
           <img
