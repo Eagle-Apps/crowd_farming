@@ -43,7 +43,7 @@ const InvestmentSignUpModal = () => {
 
   const {
     title,
-    images,
+    // images,
     descp,
     phone,
     budget,
@@ -65,7 +65,7 @@ const InvestmentSignUpModal = () => {
 
     setFormData((prevFormData) => ({
       ...prevFormData,
-      owner: { userId: userId },
+      owner: userId,
       [name]: value,
     }))
   }
@@ -81,12 +81,12 @@ const InvestmentSignUpModal = () => {
     console.log(formData)
 
     try {
-      const response = await fetch('https://ndembele.onrender.com/investment', {
+      const res = await fetch('https://ndembele.onrender.com/investment', {
         method: 'POST',
-        body: JSON.stringify(formData),
         headers: {
-          'Content-type': 'application/json',
+          'Content-Type': 'application/json',
         },
+        body: JSON.stringify(formData),
       })
 
       // const data = await response.json()
@@ -97,9 +97,9 @@ const InvestmentSignUpModal = () => {
       //   JSON.stringify(response.data)
       // )
 
-      const data = await response.json()
+      const data = await res.json()
 
-      if (response.ok) {
+      if (res.ok) {
         // if (data) {
         console.log(data)
         // if (data.status === 'success') {

@@ -5,87 +5,136 @@ import 'react-toastify/dist/ReactToastify.css'
 import { Link, Loader } from '../../components/utils'
 import { PrimaryButton } from '../buttons'
 
-const categories = ['Farm', 'Crops', 'Cashew', 'Burger']
+// const categories = ['Farm', 'Crops', 'Cashew', 'Burger']
+const categories = [
+  {
+    categoryId: '001Farm',
+    name: 'Farm',
+  },
+  {
+    categoryId: '002Crops',
+    name: 'Crops',
+  },
+  {
+    categoryId: '003Cashew',
+    name: 'Cashew',
+  },
+  {
+    categoryId: '004Burger',
+    name: 'Burger',
+  },
+]
 
 const FarmSignUpModal = () => {
   const [loading, setLoading] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+
   const [formData, setFormData] = useState({
     name: '',
     address: '',
-    images: '',
     phone: '',
+    images: [],
+    category: '',
   })
-
-  const { name, images, address, phone } = formData
-
-  const [showModal, setShowModal] = useState(false)
+  const [imageError, setImageError] = useState('')
 
   const handleInputChange = (event) => {
-    // const { name, value } = event.target
-    // setFormData({ ...formData, [name]: value })
     const { name, value } = event.target
-    setFormData((prevFormData) => ({
-      ...prevFormData,
+    const getItemLocalStorage = localStorage.getItem('ndembeleUserId')
+    const userId = JSON.parse(getItemLocalStorage)
+
+    setFormData((prevState) => ({
+      ...prevState,
+      userId: userId,
       [name]: value,
     }))
   }
 
-  //   const handleImageUpload = (event) => {
-  //     const images = Array.from(event.target.files)
-  //     setFormData({ ...formData, images })
-  //   }
+  // To handle Image Upload
+  const handleImageUpload = (event) => {
+    const files = Array.from(event.target.files)
 
+    if (files.length > 0) {
+      setImageError('')
+    } else {
+      setImageError('Please select at least one image.')
+    }
+    setFormData((prevState) => ({
+      ...prevState,
+      images: files.slice(0, 4),
+    }))
+  }
+
+  // Submiting Data to backend
   const handleSubmit = async (event) => {
     event.preventDefault()
+
     setLoading(true)
-    // console.log(formData)
 
-    try {
-      const response = await fetch('https://ndembele.onrender.com/farm', {
+    if (formData.images.length === 0) {
+      setImageError('Please select at least one image.')
+    } else {
+      console.log(formData)
+      // code to submit form data goes here
+
+      fetch('https://ndembele.onrender.com/farm', {
         method: 'POST',
-        body: JSON.stringify(formData),
         headers: {
-          'Content-type': 'application/json',
+          'Content-Type': 'application/json',
         },
+        body: JSON.stringify(formData),
       })
-
-      // const data = await response.json()
-      // console.log(data)
-
-      if (response.ok) {
-        // if (data.status === 'success') {
-        // toast.success('Registration Successful !', {
-        //   position: toast.POSITION.TOP_CENTER,
-        // })
-        console.log('Registration Successful')
-
-        setFormData({
-          name: '',
-          address: '',
-          images: '',
-          phone: '',
+        .then((response) => {
+          if (response.ok) {
+            console.log('Form submitted successfully.')
+          } else {
+            console.error('Form submission failed.')
+          }
         })
-      } else {
-        // throw new Error(data.message)
-        // toast.error(
-        //   'An error occurred during registration, please try again.',
-        //   {
-        //     position: toast.POSITION.TOP_CENTER,
-        //   }
-        // )
-        console.error('Not Successfully Register')
-      }
-
-      setTimeout(() => {
-        setLoading(false)
-      }, 3000)
-    } catch (err) {
-      console.error(err)
-      // alert('There was an error submitting the form. Please try again later.')
-      // toast.error('An error occurred during registration, please try again.', {
-      //   position: toast.POSITION.TOP_CENTER,
-      // })
+        .catch((error) => {
+          console.error('An error occurred while submitting the form.', error)
+        })
     }
+
+    // try {
+    //   const response = await fetch('https://ndembele.onrender.com/farm', {
+    //     method: 'POST',
+    //     body: JSON.stringify(formData),
+    //     headers: {
+    //       'Content-type': 'application/json',
+    //     },
+    //   })
+
+    //   // const data = await response.json()
+    //   // console.log(data)
+
+    //   if (response.ok) {
+    //     // if (data.status === 'success') {
+    //     // toast.success('Registration Successful !', {
+    //     //   position: toast.POSITION.TOP_CENTER,
+    //     // })
+    //     console.log('Registration Successful')
+    //   } else {
+    //     // throw new Error(data.message)
+    //     // toast.error(
+    //     //   'An error occurred during registration, please try again.',
+    //     //   {
+    //     //     position: toast.POSITION.TOP_CENTER,
+    //     //   }
+    //     // )
+    //     console.error('Not Successfully Register')
+    //   }
+
+    setTimeout(() => {
+      setLoading(false)
+    }, 3000)
+    // } catch (err) {
+    //   console.error(err)
+    //   // alert('There was an error submitting the form. Please try again later.')
+    //   // toast.error('An error occurred during registration, please try again.', {
+    //   //   position: toast.POSITION.TOP_CENTER,
+    //   // })
+    // }
   }
   return (
     <div>
@@ -104,14 +153,6 @@ const FarmSignUpModal = () => {
       {showModal && (
         <section className='fixed top-[20%] left-[25%] bg-slate-600 z-10 overflow-y-auto w-[50vw] h-[40rem] md:h-[50rem]'>
           <div className=' lg:min-h-screen'>
-            {/* <aside className='relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6'>
-              <img
-                alt='Pattern'
-                src='https://images.unsplash.com/photo-1605106702734-205df224ecce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
-                class='absolute inset-0 w-full object-cover'
-              />
-            </aside> */}
-
             <main
               aria-label='Main'
               className='flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6'
@@ -160,7 +201,7 @@ const FarmSignUpModal = () => {
                       id='name'
                       name='name'
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
-                      value={name}
+                      value={formData.name}
                       onChange={handleInputChange}
                       required
                     />
@@ -179,7 +220,7 @@ const FarmSignUpModal = () => {
                       id='phone'
                       name='phone'
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
-                      value={phone}
+                      value={formData.phone}
                       onChange={handleInputChange}
                     />
                   </div>
@@ -196,7 +237,7 @@ const FarmSignUpModal = () => {
                       id='address'
                       name='address'
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
-                      value={address}
+                      value={formData.address}
                       onChange={handleInputChange}
                     />
                   </div>
@@ -212,11 +253,39 @@ const FarmSignUpModal = () => {
                     <input
                       type='file'
                       id='images'
+                      multiple
                       name='images'
                       accept='images/*'
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
-                      onChange={handleInputChange}
+                      onChange={handleImageUpload}
                     />
+                    {imageError && <div className='error'>{imageError}</div>}
+                  </div>
+
+                  <div className='col-span-6 sm:col-span-3'>
+                    <label
+                      htmlFor='category'
+                      className='block text-2xl font-bold text-white'
+                    >
+                      Category
+                    </label>
+
+                    <select
+                      id='category'
+                      name='category'
+                      className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
+                      value={formData.category.categoryId}
+                      onChange={handleInputChange}
+                    >
+                      {categories.map((category, ind) => (
+                        <option
+                          key={category.categoryId}
+                          value={category.categoryId}
+                        >
+                          {category.name}
+                        </option>
+                      ))}
+                    </select>
                   </div>
 
                   <div className='col-span-6'>
