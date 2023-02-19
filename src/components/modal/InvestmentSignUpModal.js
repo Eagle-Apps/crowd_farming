@@ -27,119 +27,200 @@ const categories = [
 
 const InvestmentSignUpModal = () => {
   const [loading, setLoading] = useState(false)
-  const [formData, setFormData] = useState({
-    title: '',
-    images: '',
-    descp: '',
-    phone: '',
-    budget: '',
-    terms: '',
-    roi: '',
-    owner: '',
-    commitment: '',
-    category: '',
-    // category: categories[0],
-  })
+  // const [formData, setFormData] = useState({
+  //   title: '',
+  //   images: '',
+  //   descp: '',
+  //   phone: '',
+  //   budget: '',
+  //   terms: '',
+  //   roi: '',
+  //   ownerCommitment: '',
+  //   category: '',
+  //   // category: categories[0],
+  // })
 
-  const {
-    title,
-    // images,
-    descp,
-    phone,
-    budget,
-    terms,
-    roi,
-    category,
-    commitment,
-  } = formData
+  // const {
+  //   title,
+  //   // images,
+  //   descp,
+  //   phone,
+  //   budget,
+  //   terms,
+  //   roi,
+  //   category,
+  //   ownerCommitment,
+  // } = formData
 
   const [showModal, setShowModal] = useState(false)
 
-  const handleInputChange = (event) => {
-    // const { name, value } = event.target
-    // setFormData({ ...formData, [name]: value })
-    const { name, value } = event.target
-    const getItemLocalStorage = localStorage.getItem('ndembeleUserId')
-    const userId = JSON.parse(getItemLocalStorage)
-    // console.log(userId)
+  // const handleInputChange = (event) => {
+  //   const { name, value } = event.target
+  const getItemLocalStorage = localStorage.getItem('ndembeleUserId')
+  const ownerId = JSON.parse(getItemLocalStorage)
+  //   // console.log(userId)
 
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      owner: userId,
-      [name]: value,
-    }))
-  }
+  //   console.log(formData, 'FORMDATATATAT')
+
+  //   setFormData((prevFormData) => ({
+  //     ...prevFormData,
+  //     ownerId: userId,
+  //     [name]: value,
+  //   }))
+  // }
 
   //   const handleImageUpload = (event) => {
   //     const images = Array.from(event.target.files)
   //     setFormData({ ...formData, images })
   //   }
 
+  const [title, setTitle] = useState('')
+  const [descp, setDescription] = useState('')
+  const [phone, setPhone] = useState('')
+  const [budget, setBudget] = useState('')
+  const [terms, setTerms] = useState('')
+  const [roi, setRoi] = useState('')
+  const [ownerCommitment, setOwnerCommitment] = useState('')
+  const [category, setCategory] = useState('farm')
+  const [images, setImages] = useState([])
+
   const handleSubmit = async (event) => {
     event.preventDefault()
     setLoading(true)
-    console.log(formData)
+    // console.log(formData)
+
+    const formData = new FormData()
+    formData.append('ownerId', ownerId)
+    formData.append('title', title)
+    formData.append('description', descp)
+    formData.append('phone', phone)
+    formData.append('budget', budget)
+    formData.append('terms', terms)
+    formData.append('roi', roi)
+    formData.append('ownerCommitment', ownerCommitment)
+    formData.append('category', category)
+    // for (let i = 0; i < images.length; i++) {
+    //   formData.append('images', images[i])
+    // }
+    images.forEach((image) => {
+      formData.append('images[]', image)
+    })
+
+    console.log('Form data:', {
+      ownerId,
+      title,
+      descp,
+      phone,
+      budget,
+      terms,
+      roi,
+      ownerCommitment,
+      category,
+      images,
+    })
 
     try {
       const res = await fetch('https://ndembele.onrender.com/investment', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        body: formData,
       })
 
-      // const data = await response.json()
-      // console.log(data)
-
-      // const userDataInlocal = localStorage.setItem(
-      //   'user',
-      //   JSON.stringify(response.data)
-      // )
-
-      const data = await res.json()
-
-      if (res.ok) {
-        // if (data) {
-        console.log(data)
-        // if (data.status === 'success') {
-        // toast.success('Registration Successful !', {
-        //   position: toast.POSITION.TOP_CENTER,
-        // })
-        console.log('Registration Successful')
-
-        setFormData({
-          title: '',
-          images: '',
-          descp: '',
-          phone: '',
-          budget: '',
-          terms: '',
-          roi: '',
-          commitment: '',
-          category: '',
-        })
-      } else {
-        // throw new Error(data.message)
-        // toast.error(
-        //   'An error occurred during registration, please try again.',
-        //   {
-        //     position: toast.POSITION.TOP_CENTER,
-        //   }
-        // )
-        console.error('Not Successfully Register')
-      }
-
+      const responseData = await res.json();
+      console.log(responseData)
+      // if (res.ok) {
+      //   console.log('Registration Successful')
+      // } else {
+      //   console.error('Not Successfully Register')
+      // }
       setTimeout(() => {
         setLoading(false)
       }, 3000)
+
+      // console.log(responseData); // this will log the response data from the server
     } catch (err) {
       console.error(err)
-      alert('Please try again later.')
-      // toast.error('An error occurred during registration, please try again.', {
-      //   position: toast.POSITION.TOP_CENTER,
-      // })
     }
+
+    // fetch('https://ndembele.onrender.com/investment', {
+    //   method: 'POST',
+    //   // headers: {
+    //   //   'Content-Type': 'application/json',
+    //   // },
+    //   body: formData,
+    // })
+    //   .then((response) => {
+    //     if (!response.ok) {
+    //       throw new Error('Network response was not ok')
+    //     }
+    //     return response.json()
+    //   })
+    //   .then((data) => {
+    //     console.log('Form data submitted successfully:', data)
+    //   })
+    //   .catch((error) => {
+    //     console.error('There was a problem submitting the form:', error)
+    //   })
+
+    // try {
+    //   const res = await fetch('https://ndembele.onrender.com/investment', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(formData),
+    //   })
+
+    //   // const data = await response.json()
+    //   // console.log(data)
+
+    //   // const userDataInlocal = localStorage.setItem(
+    //   //   'user',
+    //   //   JSON.stringify(response.data)
+    //   // )
+
+    //   const data = await res.json()
+
+    //   if (res.ok) {
+    //     // if (data) {
+    //     console.log(data)
+    //     // if (data.status === 'success') {
+    //     // toast.success('Registration Successful !', {
+    //     //   position: toast.POSITION.TOP_CENTER,
+    //     // })
+    //     console.log('Registration Successful')
+
+    //     setFormData({
+    //       title: '',
+    //       images: '',
+    //       descp: '',
+    //       phone: '',
+    //       budget: '',
+    //       terms: '',
+    //       roi: '',
+    //       ownerCommitment: '',
+    //       category: '',
+    //     })
+    //   } else {
+    //     // throw new Error(data.message)
+    //     // toast.error(
+    //     //   'An error occurred during registration, please try again.',
+    //     //   {
+    //     //     position: toast.POSITION.TOP_CENTER,
+    //     //   }
+    //     // )
+    //     console.error('Not Successfully Register')
+    //   }
+
+    // setTimeout(() => {
+    //   setLoading(false)
+    // }, 3000)
+    // } catch (err) {
+    //   console.error(err)
+    //   alert('Please try again later.')
+    //   // toast.error('An error occurred during registration, please try again.', {
+    //   //   position: toast.POSITION.TOP_CENTER,
+    //   // })
+    // }
   }
   return (
     <div>
@@ -215,7 +296,7 @@ const InvestmentSignUpModal = () => {
                       name='title'
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
                       value={title}
-                      onChange={handleInputChange}
+                      onChange={(event) => setTitle(event.target.value)}
                       required
                     />
                   </div>
@@ -234,7 +315,8 @@ const InvestmentSignUpModal = () => {
                       name='phone'
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
                       value={phone}
-                      onChange={handleInputChange}
+                      // onChange={handleInputChange}
+                      onChange={(event) => setPhone(event.target.value)}
                     />
                   </div>
 
@@ -252,27 +334,10 @@ const InvestmentSignUpModal = () => {
                       name='budget'
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
                       value={budget}
-                      onChange={handleInputChange}
+                      // onChange={handleInputChange}
+                      onChange={(event) => setBudget(event.target.value)}
                     />
                   </div>
-
-                  {/* <div className='col-span-6 sm:col-span-3'>
-                    <label
-                      htmlFor='ownerId'
-                      className='block text-2xl font-bold text-white'
-                    >
-                      OwnerId
-                    </label>
-
-                    <input
-                      type='text'
-                      id='ownerId'
-                      name='ownerId'
-                      className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
-                      value={ownerId}
-                      onChange={handleInputChange}
-                    />
-                  </div> */}
 
                   <div className='col-span-6 sm:col-span-3'>
                     <label
@@ -287,7 +352,8 @@ const InvestmentSignUpModal = () => {
                       name='descp'
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
                       value={descp}
-                      onChange={handleInputChange}
+                      // onChange={handleInputChange}
+                      onChange={(event) => setDescription(event.target.value)}
                     />
                   </div>
 
@@ -304,7 +370,8 @@ const InvestmentSignUpModal = () => {
                       name='terms'
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
                       value={terms}
-                      onChange={handleInputChange}
+                      // onChange={handleInputChange}
+                      onChange={(event) => setTerms(event.target.value)}
                     />
                   </div>
 
@@ -322,13 +389,14 @@ const InvestmentSignUpModal = () => {
                       name='roi'
                       value={roi}
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
-                      onChange={handleInputChange}
+                      // onChange={handleInputChange}
+                      onChange={(event) => setRoi(event.target.value)}
                     />
                   </div>
 
                   <div className='col-span-6 sm:col-span-3'>
                     <label
-                      htmlFor='commitment'
+                      htmlFor='ownerCommitment'
                       className='block text-2xl font-bold text-white'
                     >
                       Commitment
@@ -336,11 +404,14 @@ const InvestmentSignUpModal = () => {
 
                     <input
                       type='text'
-                      id='commitment'
-                      name='commitment'
-                      value={commitment}
+                      id='ownerCommitment'
+                      name='ownerCommitment'
+                      value={ownerCommitment}
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
-                      onChange={handleInputChange}
+                      // onChange={handleInputChange}
+                      onChange={(event) =>
+                        setOwnerCommitment(event.target.value)
+                      }
                     />
                   </div>
 
@@ -357,7 +428,8 @@ const InvestmentSignUpModal = () => {
                       name='category'
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
                       value={category.categoryId}
-                      onChange={handleInputChange}
+                      // onChange={handleInputChange}
+                      onChange={(event) => setCategory(event.target.value)}
                     >
                       {categories.map((category, ind) => (
                         <option
@@ -384,7 +456,10 @@ const InvestmentSignUpModal = () => {
                       name='images'
                       accept='images/*'
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
-                      onChange={handleInputChange}
+                      // onChange={handleInputChange}
+                      onChange={(event) =>
+                        setImages(Array.from(event.target.files))
+                      }
                     />
                   </div>
 
