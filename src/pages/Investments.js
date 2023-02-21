@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useState } from 'react'
 import Hero from '../components/Hero'
 import FarmSignUpModal from '../components/modal/FarmSignUpModal'
 import InvestmentSignUpModal from '../components/modal/InvestmentSignUpModal'
@@ -9,19 +10,6 @@ import Nav from '../layouts/Nav'
 import Footer from './Footer'
 
 const Investment = () => {
-  //   const [projects, setProjects] = useState([])
-  //   useEffect(() => {
-  //     axios
-  //       .get('https://dummyjson.com/products')
-  //       .then((res) => {
-  //         setProjects(res.data)
-  //         console.log(res.data.products)
-  //       })
-  //       .catch((err) => {
-  //         console.log(err)
-  //       })
-  //   }, [])
-
   const [foods, setFoods] = useState(data)
 
   // Filter Type burger/pizza/etc
@@ -30,9 +18,9 @@ const Investment = () => {
   }
 
   // Filter by price
-  const filterPrice = (price) => {
-    setFoods(data.filter((item) => item.price === price))
-  }
+  // const filterPrice = (price) => {
+  //   setFoods(data.filter((item) => item.price === price))
+  // }
   return (
     <div className='max-w-[1640px] bg-slate-300'>
       <Nav />
@@ -91,7 +79,7 @@ const Investment = () => {
         </div>
 
         {/* Display foods */}
-        <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4'>
+        <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4 shadow dark:bg-gray-800 dark:border-gray-700'>
           {foods.map((item, index) => (
             <div
               key={item.id}
@@ -104,17 +92,20 @@ const Investment = () => {
               />
               <div className='flex justify-between px-2 py-4'>
                 <p className='font-bold'>{item.name}</p>
-                <p>
+                {/* <p>
                   <span className='bg-orange-500 text-white p-1 rounded-full'>
                     {item.price}
                   </span>
-                </p>
+                </p> */}
               </div>
-              <p className='text-white'>{item.description}</p>
+              <p className='px-5 font-normal text-gray-700 dark:text-gray-400'>
+                {item.description}
+              </p>
             </div>
           ))}
         </div>
       </div>
+
       <FarmSignUpModal />
       <Footer />
     </div>

@@ -1,29 +1,29 @@
-import React, { useState } from 'react'
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 import { Link, Loader } from '../../components/utils'
 import { PrimaryButton } from '../buttons'
 
-// const categories = ['Farm', 'Crops', 'Cashew', 'Burger']
-const categories = [
-  {
-    categoryId: '001Farm',
-    name: 'Farm',
-  },
-  {
-    categoryId: '002Crops',
-    name: 'Crops',
-  },
-  {
-    categoryId: '003Cashew',
-    name: 'Cashew',
-  },
-  {
-    categoryId: '004Burger',
-    name: 'Burger',
-  },
-]
+// const categories = [
+//   {
+//     categoryId: '001Farm',
+//     name: 'Farm',
+//   },
+//   {
+//     categoryId: '63e3c390f0fea8fb1ab01e7b',
+//     name: 'Crops',
+//   },
+//   {
+//     categoryId: '003Cashew',
+//     name: 'Cashew',
+//   },
+//   {
+//     categoryId: '004Burger',
+//     name: 'Burger',
+//   },
+// ]
 
 const InvestmentSignUpModal = () => {
   const [loading, setLoading] = useState(false)
@@ -33,6 +33,24 @@ const InvestmentSignUpModal = () => {
   const getItemLocalStorage = localStorage.getItem('ndembeleUserId')
   const ownerId = JSON.parse(getItemLocalStorage)
 
+  const [categoryOptions, setCategoryOptions] = useState([])
+
+  // Fetching category options
+  // useEffect(() => {
+  //   fetch('https://ndembele.onrender.com/category')
+  //     .then((response) => response.json())
+  //     .then((data) => setCategoryOptions(data))
+  // }, [])
+  useEffect(() => {
+    const categoryUrl = 'https://ndembele.onrender.com/category'
+    const fetchData = async () => {
+      const response = await fetch(categoryUrl)
+      const data = await response.json()
+      setCategoryOptions(data)
+    }
+    fetchData()
+  }, [])
+
   const [investmentData, setInvestmentData] = useState({
     title: '',
     descp: '',
@@ -41,8 +59,8 @@ const InvestmentSignUpModal = () => {
     terms: '',
     roi: '',
     ownerCommitment: '',
-    images: 'ceo.jpg',
-    category: categories[0].categoryId,
+    images: [],
+    category: '63e3c390f0fea8fb1ab01e7b',
   })
 
   const {
@@ -66,10 +84,16 @@ const InvestmentSignUpModal = () => {
   }
 
   const handleImageChange = (event) => {
-    const images = event.target.files
-    setInvestmentData((prevState) => ({
-      ...prevState,
-      images,
+    // const images = event.target.files
+    // setInvestmentData((prevState) => ({
+    //   ...prevState,
+    //   images,
+    // }))
+    const { files } = event.target
+    const images = Array.from(files).slice(0, 4)
+    setInvestmentData((prevData) => ({
+      ...prevData,
+      images: images,
     }))
   }
 
@@ -88,18 +112,10 @@ const InvestmentSignUpModal = () => {
     formData.append('roi', roi)
     formData.append('ownerCommitment', ownerCommitment)
     formData.append('category', category)
-    // formData.append('images', 'ceo.jpg')
 
-    // images.forEach((image) => {
-    //   formData.append('images[]', image)
-    // })
-
-    if (images) {
-      for (let i = 0; i < images.length; i++) {
-        formData.append('images', images[0].name)
-        // console.log('images', images[0].name)
-      }
-    }
+    images.forEach((image) => {
+      formData.append('images', image)
+    })
 
     console.log('Form data:', {
       title,
@@ -114,108 +130,36 @@ const InvestmentSignUpModal = () => {
       images,
     })
 
-    // try {
-    //   const res = await fetch('https://ndembele.onrender.com/investment', {
-    //     method: 'POST',
-    //     body: formData,
-    //   })
-
-    //   // const responseData = await res.json()
-    //   console.log(res)
-    //   if (res.ok) {
-    //     console.log('Registration Successful')
-    //   } else {
-    //     console.error('Not Successfully Register')
-    //   }
-    //   setTimeout(() => {
-    //     setLoading(false)
-    //   }, 3000)
-
-    //   // console.log(responseData); // this will log the response data from the server
-    // } catch (err) {
-    //   console.error('An error occurred during registration', err)
-    // }
-
-    fetch('https://ndembele.onrender.com/investment', {
-      method: 'POST',
-      // headers: {
-      //   'Content-Type': 'application/json',
-      // },
-      body: formData,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok')
-        }
-        return response.json()
-      })
-      .then((data) => {
-        console.log('Form data submitted successfully:', data)
-      })
-      .catch((error) => {
-        console.error('There was a problem submitting the form:', error)
+    try {
+      const res = await fetch('https://ndembele.onrender.com/investment', {
+        method: 'POST',
+        body: formData,
       })
 
-    // try {
-    //   const res = await fetch('https://ndembele.onrender.com/investment', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(formData),
-    //   })
-
-    //   // const data = await response.json()
-    //   // console.log(data)
-
-    //   // const userDataInlocal = localStorage.setItem(
-    //   //   'user',
-    //   //   JSON.stringify(response.data)
-    //   // )
-
-    //   const data = await res.json()
-
-    //   if (res.ok) {
-    //     // if (data) {
-    //     console.log(data)
-    //     // if (data.status === 'success') {
-    //     // toast.success('Registration Successful !', {
-    //     //   position: toast.POSITION.TOP_CENTER,
-    //     // })
-    //     console.log('Registration Successful')
-
-    //     setFormData({
-    //       title: '',
-    //       images: '',
-    //       descp: '',
-    //       phone: '',
-    //       budget: '',
-    //       terms: '',
-    //       roi: '',
-    //       ownerCommitment: '',
-    //       category: '',
-    //     })
-    //   } else {
-    //     // throw new Error(data.message)
-    //     // toast.error(
-    //     //   'An error occurred during registration, please try again.',
-    //     //   {
-    //     //     position: toast.POSITION.TOP_CENTER,
-    //     //   }
-    //     // )
-    //     console.error('Not Successfully Register')
-    //   }
-
-    setTimeout(() => {
-      setLoading(false)
-    }, 3000)
-    // } catch (err) {
-    //   console.error(err)
-    //   alert('Please try again later.')
-    //   // toast.error('An error occurred during registration, please try again.', {
-    //   //   position: toast.POSITION.TOP_CENTER,
-    //   // })
-    // }
+      // const responseData = await res.json()
+      console.log(res)
+      if (res.ok) {
+        toast.success('Registration Successful !', {
+          position: toast.POSITION.TOP_CENTER,
+        })
+        // console.log('Register Investment Successful')
+      } else {
+        // throw new Error(data.message)
+        toast.error('Not Successfully Register, please try again.', {
+          position: toast.POSITION.TOP_CENTER,
+        })
+        // console.error('Not Successfully Register')
+      }
+      setTimeout(() => {
+        setLoading(false)
+      }, 3000)
+    } catch (err) {
+      alert('Please try again later.')
+      toast.error('An error occurred during registration, please try again.', {
+        position: toast.POSITION.TOP_CENTER,
+      })
+      // console.error('An error occurred during registration', err)
+    }
   }
   return (
     <div>
@@ -234,14 +178,6 @@ const InvestmentSignUpModal = () => {
       {showModal && (
         <section className='fixed top-[20%] left-[25%] bg-slate-600 z-10 overflow-y-auto w-[50vw] h-[40rem] md:h-[50rem]'>
           <div className=' lg:min-h-screen'>
-            {/* <aside className='relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6'>
-              <img
-                alt='Pattern'
-                src='https://images.unsplash.com/photo-1605106702734-205df224ecce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
-                class='absolute inset-0 w-full object-cover'
-              />
-            </aside> */}
-
             <main
               aria-label='Main'
               className='flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6'
@@ -271,7 +207,7 @@ const InvestmentSignUpModal = () => {
                   Eligendi nam dolorum aliquam, quibusdam aperiam voluptatum.
                 </p>
 
-                {/* <ToastContainer /> */}
+                <ToastContainer />
 
                 <form
                   className='mt-8 grid grid-cols-6 gap-6'
@@ -336,6 +272,25 @@ const InvestmentSignUpModal = () => {
 
                   <div className='col-span-6 sm:col-span-3'>
                     <label
+                      htmlFor='roi'
+                      className='block text-2xl font-bold text-white'
+                    >
+                      ROI
+                    </label>
+
+                    <input
+                      type='text'
+                      id='roi'
+                      name='roi'
+                      value={roi}
+                      className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
+                      onChange={handleInputChange}
+                      // onChange={(event) => setRoi(event.target.value)}
+                    />
+                  </div>
+
+                  <div className='col-span-6 sm:col-span-3'>
+                    <label
                       htmlFor='descp'
                       className='block text-2xl font-bold text-white'
                     >
@@ -370,24 +325,7 @@ const InvestmentSignUpModal = () => {
                     />
                   </div>
 
-                  <div className='col-span-6 sm:col-span-3'>
-                    <label
-                      htmlFor='roi'
-                      className='block text-2xl font-bold text-white'
-                    >
-                      ROI
-                    </label>
-
-                    <input
-                      type='text'
-                      id='roi'
-                      name='roi'
-                      value={roi}
-                      className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
-                      onChange={handleInputChange}
-                      // onChange={(event) => setRoi(event.target.value)}
-                    />
-                  </div>
+                 
 
                   <div className='col-span-6 sm:col-span-3'>
                     <label
@@ -422,16 +360,13 @@ const InvestmentSignUpModal = () => {
                       id='category'
                       name='category'
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
-                      value={category.categoryId}
+                      value={category._id}
                       onChange={handleInputChange}
                       // onChange={(event) => setCategory(event.target.value)}
                     >
-                      {categories.map((category, ind) => (
-                        <option
-                          key={category.categoryId}
-                          value={category.categoryId}
-                        >
-                          {category.name}
+                      {categoryOptions.map((category) => (
+                        <option key={category._id} value={category._id}>
+                          {category.title}
                         </option>
                       ))}
                     </select>
@@ -449,12 +384,10 @@ const InvestmentSignUpModal = () => {
                       type='file'
                       id='images'
                       name='images'
+                      multiple
                       accept='images/*'
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
                       onChange={handleImageChange}
-                      // onChange={(event) =>
-                      //   setImages(Array.from(event.target.files))
-                      // }
                     />
                   </div>
 
@@ -473,17 +406,13 @@ const InvestmentSignUpModal = () => {
                   </div>
 
                   <div className='flex justify-between col-span-6 sm:flex sm:items-center sm:gap-4 gap-3'>
-                    {/* <button
+                    <button
                       type='submit'
                       className='w-full rounded-md border border-emerald-500 bg-emerald-600 px-12 py-3 text-2xl text-white transition hover:bg-transparent  hover:bg-emerald-700 focus:ring focus:border-emerald-500 focus:ring-emerald-500/50` '
                     >
                       {loading && <Loader color={'white'} />}
                       <span>Submit</span>
-                    </button> */}
-                    <PrimaryButton type='submit'>
-                      {loading && <Loader color={'white'} />}{' '}
-                      <span>Submit</span>
-                    </PrimaryButton>
+                    </button>
 
                     <button
                       onClick={() => setShowModal(false)}

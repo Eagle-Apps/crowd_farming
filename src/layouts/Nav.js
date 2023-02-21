@@ -11,6 +11,29 @@ import { Container } from '../components/utils'
 const Nav = () => {
   const navigate = useNavigate()
 
+  const links = [
+    {
+      name: 'Home',
+      to: '/',
+    },
+    {
+      name: 'Investments',
+      to: '/project',
+    },
+    {
+      name: 'Return',
+      to: '#how-it-work',
+    },
+    {
+      name: 'Contact Us',
+      to: '/contact',
+    },
+    {
+      name: 'About Us',
+      to: '/about',
+    },
+  ]
+
   return (
     <nav className='text-gray-600 sm:p-0 text-base xl:text-lg font-medium bg-white py-4 lg:py-[1.1rem] xl:py-8 border-b shadow-sm fixed w-full z-50'>
       <Container className='flex items-center justify-between py-2 xl:py-0'>
@@ -31,6 +54,16 @@ const Nav = () => {
           </Link>
 
           <div className='space-x-4 xl:space-x-8 hidden md:block'>
+            {links.map((link) => (
+              <Link
+                to={link.to}
+                className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'
+              >
+                {link.name}
+              </Link>
+            ))}
+
+            {/* <div className='space-x-4 xl:space-x-8 hidden md:block'>
             <Link
               to='/'
               className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'
@@ -50,17 +83,23 @@ const Nav = () => {
               Returns
             </Link>
             <Link
-              to='#about-us'
+              to='/about'
               className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'
             >
               About us
             </Link>
             <Link
-              to='#contact-us'
+              to='/contact'
               className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'
             >
               Contact us
-            </Link>
+            </Link> */}
+            {/* <Link
+              to='/test'
+              className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'
+            >
+              Testing
+            </Link> */}
           </div>
         </div>
         {/* {checkUser() ? (
@@ -196,7 +235,7 @@ const Nav = () => {
                       to='/project'
                       className='block transition-all duration-300 font-medium py-2 hover:text-emerald-600'
                     >
-                      Projects
+                      Investments
                     </Link>
                   </Menu.Item>
 

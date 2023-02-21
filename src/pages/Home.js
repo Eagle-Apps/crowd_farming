@@ -45,21 +45,6 @@ const Home = () => {
         </div>
       </Container>
 
-      {/* <div className='wow fadeInUp text-center text-emerald-900 space-y-8 mt-28 mb-16'>
-        <h4 className='text-xl lg:text-2xl font-bold'>
-          Trust, safety and reliance
-        </h4>
-
-        <h1 className='text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold'>
-          Bring Your projects forth <br className='hidden lg:block' /> for
-          funding
-        </h1>
-
-        <p className='text-sm sm:text-base font-medium'>
-          Have an agricultural project? Bring just your idea and one more thing
-        </p>
-      </div> */}
-
       {/* Start of banner for latest Investment */}
       <div
         className='mt-28 pt-10 md:pt-28 pb-52 space-y-8 text-center text-white bg-no-repeat bg-cover bg-center'
