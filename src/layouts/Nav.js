@@ -18,7 +18,7 @@ const Nav = () => {
     },
     {
       name: 'Investments',
-      to: '/project',
+      to: '/investment',
     },
     {
       name: 'Return',
@@ -54,9 +54,10 @@ const Nav = () => {
           </Link>
 
           <div className='space-x-4 xl:space-x-8 hidden md:block'>
-            {links.map((link) => (
+            {links.map((link, ind) => (
               <Link
                 to={link.to}
+                key={ind}
                 className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'
               >
                 {link.name}
@@ -232,7 +233,7 @@ const Nav = () => {
 
                   <Menu.Item>
                     <Link
-                      to='/project'
+                      to='/investment'
                       className='block transition-all duration-300 font-medium py-2 hover:text-emerald-600'
                     >
                       Investments
@@ -250,19 +251,19 @@ const Nav = () => {
 
                   <Menu.Item>
                     <Link
-                      to='/#about-us'
+                      to='/about'
                       className='block transition-all duration-300 font-medium py-2 hover:text-emerald-600'
                     >
-                      About us
+                      About Us
                     </Link>
                   </Menu.Item>
 
                   <Menu.Item>
                     <Link
-                      to='/#personal'
+                      to='/contact'
                       className='block transition-all duration-300 font-medium py-2 hover:text-emerald-600'
                     >
-                      Personal
+                      Contact Us
                     </Link>
                   </Menu.Item>
 

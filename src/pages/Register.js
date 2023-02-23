@@ -38,18 +38,6 @@ const Register = () => {
     e.preventDefault()
     setLoading(true)
 
-    // if (
-    //   !firstname ||
-    //   !lastname ||
-    //   !email ||
-    //   !password ||
-    //   !address ||
-    //   !phone ||
-    //   !userName
-    // ) {
-    //   return toast.error('All fields are required')
-    // }
-
     // Checking for password Length
     if (password.length < 8) {
       setLoading(false)
@@ -90,6 +78,7 @@ const Register = () => {
         toast.success('Registration Successful !', {
           position: toast.POSITION.TOP_CENTER,
         })
+        navigate('/login')
 
         setFormData({
           firstname: '',
@@ -149,7 +138,6 @@ const Register = () => {
             placeholder='Enter firstname'
             value={firstname}
             onChange={handleChange}
-            // onChange={(e) => setFirstName(e.target.value)}
           />
         </div>
 
@@ -228,11 +216,6 @@ const Register = () => {
         <div>
           <Checkbox id='remember' label='I agree to privacy policy & terms' />
         </div>
-
-        {/* <PrimaryButton onClick={register}>
-          {loading && <Loader color={'white'} />}
-          <span>Sign up</span>
-        </PrimaryButton> */}
 
         <PrimaryButton type='submit'>
           {loading && <Loader color={'white'} />} <span>Sign up</span>

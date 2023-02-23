@@ -42,11 +42,12 @@ const Login = () => {
 
       // if (res.ok) {
       if (data) {
-        console.log(data.userID)
+        // console.log(data.userID)
         localStorage.setItem('ndembeleUserId', JSON.stringify(data.userID))
         toast.success('Login Successful !', {
           position: toast.POSITION.TOP_CENTER,
         })
+        navigate('/')
       } else {
         // throw new Error(data.message)
         toast.error('Invalid Email or Password please try again.', {

@@ -9,14 +9,14 @@ import Investment from './pages/Investments'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import SingleInvestment from './pages/SingleInvestment'
-import Nav from './layouts/Nav'
-import Footer from './pages/Footer'
+// import Nav from './layouts/Nav'
+// import Footer from './pages/Footer'
 
 const App = () => {
   return (
     <>
       <Router>
-        <Nav />
+        {/* <Nav /> */}
         <Routes>
           <Route path='/' element={<Home />} />
 
@@ -24,12 +24,16 @@ const App = () => {
 
           <Route path='/register' element={<Register />} />
 
-          <Route path='/project' element={<Investment />} />
+          {/* <Route path='/project' element={<Investment />} /> */}
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
-          <Route path='/investment-page' element={<SingleInvestment />} />
+          {/* <Route path='/investment-page' element={<SingleInvestment />} /> */}
+          <Route>
+            <Route path='/investment' element={<Investment />} />
+            <Route path=':_id' element={<SingleInvestment />} />
+          </Route>
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
     </>
   )

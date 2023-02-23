@@ -4,25 +4,25 @@ import Footer from './Footer'
 
 const Contact = () => {
   return (
-    <div className='max-w-[1640px] bg-slate-300'>
+    <div className='max-w-[1640px] bg-slate-500'>
       <Nav />
       <div className='relative max-h-[500px]'>
         {/* Overlay */}
-        <div className='absolute w-full h-full text-gray-200 max-h-[500px] bg-black/40 flex flex-col justify-center'>
+        <div className='absolute w-full h-[550px] text-gray-200 bg-black/5 flex flex-col justify-center'>
           <h1 className='px-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-center'>
             Contact <span className='text-emerald-500'>Us</span>
           </h1>
           <h1 className='px-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold'>
-            <span className='text-orange-500'>New </span> Oil
+            {/* <span className='text-orange-500'>New </span> Oil */}
           </h1>
         </div>
         <img
-          className='w-full max-h-[500px] object-cover'
-          src='https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+          className='w-full max-h-[550px] object-cover'
+          src='./images/contactban2.jpg'
           alt='/'
         />
       </div>
-      <section className='mt-[4rem] text-gray-800'>
+      <section className='mt-[12rem] text-gray-800'>
         <h2 class='text-4xl lg:text-5xl font-bold leading-tight text-center'>
           Lets talk about everything!
         </h2>
@@ -37,7 +37,7 @@ const Contact = () => {
                   <div className='form-group mb-6'>
                     <input
                       type='text'
-                      className='form-control block w-full leading-tight px-3 py-5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-emerald-600 focus:outline-none'
+                      className='form-control block w-full leading-tight px-3 py-4 text-2xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-emerald-600 focus:outline-none'
                       id='name'
                       placeholder='Name'
                     />
@@ -45,14 +45,14 @@ const Contact = () => {
                   <div className='form-group mb-6'>
                     <input
                       type='email'
-                      className='form-control block w-full leading-tight px-3 py-5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-emerald-600 focus:outline-none'
+                      className='form-control block w-full leading-tight px-3 py-4 text-2xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-emerald-600 focus:outline-none'
                       id='email'
                       placeholder='Email address'
                     />
                   </div>
                   <div className='form-group mb-6'>
                     <textarea
-                      className='form-control block w-full leading-tight px-3 py-5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-emerald-600 focus:outline-none'
+                      className='form-control block w-full leading-tight px-3 py-4 text-2xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-emerald-600 focus:outline-none'
                       id='message'
                       rows='3'
                       placeholder='Message'
@@ -61,7 +61,7 @@ const Contact = () => {
 
                   <button
                     type='submit'
-                    className=' w-full px-6 py-6 bg-emerald-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-emerald-700 hover:shadow-lg focus:bg-emerald-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-emerald-800 active:shadow-lg transition duration-150 ease-in-out'
+                    className=' w-full px-6 py-6 bg-emerald-600 text-white font-medium text-2xl leading-tight uppercase rounded shadow-md hover:bg-emerald-700 hover:shadow-lg focus:bg-emerald-700 focus:shadow-lg focus:outline-none active:bg-emerald-800 transition duration-150 ease-in-out'
                   >
                     Send
                   </button>
@@ -78,7 +78,7 @@ const Contact = () => {
                             focusable='false'
                             data-prefix='fas'
                             data-icon='headset'
-                            className='w-5 text-white'
+                            className='w-[3rem] text-white'
                             role='img'
                             xmlns='http://www.w3.org/2000/svg'
                             viewBox='0 0 512 512'
@@ -91,9 +91,11 @@ const Contact = () => {
                         </div>
                       </div>
                       <div className='grow ml-6'>
-                        <p className='font-bold mb-1'>Technical support</p>
-                        <p className='text-gray-500'>support@example.com</p>
-                        <p className='text-gray-500'>+1 234-567-89</p>
+                        <p className='font-bold mb-1 text-white'>
+                          Technical support
+                        </p>
+                        <p className='text-gray-100 '>support@example.com</p>
+                        <p className='text-gray-100'>+1 234-567-89</p>
                       </div>
                     </div>
                   </div>
@@ -119,9 +121,11 @@ const Contact = () => {
                         </div>
                       </div>
                       <div className='grow ml-6'>
-                        <p className='font-bold mb-1'>Sales questions</p>
-                        <p className='text-gray-500'>sales@example.com</p>
-                        <p className='text-gray-500'>+1 234-567-89</p>
+                        <p className='font-bold mb-1 text-white'>
+                          Sales questions
+                        </p>
+                        <p className='text-gray-100'>sales@example.com</p>
+                        <p className='text-gray-100'>+1 234-567-89</p>
                       </div>
                     </div>
                   </div>
@@ -147,9 +151,9 @@ const Contact = () => {
                         </div>
                       </div>
                       <div className='grow ml-6'>
-                        <p className='font-bold mb-1'>Press</p>
-                        <p className='text-gray-500'>press@example.com</p>
-                        <p className='text-gray-500'>+1 234-567-89</p>
+                        <p className='font-bold mb-1 text-white'>Press</p>
+                        <p className='text-gray-100'>press@example.com</p>
+                        <p className='text-gray-100'>+1 234-567-89</p>
                       </div>
                     </div>
                   </div>
@@ -175,9 +179,9 @@ const Contact = () => {
                         </div>
                       </div>
                       <div className='grow ml-6'>
-                        <p className='font-bold mb-1'>Bug report</p>
-                        <p className='text-gray-500'>bugs@example.com</p>
-                        <p className='text-gray-500'>+1 234-567-89</p>
+                        <p className='font-bold mb-1 text-white'>Bug report</p>
+                        <p className='text-gray-100'>bugs@example.com</p>
+                        <p className='text-gray-100'>+1 234-567-89</p>
                       </div>
                     </div>
                   </div>

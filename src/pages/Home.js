@@ -53,7 +53,7 @@ const Home = () => {
         <h3 className='wow fadeInUp text-xl md:text-2xl text-green-400 font-bold'>
           Trust, safety and reliance
         </h3>
-        <h1 className='wow fadeInUp text-2xl md:text-4xl xl:text-6xl font-bold'>
+        <h1 className='wow fadeInUp text-2xl text-emerald-600 md:text-4xl xl:text-6xl font-bold'>
           Bring Your projects forth
           <br className='hidden lg:block' /> for funding
         </h1>
@@ -65,7 +65,7 @@ const Home = () => {
       {/* Start of banner for latest Investment */}
 
       {/* Start of Card for latest investment */}
-      <Container className='-mt-[20px] wow fadeInUp'>
+      <Container className='-mt-[6rem] wow fadeInUp'>
         <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6'>
           <div className='w-2/3 mx-auto md:w-full bg-white transition-all duration-300 cursor-pointer border border-gray-200 border-opacity-50 rounded-3xl p-4 lg:p-8 text-center flex flex-col space-y-8 shadow-xl'>
             <div className='flex items-center justify-center'>
@@ -205,7 +205,7 @@ const Home = () => {
         <h3 className='wow fadeInUp text-xl md:text-2xl text-green-400 font-bold'>
           Verified Projects. High returns. No hassle.
         </h3>
-        <h1 className='wow fadeInUp text-2xl md:text-4xl xl:text-6xl font-bold'>
+        <h1 className='wow fadeInUp text-2xl text-emerald-500 md:text-4xl xl:text-6xl font-bold'>
           Legally followed and insurance cover
           <br className='hidden lg:block' /> all year round
         </h1>
@@ -215,7 +215,7 @@ const Home = () => {
         </p>
       </div>
 
-      <Container className='-mt-[150px] wow fadeInUp'>
+      <Container className='-mt-[6rem] wow fadeInUp'>
         <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6'>
           <div className='w-2/3 mx-auto md:w-full bg-white transition-all duration-300 border border-gray-200 border-opacity-50 rounded-3xl p-4 lg:p-8 text-center flex flex-col space-y-8 shadow-xl'>
             <div className='flex items-center justify-center'>
