@@ -1,6 +1,8 @@
 import { css, StyleSheet } from 'aphrodite'
 import { HiBeaker } from 'react-icons/hi2'
 import { Link as RouterLink } from 'react-router-dom'
+// import { ToastContainer, toast } from 'react-toastify'
+// import 'react-toastify/dist/ReactToastify.css'
 
 export const Link = ({ href = '', children }) => {
   return (
@@ -160,3 +162,9 @@ export const Loader = ({ size = null, color = null, className = '' }) => {
     </svg>
   )
 }
+
+// export const showToastMessage = () => {
+//   toast.success('Success Notification !', {
+//     position: toast.POSITION.TOP_RIGHT,
+//   })
+// }

@@ -13,54 +13,128 @@ const Home = () => {
 
       <Banner />
 
-      <Container className='wow fadeInUp relative -mt-[110px] overflow-scroll'>
+      <Container className='wow fadeInUp relative -mt-[110px]'>
         <div className='grid grid-cols-2 md:grid-cols-4 gap-4 bg-white border border-gray-200 border-opacity-50 shadow-2xl rounded-xl'>
           <div className='text-center py-10 lg:py-16 space-y-3 text-emerald-900 font-medium'>
             <h1 className='text-5xl lg:text-6xl font-semibold text-emerald-600'>
               <CountUp end={50} />+
             </h1>
-            <p className='text-sm lg:text-base'>projects</p>
+            <p className='text-2xl lg:text-base'>Projects</p>
           </div>
 
           <div className='text-center py-10 lg:py-16 space-y-3 text-emerald-900 font-medium'>
             <h1 className='text-5xl lg:text-6xl font-semibold text-emerald-600'>
               <CountUp end={25} />%
             </h1>
-            <p className='text-sm lg:text-base'>ROI</p>
+            <p className='text-2xl lg:text-base'>ROI</p>
           </div>
 
           <div className='text-center py-10 lg:py-16 space-y-3 text-emerald-900 font-medium'>
             <h1 className='text-5xl lg:text-6xl font-semibold text-emerald-600'>
               <CountUp end={70} />+
             </h1>
-            <p className='text-sm lg:text-base'>Investments</p>
+            <p className='text-2xl lg:text-base'>Investments</p>
           </div>
 
           <div className='text-center py-10 lg:py-16 space-y-3 text-emerald-900 font-medium'>
             <h1 className='text-5xl lg:text-6xl font-semibold text-emerald-600'>
               <CountUp end={24} />/<CountUp end={24} />
             </h1>
-            <p className='text-sm lg:text-base'>Payouts</p>
+            <p className='text-2xl lg:text-base'>Payouts</p>
           </div>
         </div>
       </Container>
 
-      <div className='wow fadeInUp text-center text-emerald-900 space-y-8 mt-28 mb-16'>
-        <h4 className='text-xl lg:text-2xl font-bold'>
+      {/* Start of banner for latest Investment */}
+      <div
+        className='mt-28 pt-10 md:pt-28 pb-52 space-y-8 text-center text-white bg-no-repeat bg-cover bg-center'
+        style={{ backgroundImage: "url('/images/our-solutions-bg.png')" }}
+      >
+        <h3 className='wow fadeInUp text-xl md:text-2xl text-green-400 font-bold'>
           Trust, safety and reliance
-        </h4>
-
-        <h1 className='text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold'>
-          Bring Your projects forth <br className='hidden lg:block' /> for
-          funding
+        </h3>
+        <h1 className='wow fadeInUp text-2xl text-emerald-600 md:text-4xl xl:text-6xl font-bold'>
+          Bring Your projects forth
+          <br className='hidden lg:block' /> for funding
         </h1>
-
-        <p className='text-sm sm:text-base font-medium'>
+        <p className='wow fadeInUp text-white font-medium text-opacity-80 text-sm md:text-xl'>
           Have an agricultural project? Bring just your idea and one more thing
+          {/* <br /> investment and guarantee slots for next investment */}
         </p>
       </div>
+      {/* Start of banner for latest Investment */}
 
-      <Container className='wow fadeInUp flex items-center flex-col-reverse xl:flex-row xl:space-y-0 xl:space-x-5'>
+      {/* Start of Card for latest investment */}
+      <Container className='-mt-[6rem] wow fadeInUp'>
+        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6'>
+          <div className='w-2/3 mx-auto md:w-full bg-white transition-all duration-300 cursor-pointer border border-gray-200 border-opacity-50 rounded-3xl p-4 lg:p-8 text-center flex flex-col space-y-8 shadow-xl'>
+            <div className='flex items-center justify-center'>
+              <img src='/images/our-solutions-icon-1.png' alt='' />
+            </div>
+            <h3 className='text-xl lg:text-2xl font-bold text-emerald-900'>
+              Investment
+            </h3>
+            <p className='max-w-lg text-lg text-emerald-900'>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry.
+            </p>
+            <div className='flex justify-between px-2 py-4'>
+              <p className='font-bold text-emerald-900'>Farm</p>
+            </div>
+          </div>
+
+          <div className='w-2/3 mx-auto md:w-full bg-white transition-all duration-300 cursor-pointer border border-gray-200 border-opacity-50 rounded-3xl p-4 lg:p-8 text-center flex flex-col space-y-8 shadow-xl'>
+            <div className='flex items-center justify-center'>
+              <img src='/images/our-solutions-icon-2.png' alt='' />
+            </div>
+            <h3 className='text-xl lg:text-2xl font-bold text-emerald-900'>
+              Investment 1
+            </h3>
+            <p className='max-w-lg text-lg text-emerald-900'>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry.
+            </p>
+            <div className='flex justify-between px-2 py-4'>
+              <p className='font-bold text-emerald-900'>Farm</p>
+            </div>
+          </div>
+
+          <div className='w-2/3 mx-auto md:w-full bg-white transition-all duration-300 cursor-pointer border border-gray-200 border-opacity-50 rounded-3xl p-4 lg:p-8 text-center flex flex-col space-y-8 shadow-xl'>
+            <div className='flex items-center justify-center'>
+              <img src='/images/our-solutions-icon-3.png' alt='' />
+            </div>
+            <h3 className='text-xl lg:text-2xl font-bold text-emerald-900'>
+              Investment 2
+            </h3>
+            <p className='max-w-lg text-lg text-emerald-900'>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry.
+            </p>
+            <div className='flex justify-between px-2 py-4'>
+              <p className='font-bold text-emerald-900'>Investment</p>
+            </div>
+          </div>
+
+          <div className='w-2/3 mx-auto md:w-full bg-white transition-all duration-300 cursor-pointer border border-gray-200 border-opacity-50 rounded-3xl p-4 lg:p-8 text-center flex flex-col space-y-8 shadow-xl'>
+            <div className='flex items-center justify-center'>
+              <img src='/images/our-solutions-icon-4.png' alt='' />
+            </div>
+            <h3 className='text-xl lg:text-2xl font-bold text-emerald-900'>
+              Investment 3
+            </h3>
+            <p className='max-w-lg text-lg text-emerald-900'>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry.
+            </p>
+            <div className='flex justify-between px-2 py-4'>
+              <p className='font-bold text-emerald-900'>Investment</p>
+            </div>
+          </div>
+        </div>
+      </Container>
+      {/* End of Card for latest investment */}
+
+      <Container className='wow fadeInUp flex items-center flex-col-reverse mt-[8rem] xl:flex-row xl:space-y-0 xl:space-x-5'>
         <div className='w-full xl:w-1/2'>
           <img
             src='/images/global-payment-img.png'
@@ -131,7 +205,7 @@ const Home = () => {
         <h3 className='wow fadeInUp text-xl md:text-2xl text-green-400 font-bold'>
           Verified Projects. High returns. No hassle.
         </h3>
-        <h1 className='wow fadeInUp text-2xl md:text-4xl xl:text-6xl font-bold'>
+        <h1 className='wow fadeInUp text-2xl text-emerald-500 md:text-4xl xl:text-6xl font-bold'>
           Legally followed and insurance cover
           <br className='hidden lg:block' /> all year round
         </h1>
@@ -141,7 +215,7 @@ const Home = () => {
         </p>
       </div>
 
-      <Container className='-mt-[150px] wow fadeInUp'>
+      <Container className='-mt-[6rem] wow fadeInUp'>
         <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6'>
           <div className='w-2/3 mx-auto md:w-full bg-white transition-all duration-300 border border-gray-200 border-opacity-50 rounded-3xl p-4 lg:p-8 text-center flex flex-col space-y-8 shadow-xl'>
             <div className='flex items-center justify-center'>
