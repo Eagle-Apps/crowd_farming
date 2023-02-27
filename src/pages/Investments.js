@@ -7,8 +7,7 @@ import InvestmentSignUpModal from '../components/modal/InvestmentSignUpModal'
 // import axios from 'axios'
 
 // import { data } from '../data/data'
-import Nav from '../layouts/Nav'
-import Footer from './Footer'
+
 
 const Investment = () => {
   // const [foods, setFoods] = useState(data)
@@ -38,7 +37,7 @@ const Investment = () => {
 
   return (
     <div className='max-w-[1640px] bg-slate-300'>
-      <Nav />
+  
       <Hero />
 
       <div className='max-w-[1640px] m-auto px-[4rem] py-12 '>
@@ -96,38 +95,38 @@ const Investment = () => {
         {/* Display foods */}
         <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4 shadow dark:bg-gray-800 dark:border-gray-700'>
           {res.map((investment) => (
-             <Link to={`/investment/${investment._id}`} key={investment._id}>
-            <div
-              // key={investment._id}
-              className='border shadow-lg rounded-lg hover:scale-105 duration-300 cursor-pointer'
-            >
-              <img
-                src={investment.images[0]}
-                alt={investment.title}
-                className='w-full h-[200px] object-cover rounded-t-lg'
-              />
-              <div className='flex justify-between px-2 py-4'>
-                <p className='font-bold'>{investment.title}</p>
-                <p>
-                  <span className='text-white p-1 '>
-                    {investment.category.map(item => item.title)}
-                  </span>
+            <Link to={`/investment/${investment._id}`} key={investment._id}>
+              <div
+                // key={investment._id}
+                className='border shadow-lg rounded-lg hover:scale-105 duration-300 cursor-pointer'
+              >
+                <img
+                  src={investment.images[0]}
+                  alt={investment.title}
+                  className='w-full h-[200px] object-cover rounded-t-lg'
+                />
+                <div className='flex justify-between px-2 py-4'>
+                  <p className='font-bold'>{investment.title}</p>
+                  <p>
+                    <span className='text-white p-1 '>
+                      {investment.category.map((item) => item.title)}
+                    </span>
+                  </p>
+                </div>
+                <p className='px-5 font-normal text-gray-700 dark:text-gray-400'>
+                  {investment.descp.substring(0, 60)}...
+                </p>
+                <p className='px-5 font-normal text-gray-700 dark:text-gray-400'>
+                  {investment.budget}
                 </p>
               </div>
-              <p className='px-5 font-normal text-gray-700 dark:text-gray-400'>
-                {investment.descp.substring(0, 60)}...
-              </p>
-              <p className='px-5 font-normal text-gray-700 dark:text-gray-400'>
-              {investment.budget}
-              </p>
-            </div>
             </Link>
           ))}
         </div>
       </div>
 
       <FarmSignUpModal />
-      <Footer />
+    
     </div>
   )
 }

@@ -1,6 +1,8 @@
+import React, { useState, useEffect } from 'react'
+
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
-import { AiOutlineDashboard } from 'react-icons/ai'
+// import { AiOutlineDashboard } from 'react-icons/ai'
 import { HiMenu } from 'react-icons/hi'
 import { GiBlackcurrant } from 'react-icons/gi'
 import { Link, useNavigate } from 'react-router-dom'
@@ -11,28 +13,51 @@ import { Container } from '../components/utils'
 const Nav = () => {
   const navigate = useNavigate()
 
-  const links = [
-    {
-      name: 'Home',
-      to: '/',
-    },
-    {
-      name: 'Investments',
-      to: '/investment',
-    },
-    {
-      name: 'Return',
-      to: '#how-it-work',
-    },
-    {
-      name: 'Contact Us',
-      to: '/contact',
-    },
-    {
-      name: 'About Us',
-      to: '/about',
-    },
-  ]
+  const [isSignedIn, setIsSignedIn] = useState(
+    localStorage.getItem('ndembeleUserId')
+  )
+
+  console.log('isSignedIn', isSignedIn)
+
+  useEffect(() => {
+    const storedUserId = localStorage.getItem('ndembeleUserId')
+    // if (storedUserId) {
+    //   setIsSignedIn(storedUserId)
+    //   // setUserId(storedUserId)
+    // }
+    setIsSignedIn(storedUserId)
+  }, [isSignedIn])
+
+  // const links = [
+  //   {
+  //     name: 'Home',
+  //     to: '/',
+  //   },
+  //   {
+  //     name: 'Investments',
+  //     to: '/investment',
+  //   },
+  //   {
+  //     name: 'Return',
+  //     to: '#how-it-work',
+  //   },
+  //   {
+  //     name: 'Contact Us',
+  //     to: '/contact',
+  //   },
+  //   {
+  //     name: 'About Us',
+  //     to: '/about',
+  //   },
+  // ]
+
+  console.log(localStorage.getItem('ndembeleUserId'))
+
+  const handleSignOut = () => {
+    // localStorage.removeItem('ndembeleUserId')
+    setIsSignedIn(localStorage.removeItem('ndembeleUserId'))
+    navigate('/login')
+  }
 
   return (
     <nav className='text-gray-600 sm:p-0 text-base xl:text-lg font-medium bg-white py-4 lg:py-[1.1rem] xl:py-8 border-b shadow-sm fixed w-full z-50'>
@@ -53,7 +78,7 @@ const Nav = () => {
             </div>
           </Link>
 
-          <div className='space-x-4 xl:space-x-8 hidden md:block'>
+          {/* <div className='space-x-4 xl:space-x-8 hidden md:block'>
             {links.map((link, ind) => (
               <Link
                 to={link.to}
@@ -62,21 +87,23 @@ const Nav = () => {
               >
                 {link.name}
               </Link>
-            ))}
+            ))} */}
 
-            {/* <div className='space-x-4 xl:space-x-8 hidden md:block'>
+          <div className='space-x-4 xl:space-x-8 hidden md:block'>
             <Link
               to='/'
               className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'
             >
               Home
             </Link>
-            <Link
-              to='/project'
-              className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'
-            >
-              Investments
-            </Link>
+            {!isSignedIn && (
+              <Link
+                to='/investment'
+                className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'
+              >
+                Investments
+              </Link>
+            )}
             <Link
               to='#how-it-work'
               className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'
@@ -94,13 +121,7 @@ const Nav = () => {
               className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'
             >
               Contact us
-            </Link> */}
-            {/* <Link
-              to='/test'
-              className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'
-            >
-              Testing
-            </Link> */}
+            </Link>
           </div>
         </div>
         {/* {checkUser() ? (
@@ -189,19 +210,32 @@ const Nav = () => {
           </Menu>
         ) : ( */}
         <div className='md:flex hidden items-center space-x-3'>
-          <Link
-            to='/login'
-            className='transition-all duration-300 px-3 lg:px-4 xl:px-8 font-medium py-2 xl:py-3 text-emerald-600 hover:text-gray-500'
-          >
-            Login
-          </Link>
+          {isSignedIn !== null ? (
+            <>
+              <button
+                onClick={handleSignOut}
+                className='transition-all duration-300 px-3 lg:px-4 xl:px-8 font-medium py-2 xl:py-3 text-emerald-600 hover:text-emerald-500'
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                to='/login'
+                className='transition-all duration-300 px-3 lg:px-4 xl:px-8 font-medium py-2 xl:py-3 text-emerald-600 hover:text-gray-500'
+              >
+                Login
+              </Link>
 
-          <Link
-            to='/register'
-            className='transition-all duration-300 px-3 lg:px-4 xl:px-8 font-medium py-2 xl:py-3 bg-emerald-600 text-white rounded-md focus:outline-none hover:bg-emerald-700 focus:ring focus:border-emerald-500 focus:ring-emerald-500/50'
-          >
-            Sign Up
-          </Link>
+              <Link
+                to='/register'
+                className='transition-all duration-300 px-3 lg:px-4 xl:px-8 font-medium py-2 xl:py-3 bg-emerald-600 text-white rounded-md focus:outline-none hover:bg-emerald-700 focus:ring focus:border-emerald-500 focus:ring-emerald-500/50'
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
         </div>
         {/* )} */}
         {/* {!checkUser() && ( */}
@@ -268,23 +302,34 @@ const Nav = () => {
                   </Menu.Item>
 
                   <div className='flex items-center space-x-3'>
-                    <Menu.Item>
-                      <Link
-                        to='/login'
+                    {isSignedIn ? (
+                      <button
+                        onClick={handleSignOut}
                         className='w-1/2 text-center transition-all duration-300 px-3 font-medium py-1.5 text-emerald-900 border border-emerald-900 rounded-md focus:outline-none hover:text-white hover:bg-emerald-700 focus:ring focus:border-emerald-500 focus:ring-emerald-500/50'
                       >
-                        Login
-                      </Link>
-                    </Menu.Item>
+                        Logout
+                      </button>
+                    ) : (
+                      <>
+                        <Menu.Item>
+                          <Link
+                            to='/login'
+                            className='w-1/2 text-center transition-all duration-300 px-3 font-medium py-1.5 text-emerald-900 border border-emerald-900 rounded-md focus:outline-none hover:text-white hover:bg-emerald-700 focus:ring focus:border-emerald-500 focus:ring-emerald-500/50'
+                          >
+                            Login
+                          </Link>
+                        </Menu.Item>
 
-                    <Menu.Item>
-                      <Link
-                        to='/register'
-                        className='transition-all block text-center w-1/2 duration-300 px-3 lg:px-4 xl:px-8 font-medium py-2 xl:py-3 border border-emerald-600 bg-emerald-600 text-white rounded-md focus:outline-none hover:bg-emerald-700 focus:ring focus:border-emerald-500 focus:ring-emerald-500/50'
-                      >
-                        Sign Up
-                      </Link>
-                    </Menu.Item>
+                        <Menu.Item>
+                          <Link
+                            to='/register'
+                            className='transition-all block text-center w-1/2 duration-300 px-3 lg:px-4 xl:px-8 font-medium py-2 xl:py-3 border border-emerald-600 bg-emerald-600 text-white rounded-md focus:outline-none hover:bg-emerald-700 focus:ring focus:border-emerald-500 focus:ring-emerald-500/50'
+                          >
+                            Sign Up
+                          </Link>
+                        </Menu.Item>
+                      </>
+                    )}
                   </div>
                 </div>
               </Menu.Items>

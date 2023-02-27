@@ -1,15 +1,24 @@
+import React, { useState, useEffect } from 'react'
 import CountUp from 'react-countup'
 
 import { Container } from '../components/utils'
 import Banner from '../layouts/Banner'
-import Nav from '../layouts/Nav'
+// import Nav from '../layouts/Nav'
 
-import Footer from './Footer'
+// import Footer from './Footer'
 
 const Home = () => {
+  const [investments, setInvestments] = useState([])
+
+  useEffect(() => {
+    fetch('https://ndembele.onrender.com/investment-4')
+      .then((response) => response.json())
+      .then((data) => setInvestments(data))
+  }, [])
+
   return (
     <div className='overflow-y-scroll'>
-      <Nav />
+      {/* <Nav /> */}
 
       <Banner />
 
@@ -67,23 +76,32 @@ const Home = () => {
       {/* Start of Card for latest investment */}
       <Container className='-mt-[6rem] wow fadeInUp'>
         <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6'>
-          <div className='w-2/3 mx-auto md:w-full bg-white transition-all duration-300 cursor-pointer border border-gray-200 border-opacity-50 rounded-3xl p-4 lg:p-8 text-center flex flex-col space-y-8 shadow-xl'>
-            <div className='flex items-center justify-center'>
-              <img src='/images/our-solutions-icon-1.png' alt='' />
+          {investments.map((investment) => (
+            <div key= {investment._id}className='w-2/3 mx-auto md:w-full bg-white transition-all duration-300 cursor-pointer border border-gray-200 border-opacity-50 rounded-3xl p-4 lg:p-8 text-center flex flex-col space-y-8 shadow-xl'>
+              <div className='flex items-center justify-center'>
+                {/* <img src='/images/our-solutions-icon-1.png' alt='' /> */}
+                <img
+                  src={investment.images}
+                  alt={investment.title}
+                  className='w-full h-[200px] object-cover rounded-t-lg'
+                />
+              </div>
+              <h3 className='text-xl lg:text-2xl font-bold text-emerald-900'>
+                {investment.title}
+              </h3>
+              <p className='max-w-lg text-lg text-emerald-900'>
+                {investment.descp}
+              </p>
+              <div className='flex justify-between px-2 py-4'>
+                <p className='font-bold text-emerald-900'>
+                  Farm
+                  {/* {investment.category.map((item) => item.title)} */}
+                </p>
+              </div>
             </div>
-            <h3 className='text-xl lg:text-2xl font-bold text-emerald-900'>
-              Investment
-            </h3>
-            <p className='max-w-lg text-lg text-emerald-900'>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.
-            </p>
-            <div className='flex justify-between px-2 py-4'>
-              <p className='font-bold text-emerald-900'>Farm</p>
-            </div>
-          </div>
+          ))}
 
-          <div className='w-2/3 mx-auto md:w-full bg-white transition-all duration-300 cursor-pointer border border-gray-200 border-opacity-50 rounded-3xl p-4 lg:p-8 text-center flex flex-col space-y-8 shadow-xl'>
+          {/* <div className='w-2/3 mx-auto md:w-full bg-white transition-all duration-300 cursor-pointer border border-gray-200 border-opacity-50 rounded-3xl p-4 lg:p-8 text-center flex flex-col space-y-8 shadow-xl'>
             <div className='flex items-center justify-center'>
               <img src='/images/our-solutions-icon-2.png' alt='' />
             </div>
@@ -129,7 +147,7 @@ const Home = () => {
             <div className='flex justify-between px-2 py-4'>
               <p className='font-bold text-emerald-900'>Investment</p>
             </div>
-          </div>
+          </div> */}
         </div>
       </Container>
       {/* End of Card for latest investment */}
@@ -332,7 +350,7 @@ const Home = () => {
         </div>
       </Container>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

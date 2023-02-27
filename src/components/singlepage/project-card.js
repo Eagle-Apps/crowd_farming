@@ -17,7 +17,7 @@ const ProjectCard = () => {
             <div className='explore-projects-item mt-30'>
               <div className='explore-projects-thumb'>
                 <img
-                  src='assets/explore-projects-1.a82dd017.jpg'
+                  src='/assets/explore-projects-1.a82dd017.jpg'
                   alt='explore-projects'
                   className
                 />
@@ -56,7 +56,7 @@ const ProjectCard = () => {
             <div className='explore-projects-item mt-30'>
               <div className='explore-projects-thumb'>
                 <img
-                  src='assets/explore-projects-2.3a8b2c94.jpg'
+                  src='/assets/explore-projects-2.3a8b2c94.jpg'
                   alt='explore-projects'
                   className
                 />
@@ -95,7 +95,7 @@ const ProjectCard = () => {
             <div className='explore-projects-item mt-30'>
               <div className='explore-projects-thumb'>
                 <img
-                  src='assets/explore-projects-3.c3707363.jpg'
+                  src='/assets/explore-projects-3.c3707363.jpg'
                   alt='explore-projects'
                   className
                 />
