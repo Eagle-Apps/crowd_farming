@@ -3,41 +3,22 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Hero from '../components/Hero'
 import FarmSignUpModal from '../components/modal/FarmSignUpModal'
-import InvestmentSignUpModal from '../components/modal/InvestmentSignUpModal'
-// import axios from 'axios'
 
-// import { data } from '../data/data'
-
-
-const Investment = () => {
-  // const [foods, setFoods] = useState(data)
-  const [investments, setInvestments] = useState([])
+const Farms = () => {
+  const [farms, setFarms] = useState([])
 
   useEffect(() => {
-    fetch('https://ndembele.onrender.com/investments')
+    fetch('https://ndembele.onrender.com/farms')
       .then((response) => response.json())
-      .then((data) => setInvestments(data.pageOfItems))
+      .then((data) => setFarms(data.pageOfItems))
   }, [])
 
-  const res = Array.from(investments)
+  const res = Array.from(farms)
 
-  // useEffect(() => {
-  //   async function fetchInvestments() {
-  //     const response = await fetch('https://ndembele.onrender.com/investments')
-  //     const data = await response.json()
-  //     setInvestments(data)
-  //   }
-  //   fetchInvestments()
-  // }, [])
-
-  // Filter Type burger/pizza/etc
-  // const filterType = (category) => {
-  //   setInvestments(data.filter((item) => item.category === category))
-  // }
+  console.log(res)
 
   return (
     <div className='max-w-[1640px] bg-slate-300'>
-  
       <Hero />
 
       <div className='max-w-[1640px] m-auto px-[4rem] py-12 '>
@@ -88,47 +69,46 @@ const Investment = () => {
             {/* <button className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'>
               Create Investment
             </button> */}
-            <InvestmentSignUpModal />
+            <FarmSignUpModal />
           </div>
         </div>
 
         {/* Display foods */}
         <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4 shadow dark:bg-gray-800 dark:border-gray-700'>
-          {res.map((investment) => (
-            <Link to={`/investment/${investment._id}`} key={investment._id}>
+          {res.map((farm) => (
+            // <Link to={`/farm/${farm._id}`} key={farm._id}>
+            <Link key={farm._id}>
               <div
-                // key={investment._id}
+                // key={farm._id}
                 className='border shadow-lg rounded-lg hover:scale-105 duration-300 cursor-pointer'
               >
                 <img
-                  src={investment.images[0]}
-                  alt={investment.title}
+                  src={farm.images[0]}
+                  alt={farm.name}
                   className='w-full h-[200px] object-cover rounded-t-lg'
                 />
                 <div className='flex justify-between px-2 py-4'>
-                  <p className='font-bold'>{investment.title}</p>
+                  <p className='font-bold'>{farm.name}</p>
                   <p>
                     <span className='text-white p-1 '>
-                      {investment.category.map((item) => item.title)}
+                      {/* {farm.category.map((item) => item.title)} */}
+                      {farm.category?.title}
                     </span>
                   </p>
                 </div>
                 <p className='px-5 font-normal text-gray-700 dark:text-gray-400'>
-                  {investment.descp.substring(0, 60)}...
+                  {farm.address}...
                 </p>
-                <p className='px-5 font-normal text-gray-700 dark:text-gray-400'>
-                  {investment.budget}
-                </p>
+                {/* <p className='px-5 font-normal text-gray-700 dark:text-gray-400'>
+                  {farm.budget}
+                </p> */}
               </div>
             </Link>
           ))}
         </div>
       </div>
-
-      {/* <FarmSignUpModal /> */}
-    
     </div>
   )
 }
 
-export default Investment
+export default Farms

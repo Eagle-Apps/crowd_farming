@@ -1,11 +1,8 @@
 import React from 'react'
-import Nav from '../layouts/Nav'
-import Footer from './Footer'
 
 const Contact = () => {
   return (
     <div className='max-w-[1640px] bg-slate-500'>
-      <Nav />
       <div className='relative max-h-[500px]'>
         {/* Overlay */}
         <div className='absolute w-full h-[550px] text-gray-200 bg-black/5 flex flex-col justify-center'>
@@ -191,7 +188,7 @@ const Contact = () => {
           </div>
         </div>
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

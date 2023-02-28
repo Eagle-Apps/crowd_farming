@@ -8,7 +8,7 @@ const Updates = () => {
           <h3 className='title'>This is the first update of our new project</h3>
           <div className='info-updates d-block d-sm-flex justify-content-between align-items-center'>
             <div className='info'>
-              <img src='assets/info.ce69c6d5.jpg' alt className />
+              <img src='/assets/info.ce69c6d5.jpg' alt className />
               <span>
                 by
                 <span>
@@ -38,7 +38,7 @@ const Updates = () => {
           </p>
           <div className='project-updates-thumb mt-50'>
             <img
-              src='assets/project-updates-thumb-1.59d86419.jpg'
+              src='/assets/project-updates-thumb-1.59d86419.jpg'
               alt
               className
             />
@@ -50,7 +50,7 @@ const Updates = () => {
           <h3 className='title'>This is the first update of our new project</h3>
           <div className='info-updates d-block d-sm-flex justify-content-between align-items-center'>
             <div className='info'>
-              <img src='assets/info.ce69c6d5.jpg' alt className />
+              <img src='/assets/info.ce69c6d5.jpg' alt className />
               <span>
                 by
                 <span>
@@ -80,7 +80,7 @@ const Updates = () => {
           </p>
           <div className='project-updates-thumb mt-50'>
             <img
-              src='assets/project-updates-thumb-2.885a5398.jpg'
+              src='/assets/project-updates-thumb-2.885a5398.jpg'
               alt
               className
             />
