@@ -6,7 +6,7 @@ import { Fragment } from 'react'
 import { HiMenu } from 'react-icons/hi'
 import { GiBlackcurrant } from 'react-icons/gi'
 import { Link, useNavigate } from 'react-router-dom'
-import { Container } from '../components/utils'
+import { Container } from '../utils/utils'
 
 import { AuthContext } from '../context/AuthContext'
 

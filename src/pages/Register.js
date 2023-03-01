@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 import { PrimaryButton, SecondaryButton } from '../components/buttons'
 import { Checkbox, Input } from '../components/field'
-import { Link, Loader } from '../components/utils'
+import { Link, Loader } from '../utils/utils'
 import AuthLayout from '../layouts/AuthLayout'
 
 const Register = () => {

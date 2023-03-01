@@ -3,14 +3,19 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Hero from '../components/Hero'
 import FarmSignUpModal from '../components/modal/FarmSignUpModal'
+import CardSkeleton from '../utils/card-Skeleton'
 
 const Farms = () => {
   const [farms, setFarms] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetch('https://ndembele.onrender.com/farms')
       .then((response) => response.json())
-      .then((data) => setFarms(data.pageOfItems))
+      .then((data) => {
+        setFarms(data.pageOfItems)
+        setLoading(false)
+      })
   }, [])
 
   const res = Array.from(farms)
@@ -74,37 +79,45 @@ const Farms = () => {
         </div>
 
         {/* Display foods */}
-        <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4 shadow dark:bg-gray-800 dark:border-gray-700'>
-          {res.map((farm) => (
-            // <Link to={`/farm/${farm._id}`} key={farm._id}>
-            <Link key={farm._id}>
-              <div
-                // key={farm._id}
-                className='border shadow-lg rounded-lg hover:scale-105 duration-300 cursor-pointer'
-              >
-                <img
-                  src={farm.images[0]}
-                  alt={farm.name}
-                  className='w-full h-[200px] object-cover rounded-t-lg'
-                />
-                <div className='flex justify-between px-2 py-4'>
-                  <p className='font-bold'>{farm.name}</p>
-                  <p>
-                    <span className='text-white p-1 '>
-                      {/* {farm.category.map((item) => item.title)} */}
-                      {farm.category?.title}
-                    </span>
+        <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4 shadow bg-slate-300 border-gray-500 overflow-hidden'>
+          {loading ? (
+            <div>
+              <CardSkeleton />
+            </div>
+          ) : res.length > 0 ? (
+            res.map((farm) => (
+              // <Link to={`/farm/${farm._id}`} key={farm._id}>
+              <Link key={farm._id}>
+                <div
+                  // key={farm._id}
+                  className='border shadow-lg rounded-lg hover:scale-105 duration-300 cursor-pointer'
+                >
+                  <img
+                    src={farm.images[0]}
+                    alt={farm.name}
+                    className='w-full h-[200px] object-cover rounded-t-lg'
+                  />
+                  <div className='flex justify-between px-2 py-4'>
+                    <p className='font-bold'>{farm.name}</p>
+                    <p>
+                      <span className='text-white p-1 '>
+                        {/* {farm.category.map((item) => item.title)} */}
+                        {farm.category?.title}
+                      </span>
+                    </p>
+                  </div>
+                  <p className='px-5 font-normal text-gray-700'>
+                    {farm.address}...
                   </p>
+                  {/* <p className='px-5 font-normal text-gray-700 dark:text-gray-400'>
+                        {farm.budget}
+                      </p> */}
                 </div>
-                <p className='px-5 font-normal text-gray-700 dark:text-gray-400'>
-                  {farm.address}...
-                </p>
-                {/* <p className='px-5 font-normal text-gray-700 dark:text-gray-400'>
-                  {farm.budget}
-                </p> */}
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))
+          ) : (
+            <p>No Farm</p>
+          )}
         </div>
       </div>
     </div>

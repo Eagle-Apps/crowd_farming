@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 import { PrimaryButton, SecondaryButton } from '../components/buttons'
 import { Checkbox, Input } from '../components/field'
-import { Link, Loader } from '../components/utils'
+import { Link, Loader } from '../utils/utils'
 import AuthLayout from '../layouts/AuthLayout'
 
 const Login = () => {
@@ -56,11 +56,11 @@ const Login = () => {
         // console.log(data.userID)
         // setUserId(data.userID)
         localStorage.setItem('ndembeleUserId', JSON.stringify(data.userID))
-        
+
         toast.success('Login Successful !', {
           position: toast.POSITION.TOP_CENTER,
         })
-       
+
         navigate('/')
       } else {
         // throw new Error(data.message)
@@ -126,7 +126,6 @@ const Login = () => {
           <Link href='/forgot-password'>Forgot Password?</Link>
         </div>
 
-        
         <PrimaryButton type='submit' disabled={loading}>
           {loading && <Loader color={'white'} />}
           <span className='text-[1.5rem]'>Login to account</span>

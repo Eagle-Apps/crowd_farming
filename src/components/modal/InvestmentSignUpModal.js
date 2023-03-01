@@ -3,8 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import { Link, Loader } from '../../components/utils'
-
+import { Link, Loader } from '../../utils/utils'
 
 // const categories = [
 //   {
@@ -324,8 +323,6 @@ const InvestmentSignUpModal = () => {
                       // onChange={(event) => setTerms(event.target.value)}
                     />
                   </div>
-
-                 
 
                   <div className='col-span-6 sm:col-span-3'>
                     <label

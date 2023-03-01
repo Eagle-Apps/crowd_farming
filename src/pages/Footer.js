@@ -5,7 +5,7 @@ import {
   SlSocialTwitter,
 } from 'react-icons/sl'
 
-import { Container } from '../components/utils'
+import { Container } from '../utils/utils'
 
 const Footer = () => {
   return (

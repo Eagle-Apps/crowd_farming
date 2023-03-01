@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 // import { checkUser, formatToCurrency, toast } from '../helpers'
 
-import { Loader } from './utils'
+import { Loader } from '../utils/utils'
 
 const TransferForm = () => {
   const defaultMessage = {

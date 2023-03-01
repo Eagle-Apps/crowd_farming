@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import TransferForm from '../components/TransferForm'
-import { Container } from '../components/utils'
+import { Container } from '../utils/utils'
 // import { checkUser } from '../helpers'
 
 const Banner = () => {

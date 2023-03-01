@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import CountUp from 'react-countup'
 
-import { Container } from '../components/utils'
+import { Container } from '../utils/utils'
 import Banner from '../layouts/Banner'
 // import Nav from '../layouts/Nav'
 
@@ -77,7 +77,10 @@ const Home = () => {
       <Container className='-mt-[6rem] wow fadeInUp'>
         <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6'>
           {investments.map((investment) => (
-            <div key= {investment._id}className='w-2/3 mx-auto md:w-full bg-white transition-all duration-300 cursor-pointer border border-gray-200 border-opacity-50 rounded-3xl p-4 lg:p-8 text-center flex flex-col space-y-8 shadow-xl'>
+            <div
+              key={investment._id}
+              className='w-2/3 mx-auto md:w-full bg-white transition-all duration-300 cursor-pointer border border-gray-200 border-opacity-50 rounded-3xl p-4 lg:p-8 text-center flex flex-col space-y-8 shadow-xl'
+            >
               <div className='flex items-center justify-center'>
                 {/* <img src='/images/our-solutions-icon-1.png' alt='' /> */}
                 <img
