@@ -13,6 +13,8 @@ import Nav from './layouts/Nav'
 import Footer from './pages/Footer'
 import { AuthContext } from './context/AuthContext'
 import Farms from './pages/Farms'
+import SingleInvestmentLandOwner from './pages/SingleInvestmentLandOwner'
+import "./main.css";
 
 const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(false)
@@ -39,7 +41,8 @@ const App = () => {
         {/* <Route path='/investment-page' element={<SingleInvestment />} /> */}
         <Route>
           <Route path='/investment' element={<Investments />} />
-          <Route path='/investment/:_id' element={<SingleInvestment />} />
+          <Route path='/investments/:_id' element={<SingleInvestment />} />
+          <Route path='/investment/:id' element={<SingleInvestmentLandOwner />} />
         </Route>
       </Routes>
 
