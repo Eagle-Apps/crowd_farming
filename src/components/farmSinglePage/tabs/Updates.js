@@ -8,7 +8,7 @@ const Updates = () => {
           <h3 className='title'>This is the first update of our new project</h3>
           <div className='info-updates d-block d-sm-flex justify-content-between align-items-center'>
             <div className='info'>
-              <img src='/assets/info.ce69c6d5.jpg' alt className />
+              <img src='/assets/info.ce69c6d5.jpg' alt='' />
               <span>
                 by
                 <span>
@@ -37,11 +37,7 @@ const Updates = () => {
             at mi viverra sagittis ut non erat. Praesent nec congue elit.
           </p>
           <div className='project-updates-thumb mt-50'>
-            <img
-              src='/assets/project-updates-thumb-1.59d86419.jpg'
-              alt
-              className
-            />
+            <img src='/assets/project-updates-thumb-1.59d86419.jpg' alt='' />
           </div>
         </div>
       </div>
@@ -50,7 +46,7 @@ const Updates = () => {
           <h3 className='title'>This is the first update of our new project</h3>
           <div className='info-updates d-block d-sm-flex justify-content-between align-items-center'>
             <div className='info'>
-              <img src='/assets/info.ce69c6d5.jpg' alt className />
+              <img src='/assets/info.ce69c6d5.jpg' alt='' />
               <span>
                 by
                 <span>
@@ -79,11 +75,7 @@ const Updates = () => {
             at mi viverra sagittis ut non erat. Praesent nec congue elit.
           </p>
           <div className='project-updates-thumb mt-50'>
-            <img
-              src='/assets/project-updates-thumb-2.885a5398.jpg'
-              alt
-              className
-            />
+            <img src='/assets/project-updates-thumb-2.885a5398.jpg' alt='' />
           </div>
         </div>
       </div>

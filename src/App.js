@@ -13,6 +13,10 @@ import Nav from './layouts/Nav'
 import Footer from './pages/Footer'
 import { AuthContext } from './context/AuthContext'
 import Farms from './pages/Farms'
+import UserProfile from './pages/UserProfile'
+import Terms from './pages/Terms'
+import Privacy from './pages/Privacy'
+import SingleFarm from './pages/SingleFarm'
 
 const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(false)
@@ -33,7 +37,6 @@ const App = () => {
 
         <Route path='/register' element={<Register />} />
 
-        <Route path='/farm' element={<Farms />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
         {/* <Route path='/investment-page' element={<SingleInvestment />} /> */}
@@ -41,6 +44,17 @@ const App = () => {
           <Route path='/investment' element={<Investments />} />
           <Route path='/investment/:_id' element={<SingleInvestment />} />
         </Route>
+
+        <Route>
+          <Route path='/farm' element={<Farms />} />
+          <Route path='/farm/:_id' element={<SingleFarm />} />
+        </Route>
+
+        <Route path='/profile' element={<UserProfile />} />
+
+        <Route path='/terms' element={<Terms />} />
+
+        <Route path='/privacy-settings' element={<Privacy />} />
       </Routes>
 
       <Footer />

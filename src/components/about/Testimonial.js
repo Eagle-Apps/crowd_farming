@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from 'react'
 
 const Testimonial = () => {
@@ -48,8 +49,7 @@ const Testimonial = () => {
                           <div className='testimonials-thumb text-right'>
                             <img
                               src='assets/testimonials-thumb-2.570fc479.jpg'
-                              alt
-                              className
+                              alt=''
                             />
                             <div className='quote'>
                               <i className='flaticon-left-quotes-sign' />
@@ -87,8 +87,7 @@ const Testimonial = () => {
                           <div className='testimonials-thumb text-right'>
                             <img
                               src='assets/testimonials-thumb.6b6abca3.jpg'
-                              alt
-                              className
+                              alt=''
                             />
                             <div className='quote'>
                               <i className='flaticon-left-quotes-sign' />
@@ -124,11 +123,7 @@ const Testimonial = () => {
                         </div>
                         <div className='col-lg-5'>
                           <div className='testimonials-thumb text-right'>
-                            <img
-                              src='assets/testimonials-thumb-2.570fc479.jpg'
-                              alt
-                              className
-                            />
+                            <img src='assets/testimonials-thumb-2.570fc479.jpg' />
                             <div className='quote'>
                               <i className='flaticon-left-quotes-sign' />
                             </div>
@@ -165,8 +160,7 @@ const Testimonial = () => {
                           <div className='testimonials-thumb text-right'>
                             <img
                               src='assets/testimonials-thumb.6b6abca3.jpg'
-                              alt
-                              className
+                              alt=''
                             />
                             <div className='quote'>
                               <i className='flaticon-left-quotes-sign' />

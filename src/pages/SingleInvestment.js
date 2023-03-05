@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 
-import ProjectDetails from '../components/singlepage/project-details'
-import ProjectBanner from '../components/singlepage/project-banner'
-import ProjectDetailsContent from '../components/singlepage/project-details-content'
-import ProjectCard from '../components/singlepage/project-card'
+import ProjectDetails from '../components/investmentSinglepage/project-details'
+import ProjectBanner from '../components/investmentSinglepage/project-banner'
+import ProjectDetailsContent from '../components/investmentSinglepage/project-details-content'
+import ProjectCard from '../components/investmentSinglepage/project-card'
 
 
 const SingleInvestment = () => {

@@ -59,14 +59,15 @@ const Home = () => {
         className='mt-28 pt-10 md:pt-28 pb-52 space-y-8 text-center text-white bg-no-repeat bg-cover bg-center'
         style={{ backgroundImage: "url('/images/our-solutions-bg.png')" }}
       >
-        <h3 className='wow fadeInUp text-xl md:text-2xl text-green-400 font-bold'>
+        <h3 className='wow fadeInUp text-xl md:text-2xl text-green-300 font-bold'>
           Trust, safety and reliance
         </h3>
-        <h1 className='wow fadeInUp text-2xl text-emerald-600 md:text-4xl xl:text-6xl font-bold'>
+        <h1 className='wow fadeInUp text-2xl text-emerald-200 md:text-4xl xl:text-6xl font-bold'>
           Bring Your projects forth
-          <br className='hidden lg:block' /> for funding
+          <span className='hidden lg:block mt-6'>for funding</span>
+          {/* <br className='hidden lg:block' />  for funding */}
         </h1>
-        <p className='wow fadeInUp text-white font-medium text-opacity-80 text-sm md:text-xl'>
+        <p className='wow fadeInUp text-green-50 text-opacity-90 font-bold text-sm md:text-xl'>
           Have an agricultural project? Bring just your idea and one more thing
           {/* <br /> investment and guarantee slots for next investment */}
         </p>
@@ -103,54 +104,6 @@ const Home = () => {
               </div>
             </div>
           ))}
-
-          {/* <div className='w-2/3 mx-auto md:w-full bg-white transition-all duration-300 cursor-pointer border border-gray-200 border-opacity-50 rounded-3xl p-4 lg:p-8 text-center flex flex-col space-y-8 shadow-xl'>
-            <div className='flex items-center justify-center'>
-              <img src='/images/our-solutions-icon-2.png' alt='' />
-            </div>
-            <h3 className='text-xl lg:text-2xl font-bold text-emerald-900'>
-              Investment 1
-            </h3>
-            <p className='max-w-lg text-lg text-emerald-900'>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.
-            </p>
-            <div className='flex justify-between px-2 py-4'>
-              <p className='font-bold text-emerald-900'>Farm</p>
-            </div>
-          </div>
-
-          <div className='w-2/3 mx-auto md:w-full bg-white transition-all duration-300 cursor-pointer border border-gray-200 border-opacity-50 rounded-3xl p-4 lg:p-8 text-center flex flex-col space-y-8 shadow-xl'>
-            <div className='flex items-center justify-center'>
-              <img src='/images/our-solutions-icon-3.png' alt='' />
-            </div>
-            <h3 className='text-xl lg:text-2xl font-bold text-emerald-900'>
-              Investment 2
-            </h3>
-            <p className='max-w-lg text-lg text-emerald-900'>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.
-            </p>
-            <div className='flex justify-between px-2 py-4'>
-              <p className='font-bold text-emerald-900'>Investment</p>
-            </div>
-          </div>
-
-          <div className='w-2/3 mx-auto md:w-full bg-white transition-all duration-300 cursor-pointer border border-gray-200 border-opacity-50 rounded-3xl p-4 lg:p-8 text-center flex flex-col space-y-8 shadow-xl'>
-            <div className='flex items-center justify-center'>
-              <img src='/images/our-solutions-icon-4.png' alt='' />
-            </div>
-            <h3 className='text-xl lg:text-2xl font-bold text-emerald-900'>
-              Investment 3
-            </h3>
-            <p className='max-w-lg text-lg text-emerald-900'>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.
-            </p>
-            <div className='flex justify-between px-2 py-4'>
-              <p className='font-bold text-emerald-900'>Investment</p>
-            </div>
-          </div> */}
         </div>
       </Container>
       {/* End of Card for latest investment */}
@@ -223,15 +176,15 @@ const Home = () => {
         className='mt-28 pt-10 md:pt-28 pb-52 space-y-8 text-center text-white bg-no-repeat bg-cover bg-center'
         style={{ backgroundImage: "url('/images/our-solutions-bg.png')" }}
       >
-        <h3 className='wow fadeInUp text-xl md:text-2xl text-green-400 font-bold'>
+        <h3 className='wow fadeInUp text-xl md:text-2xl text-green-300 font-bold'>
           Verified Projects. High returns. No hassle.
         </h3>
-        <h1 className='wow fadeInUp text-2xl text-emerald-500 md:text-4xl xl:text-6xl font-bold'>
+        <h1 className='wow fadeInUp text-2xl text-emerald-200 md:text-4xl xl:text-6xl font-bold'>
           Legally followed and insurance cover
           <br className='hidden lg:block' /> all year round
         </h1>
-        <p className='wow fadeInUp text-white font-medium text-opacity-80 text-sm md:text-base'>
-          Purchase units of different projects to increase your returns on{' '}
+        <p className='wow fadeInUp text-emerald-50 font-bold text-opacity-90 text-[1.5rem] md:text-[1rem]'>
+          Purchase units of different projects to increase your returns on
           <br /> investment and guarantee slots for next investment
         </p>
       </div>

@@ -45,7 +45,7 @@ const StoryContent = () => {
           </li>
         </ul>
         <div className='project-details-thumb'>
-          <img src='/assets/project-details-thumb.a427b972.jpg' alt className />
+          <img src='/assets/project-details-thumb.a427b972.jpg' alt='' />
         </div>
       </div>
       <div className='project-details-item'>
@@ -86,12 +86,12 @@ const StoryContent = () => {
         <div className='row'>
           <div className='col-lg-6 col-md-6 col-sm-6'>
             <div className='project-details-thumb'>
-              <img src='/assets/project-details-1.41b346ac.jpg' alt className />
+              <img src='/assets/project-details-1.41b346ac.jpg' alt='' />
             </div>
           </div>
           <div className='col-lg-6 col-md-6 col-sm-6'>
             <div className='project-details-thumb'>
-              <img src='/assets/project-details-2.35f078dd.jpg' alt className />
+              <img src='/assets/project-details-2.35f078dd.jpg' alt='' />
             </div>
           </div>
         </div>

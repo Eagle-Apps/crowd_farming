@@ -14,14 +14,7 @@ const Nav = () => {
   const navigate = useNavigate()
   const { isSignedIn, setIsSignedIn } = useContext(AuthContext)
 
-  console.log(isSignedIn)
-  // console.log(test)
-
-  // useEffect(() => {
-  //   if (localStorage.getItem('ndembeleUserId')) {
-  //     setIsSignedIn(true)
-  //   }
-  // }, [isSignedIn])
+  // console.log(isSignedIn)
 
   // const links = [
   //   {
@@ -49,11 +42,12 @@ const Nav = () => {
   // console.log(localStorage.getItem('ndembeleUserId'))
 
   const handleSignOut = () => {
-    localStorage.removeItem('ndembeleUserId')
-    setIsSignedIn(false)
+    const confirmLogout = window.confirm('Are you sure you want to log out?')
+    if (confirmLogout) {
+      localStorage.removeItem('ndembeleUserId')
+      setIsSignedIn(false)
+    }
 
-    // setIsSignedIn(localStorage.removeItem('ndembeleUserId'))
-    // setIsSignedIn(true)
     navigate('/login')
   }
 
@@ -94,14 +88,14 @@ const Nav = () => {
             >
               Home
             </Link>
-            {isSignedIn && (
-              <Link
-                to='/investment'
-                className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'
-              >
-                Investments
-              </Link>
-            )}
+            {/* {isSignedIn && ( */}
+            <Link
+              to='/investment'
+              className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'
+            >
+              Investments
+            </Link>
+            {/* )} */}
             <Link
               to='/farm'
               className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'

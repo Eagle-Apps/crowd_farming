@@ -25,7 +25,7 @@ export const Input = ({
         <input
           id={id}
           type={type === 'password' ? (show ? 'text' : 'password') : type}
-          className={`transition-all duration-300 ${
+          className={`transition-all duration-300 p-3 text-2xl ${
             disabled ? 'bg-gray-100' : ''
           } mt-2 py-2.5 px-4 w-full ${
             error.length
@@ -47,12 +47,12 @@ export const Input = ({
             {show ? (
               <HiEye
                 onClick={() => setShow(!show)}
-                className='cursor-pointer right-3 top-[1.2rem] text-gray-300 h-5 w-5 absolute'
+                className='cursor-pointer right-3 top-[2rem] text-gray-300 h-5 w-5 absolute'
               />
             ) : (
               <HiEyeSlash
                 onClick={() => setShow(!show)}
-                className='cursor-pointer right-3 top-[1.2rem] text-gray-300 h-5 w-5 absolute'
+                className='cursor-pointer right-3 top-[2rem] text-gray-300 h-5 w-5 absolute'
               />
             )}
           </>
@@ -70,13 +70,13 @@ export const Input = ({
 
 export const Checkbox = ({ id = '', label = '' }) => {
   return (
-    <label htmlFor={id} className='space-x-2 inline-block mr-2'>
+    <label htmlFor={id} className='flex space-x-3 mr-2'>
       <input
         id={id}
         className='rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50'
         type='checkbox'
       />
-      <span className='text-sm cursor-pointer'>{label}</span>
+      <span className='text-[1rem] cursor-pointer'>{label}</span>
     </label>
   )
 }

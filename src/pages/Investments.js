@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import Hero from '../components/Hero'
 import InvestmentSignUpModal from '../components/modal/InvestmentSignUpModal'
 import CardSkeleton from '../utils/card-Skeleton'
+import { AuthContext } from '../context/AuthContext'
 
 // import { data } from '../data/data'
 
@@ -11,6 +12,7 @@ const Investment = () => {
   // const [foods, setFoods] = useState(data)
   const [investments, setInvestments] = useState([])
   const [loading, setLoading] = useState(true)
+  const { setIsSignedIn } = useContext(AuthContext)
 
   useEffect(() => {
     fetch('https://ndembele.onrender.com/investments')
@@ -88,15 +90,20 @@ const Investment = () => {
             {/* <button className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'>
               Create Investment
             </button> */}
+            {/* {setIsSignedIn(true) ? (
+              <InvestmentSignUpModal />
+            ) : (
+              <p>Please sign in</p>
+            )} */}
             <InvestmentSignUpModal />
           </div>
         </div>
         {/* Display foods */}
         <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4 shadow bg-slate-300 border-gray-500 overflow-hidden'>
           {loading ? (
-            <div>
+            <>
               <CardSkeleton />
-            </div>
+            </>
           ) : res.length > 0 ? (
             res.map((investment) => (
               <Link to={`/investment/${investment._id}`} key={investment._id}>

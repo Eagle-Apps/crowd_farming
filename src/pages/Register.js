@@ -115,7 +115,9 @@ const Register = () => {
     <AuthLayout
       title={
         <>
-          Welcome to <br /> Crowd Farming
+          <span className='text-gray-300'>
+            Welcome to <br /> Crowd Farming
+          </span>
         </>
       }
     >
@@ -218,7 +220,8 @@ const Register = () => {
         </div>
 
         <PrimaryButton type='submit'>
-          {loading && <Loader color={'white'} />} <span>Sign up</span>
+          {loading && <Loader color={'white'} />}{' '}
+          <span className='text-xl'>Sign up</span>
         </PrimaryButton>
 
         <div className='flex items-center justify-center space-x-3'>

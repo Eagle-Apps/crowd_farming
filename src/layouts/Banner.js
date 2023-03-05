@@ -9,7 +9,7 @@ const Banner = () => {
     <section className='w-full overflow-hidden bg-[#f2f3f9] wow fadeInUp'>
       <div
         className='relative bg-cover bg-no-repeat bg-white/5 bg-[top_95px_right] md:bg-[top_45px_right] lg:bg-[top_75px_right]'
-        style={{ backgroundImage: "url('/images/1b.png')" }}
+        style={{ backgroundImage: "url('/images/Homebanner.jpg')" }}
       >
         <div>
           <img
@@ -49,13 +49,13 @@ const Banner = () => {
                 Invest,
                 <br /> Wait, Cashout.
               </h1>
-              <p className='lg:text-xl xl:text-2xl text-emerald-900 my-8'>
-                Agriculture is fundamental to every Countries{' '}
-                <br className='hidden md:block xl:hidden' /> prosperity{' '}
+              <p className='lg:text-2xl xl:text-2xl text-emerald-900 my-8'>
+                Agriculture is fundamental to every Countries
+                <br className='hidden md:block xl:hidden' /> prosperity
                 <br className='hidden md:block xl:block' /> Security and
                 sovereignty. <br className='hidden md:block xl:hidden' /> Be a
                 part of this liberation <br className='hidden xl:block' /> by
-                investing in an agricultural{' '}
+                investing in an agricultural
                 <br className='hidden md:block xl:hidden' /> project near you.
               </p>
 
@@ -63,15 +63,15 @@ const Banner = () => {
                 {/* {!checkUser() && ( */}
                 <Link
                   to='/register'
-                  className='lg:text-lg truncate transition-all duration-300 px-3 lg:px-4 xl:px-8 font-medium py-3 bg-emerald-600 text-white rounded-md focus:outline-none hover:bg-emerald-700 focus:ring focus:border-emerald-500 focus:ring-emerald-500/50'
+                  className='lg:text-lg truncate transition-all duration-300 px-3 lg:px-4 xl:px-8 font-bold py-3 bg-emerald-600 text-white rounded-md focus:outline-none hover:bg-emerald-700 focus:ring focus:border-emerald-500 focus:ring-emerald-500/50'
                 >
                   Open a Free Account
                 </Link>
                 {/* )} */}
 
                 <Link
-                  to='/#how-it-work'
-                  className='lg:text-lg truncate transition-all duration-300 px-3 lg:px-4 xl:px-8 font-medium py-3 text-emerald-900 border border-emerald-900 rounded-md focus:outline-none hover:text-white hover:bg-emerald-700 focus:ring focus:border-emerald-500 focus:ring-emerald-500/50'
+                  to='/about'
+                  className='lg:text-lg truncate transition-all duration-300 px-3 lg:px-4 xl:px-8 font-bold py-3 text-emerald-900 border border-emerald-900 rounded-md focus:outline-none hover:text-white hover:bg-emerald-700 focus:ring focus:border-emerald-500 focus:ring-emerald-500/50'
                 >
                   See How it Works
                 </Link>

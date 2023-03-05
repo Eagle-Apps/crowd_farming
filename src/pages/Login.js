@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { FcGoogle } from 'react-icons/fc'
 import { RiFacebookCircleFill } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
@@ -9,9 +9,12 @@ import { PrimaryButton, SecondaryButton } from '../components/buttons'
 import { Checkbox, Input } from '../components/field'
 import { Link, Loader } from '../utils/utils'
 import AuthLayout from '../layouts/AuthLayout'
+import { AuthContext } from '../context/AuthContext'
+
 
 const Login = () => {
   const navigate = useNavigate()
+  const { setIsSignedIn } = useContext(AuthContext)
 
   const [loading, setLoading] = useState(false)
   // const [errorMessage, setErrorMessage] = useState(null)
@@ -31,7 +34,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault()
     setLoading(true)
-    // setIsLoggedIn(true)
+   
 
     // Make an HTTP request to submit the data
     const dataUser = {
@@ -55,12 +58,16 @@ const Login = () => {
       if (data) {
         // console.log(data.userID)
         // setUserId(data.userID)
-        localStorage.setItem('ndembeleUserId', JSON.stringify(data.userID))
+        localStorage.setItem(
+          'ndembeleUserId',
+          JSON.stringify(data.access_token)
+        )
 
         toast.success('Login Successful !', {
           position: toast.POSITION.TOP_CENTER,
         })
 
+        setIsSignedIn(true)
         navigate('/')
       } else {
         // throw new Error(data.message)
@@ -97,7 +104,7 @@ const Login = () => {
       )} */}
       <ToastContainer />
 
-      <form className='space-y-5 text-4xl' onSubmit={handleLogin}>
+      <form className='space-y-5' onSubmit={handleLogin}>
         <div>
           <Input
             label={'Email'}

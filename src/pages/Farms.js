@@ -28,7 +28,7 @@ const Farms = () => {
 
       <div className='max-w-[1640px] m-auto px-[4rem] py-12 '>
         <h1 className='text-orange-600 font-bold text-4xl text-center mt-[2rem]'>
-          All Investments
+          All Farms
         </h1>
 
         {/* Filter Row */}
@@ -86,8 +86,8 @@ const Farms = () => {
             </div>
           ) : res.length > 0 ? (
             res.map((farm) => (
-              // <Link to={`/farm/${farm._id}`} key={farm._id}>
-              <Link key={farm._id}>
+              <Link to={`/farm/${farm._id}`} key={farm._id}>
+                {/*  <Link key={farm._id}> */}
                 <div
                   // key={farm._id}
                   className='border shadow-lg rounded-lg hover:scale-105 duration-300 cursor-pointer'

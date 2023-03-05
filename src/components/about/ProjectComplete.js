@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from 'react'
 
 const ProjectComplete = () => {
@@ -56,10 +57,10 @@ const ProjectComplete = () => {
         </div>
       </div>
       <div className='fun-facts-shape-1'>
-        <img src='assets/fun-facts-shape-1.df299ab5.png' alt className />
+        <img src='assets/fun-facts-shape-1.df299ab5.png' alt='' />
       </div>
       <div className='fun-facts-shape-2'>
-        <img src='assets/fun-facts-shape-2.5b1828b6.png' alt className />
+        <img src='assets/fun-facts-shape-2.5b1828b6.png' alt='' />
       </div>
     </section>
   )

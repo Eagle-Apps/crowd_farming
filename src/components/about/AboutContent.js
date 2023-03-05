@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react'
-import { FiCheck, FiCheckCircle } from 'react-icons/fi'
+// import { FiCheck, FiCheckCircle } from 'react-icons/fi'
 
 const AboutContent = () => {
   return (
@@ -36,8 +36,8 @@ const AboutContent = () => {
             <div className='about-introduction-thumb'>
               <img
                 src='assets/about-introduction-thumb.27a851a8.jpg'
-                alt
-                className
+                alt=''
+              
               />
               <div className='about-introduction-customers'>
                 <h3 className='title odometer'>
