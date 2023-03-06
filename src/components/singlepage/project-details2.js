@@ -51,7 +51,6 @@ const ProjectDetails2 = (props) => {
         } else {
           setUser(res)
         }
-
       });
   };
 
