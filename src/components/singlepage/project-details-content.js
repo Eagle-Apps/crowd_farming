@@ -25,7 +25,7 @@ const ProjectDetailsContent = (props) => {
   }, [message, msg]);
 
   let postToForum = () => {
-    let data = { message, investment_id: id.id}
+    let data = { message, investment_id: id.id }
     let url = baseUrl + "/forum";
     fetch(url, {
       headers: {
@@ -153,7 +153,7 @@ const ProjectDetailsContent = (props) => {
                     <section className='px-3 mb-2' style={{ background: "whitesmoke" }}>
                       <div className="forum-msgs-header-ah">
                         <div className="flex" style={{ alignItems: "center" }}>
-                          <h6>{e.userId.userName}</h6>
+                          <h6>{e.userId?.userName}</h6>
                         </div>
                         <p>{new Date(e.createdAt).toDateString()}</p>
                       </div>
