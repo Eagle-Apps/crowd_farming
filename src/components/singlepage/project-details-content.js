@@ -36,10 +36,33 @@ const ProjectDetailsContent = (props) => {
       body: JSON.stringify(data)
     })
       .then(e => e.json())
-      .then(result => {
-        setErr(result.msg)
+      .then(res => {
+        if (res.msg === "Unauthorized User" || res.msg === "Invalid Authentication." || res.status === 400) {
+          updateAccessToken()
+        } else {
+          setMessage("")
+          loadForum();
+        }
       })
-    setMessage("")
+  };
+
+  let updateAccessToken = () => {
+    let token = localStorage.getItem("ndembeleRefresh")
+    let url = baseUrl + "/refresh";
+    fetch(url, {
+      headers: {
+        "content-type": "application/json"
+      },
+      method: "POST",
+      body: JSON.stringify({ token })
+    })
+      .then(e => e.json())
+      .then(result => {
+        if (result.msg === "Access token created successfully") {
+          localStorage.setItem('ndembeleAccess', result.accessToken)
+          postToForum()
+        }
+      })
   };
 
   let postReport = () => {
