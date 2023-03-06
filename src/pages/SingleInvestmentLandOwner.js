@@ -37,11 +37,12 @@ const SingleInvestmentLandOwner = () => {
     fetch(url, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("ndembeleAccess")}`
-      },
-      credentials: "same-origin"
+      }
+      // credentials: "same-origin"
     })
       .then((e) => e.json())
       .then((res) => {
+        console.log(res)
         if (res.msg === "Unauthorized User" || res.msg === "Invalid Authentication.") {
           updateAccessToken()
         } else {
@@ -66,7 +67,7 @@ const SingleInvestmentLandOwner = () => {
         if (result.msg === "Access token created successfully") {
           localStorage.setItem('ndembeleAccess', result.accessToken)
           loadUser()
-        } 
+        }
       })
   };
 
