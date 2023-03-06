@@ -7,7 +7,7 @@ import StoryContent from './tabs/StoryContent'
 import Updates from './tabs/Updates'
 import { useParams } from 'react-router-dom'
 
-const ProjectDetailsContent = () => {
+const ProjectDetailsContent = (props) => {
   const id = useParams();
   let [msg, setMsg] = useState("");
   let [message, setMessage] = useState("");
@@ -15,18 +15,21 @@ const ProjectDetailsContent = () => {
   let [err, setErr] = useState("");
   let [forum, setForum] = useState([]);
   let [report, setReport] = useState([]);
+  let [subscribe, setSubscribe] = useState([]);
   let [baseUrl] = useState("https://ndembele.onrender.com");
 
   useEffect(() => {
-    loadForum();
     loadReport();
-  }, [message, msg, progress]);
+    loadForum();
+    loadSubscription();
+  }, [message, msg]);
 
   let postToForum = () => {
-    let data = { message, investment_id: id.id, userId: "63eb7225897661c94b852976" }
+    let data = { message, investment_id: id.id}
     let url = baseUrl + "/forum";
     fetch(url, {
       headers: {
+        Authorization: `Bearer ${localStorage.getItem("ndembeleAccess")}`,
         "content-type": "application/json"
       },
       method: "POST",
@@ -40,10 +43,11 @@ const ProjectDetailsContent = () => {
   };
 
   let postReport = () => {
-    let data = { message: msg, progress, investment_id: id.id, userId: "63eb7225897661c94b852976" }
+    let data = { message: msg, progress, investment_id: id.id }
     let url = baseUrl + "/report";
     fetch(url, {
       headers: {
+        Authorization: `Bearer ${localStorage.getItem("ndembeleAccess")}`,
         "content-type": "application/json"
       },
       method: "POST",
@@ -74,6 +78,27 @@ const ProjectDetailsContent = () => {
         setReport(res)
       });
   };
+
+  let [hide, setHide] = useState("none")
+
+  let loadSubscription = () => {
+    let url = baseUrl + '/subscribe/' + id.id;
+    fetch(url)
+      .then((e) => e.json())
+      .then((res) => {
+        let arr = []
+        res.map((e, i) => {
+          arr.push(e.userId._id)
+        })
+        if (arr.includes("63eefe65d792d86e2529a1b9")) {
+          setHide("flex")
+        } else {
+          setHide("none")
+        }
+        setSubscribe(res)
+      });
+  };
+
 
 
   return (
@@ -115,7 +140,7 @@ const ProjectDetailsContent = () => {
             <div className='my-4 p-4' style={{ background: "whitesmoke" }}>
               <h6 id="project-review-ah">Forum</h6>
               <p>{err}</p>
-              <div className="post-forum-ah">
+              <div className="post-forum-ah" style={{ display: hide }}>
                 <input required type="text" placeholder="Type here to post to forum" value={message} onChange={(e) => setMessage(e.target.value)} />
                 <button onClick={() => postToForum()}>
                   Send
@@ -144,7 +169,7 @@ const ProjectDetailsContent = () => {
             <div className='my-4 p-4' style={{ background: "whitesmoke" }}>
               <h6 id="project-review-ah" style={{ textAlign: "center" }}>Report</h6>
               <p>{err}</p>
-              <div className="post-forum-ah" id='reportBtn' style={{ height: "fit-content" }}>
+              <div className="post-forum-ah" id='reportBtn' style={{ height: "fit-content", display: props.hide }}>
                 <div>
                   <input required style={{ height: "40px", marginBottom: "10px" }} type="text" placeholder="Type Report Message Here" value={msg} onChange={(e) => setMsg(e.target.value)} />
                   <input required style={{ height: "40px" }} type="text" placeholder="Enter Progress" value={progress} onChange={(e) => setProgress(e.target.value)} />
@@ -169,8 +194,8 @@ const ProjectDetailsContent = () => {
                         <p>{e.message}</p>
                       </div>
                     </section>
-                    
-                    </>
+
+                  </>
                 }) : <div>No Report Yet</div>}
               </div>
             </div>

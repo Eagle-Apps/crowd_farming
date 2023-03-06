@@ -49,11 +49,10 @@ const Nav = () => {
   // console.log(localStorage.getItem('ndembeleUserId'))
 
   const handleSignOut = () => {
-    localStorage.removeItem('ndembeleUserId')
+    localStorage.removeItem('ndembeleAccess')
+    localStorage.removeItem('ndembeleRefresh')
     setIsSignedIn(false)
-
-    // setIsSignedIn(localStorage.removeItem('ndembeleUserId'))
-    // setIsSignedIn(true)
+    console.log("signed out")
     navigate('/login')
   }
 

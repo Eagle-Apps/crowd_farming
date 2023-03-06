@@ -40,7 +40,8 @@ const Login = () => {
     }
 
     try {
-      const res = await fetch('https://ndembele.onrender.com/login', {
+      // const res = await fetch('https://ndembele.onrender.com/login', {
+      const res = await fetch('http://localhost:4400/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -49,18 +50,16 @@ const Login = () => {
       })
 
       const data = await res.json()
-      // console.log(data)
-
-      // if (res.ok) {
+      
       if (data) {
-        // console.log(data.userID)
-        // setUserId(data.userID)
-        localStorage.setItem('ndembeleUserId', JSON.stringify(data.userID))
-        
+        // localStorage.setItem('ndembeleUserId', JSON.stringify(data.userID))
+        localStorage.setItem('ndembeleAccess', data.access_token)
+        localStorage.setItem('ndembeleRefresh', data.refreshToken)
+
         toast.success('Login Successful !', {
           position: toast.POSITION.TOP_CENTER,
         })
-       
+
         navigate('/')
       } else {
         // throw new Error(data.message)
@@ -72,7 +71,7 @@ const Login = () => {
       setTimeout(() => {
         setLoading(false)
       }, 3000)
-    } catch (err) {}
+    } catch (err) { }
   }
 
   return (
@@ -126,7 +125,7 @@ const Login = () => {
           <Link href='/forgot-password'>Forgot Password?</Link>
         </div>
 
-        
+
         <PrimaryButton type='submit' disabled={loading}>
           {loading && <Loader color={'white'} />}
           <span className='text-[1.5rem]'>Login to account</span>

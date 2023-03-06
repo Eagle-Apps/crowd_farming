@@ -1,21 +1,156 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   AiFillFacebook,
   AiFillInstagram,
   AiFillTwitterCircle,
   AiOutlineWhatsApp,
-} from 'react-icons/ai'
+} from 'react-icons/ai';
+import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
+import { useParams } from 'react-router-dom'
 
 const ProjectDetails2 = (props) => {
+  let [mainUrl] = useState("https://ndembele.onrender.com");
+  const [investment, setInvestment] = useState(null);
+  const [user, setUser] = useState({});
 
+  const id = useParams();
   const [showModal, setShowModal] = useState(false);
-  const [amount, setAmount] = useState(50000);
+  const [amount, setAmount] = useState("50000");
   const icons = [
     { icon: AiFillFacebook, share: "https://www.facebook.com/sharer.php?u=" },
-    // { icon: AiFillInstagram, share: "https://instagram.com/sharer.php?u=" },
     { icon: AiFillTwitterCircle, share: "https://twitter.com/intent/tweet/?url=" },
     { icon: AiOutlineWhatsApp, share: "https://wa.me/?text=" }
   ];
+
+  useEffect(() => {
+    loadProject();
+    loadUser();
+  }, []);
+
+  let loadProject = () => {
+    let url = mainUrl + '/investment/' + id.id;
+    fetch(url)
+      .then((e) => e.json())
+      .then((res) => {
+        setInvestment(res)
+      });
+  };
+
+  let loadUser = () => {
+    let url = mainUrl + '/user';
+    fetch(url, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("ndembeleAccess")}`
+      },
+      credentials: "same-origin"
+    })
+      .then((e) => e.json())
+      .then((res) => {
+        if (res.msg === "Unauthorized User" || res.msg === "Invalid Authentication.") {
+          updateAccessToken()
+        } else {
+          setUser(res)
+        }
+
+      });
+  };
+
+  let updateAccessToken = () => {
+    let token = localStorage.getItem("ndembeleRefresh")
+    let url = mainUrl + "/refresh";
+    fetch(url, {
+      headers: {
+        "content-type": "application/json"
+      },
+      method: "POST",
+      body: JSON.stringify({ token })
+    })
+      .then(e => e.json())
+      .then(result => {
+        if (result.msg === "Access token created successfully") {
+          localStorage.setItem('ndembeleAccess', result.accessToken)
+          loadUser()
+        }
+      })
+  };
+
+  const config = {
+    public_key: 'FLWPUBK_TEST-21cc0116b2bd6553bc6a06119aa2c3c2-X',
+    tx_ref: Date.now(),
+    amount: amount,
+    currency: 'NGN',
+    payment_options: 'card,mobilemoney,ussd',
+    customer: {
+      email: user.email,
+      phone_number: user.phone,
+      name: user.name,
+    },
+    customizations: {
+      title: `Payment for Investment on Ndembele (${investment?.title})`,
+      description: `Payment for Investment ${investment?.title}`,
+      logo: 'https://ndembele-admin.vercel.app/static/media/NDEMBELE1.dcd65b71.png',
+    },
+    // redirect_url: `http://localhost:3000/investment/${investment?._id}`
+  };
+
+  let handleFlutterPayment = useFlutterwave(config);
+
+  let subscribe = () => {
+    let data = { investmentId: id.id, commitment: amount }
+    let url = mainUrl + "/subscribe";
+    fetch(url, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("ndembeleAccess")}`,
+        "content-type": "application/json"
+      },
+      method: "POST",
+      body: JSON.stringify(data)
+    })
+      .then(e => e.json())
+      .then(result => {
+        console.log(result)
+      })
+    setAmount("50000")
+  };
+
+  let payment = (e) => {
+    let data = { investmentId: id.id, amount: amount, transactionRef: e }
+    let url = mainUrl + "/payment";
+    fetch(url, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("ndembeleAccess")}`,
+        "content-type": "application/json"
+      },
+      method: "POST",
+      body: JSON.stringify(data)
+    })
+      .then(e => e.json())
+      .then(result => {
+        console.log(result)
+      })
+  };
+
+  let pay = () => {
+    handleFlutterPayment({
+      callback: async (response) => {
+        console.log(response);
+        await subscribe()
+        await payment(response.data.flw_ref)
+        closePaymentModal() // this will close the modal programmatically
+      },
+      onClose: () => { subscribe() }
+    });
+  };
+
+  let checkAmount = (e) => {
+    let investAmount = investment.available.replaceAll(",", "");
+    let startPayment = window.confirm("Are you sure?")
+    if (startPayment && Number(investAmount) >= Number(e)) {
+      pay()
+    } else if (Number(investAmount) << Number(e)) {
+      alert("Proposed Amount Greater Than Available Investment")
+    }
+  };
 
   const URL = window.location.href.slice(7);
 
@@ -65,14 +200,14 @@ const ProjectDetails2 = (props) => {
                 <div className='projects-range-content'>
                   <ul>
                     <li>Progress:</li>
-                    <li>50%</li>
+                    <li>{props.progress}</li>
                   </ul>
                   <div className='range' />
                 </div>
               </div>
               <div className='projects-goal'>
                 <span>
-                  Goal: <span>3600.00 USD</span>
+                  Amount Left to Invest: <span>{props.left}</span>
                 </span>
               </div>
               {/* <div className='project-btn mt-25'>
@@ -136,7 +271,8 @@ const ProjectDetails2 = (props) => {
                 <button
                   className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                   type="button"
-                  onClick={async () => { await localStorage.setItem("ndemAmt", amount); props.pay(); }}
+                  // onClick={() => { localStorage.setItem("ndemAmt", amount); props.pay(amount); }}
+                  onClick={() => { checkAmount(amount) }}
                 >
                   Pay
                 </button>
