@@ -30,7 +30,7 @@ const InvestmentSignUpModal = () => {
   const [showModal, setShowModal] = useState(false)
 
   const getItemLocalStorage = localStorage.getItem('ndembeleAccess')
-  const ownerId = JSON.parse(getItemLocalStorage)
+  const ownerId = (getItemLocalStorage)
 
   const [categoryOptions, setCategoryOptions] = useState([])
 

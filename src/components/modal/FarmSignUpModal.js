@@ -12,7 +12,7 @@ const FarmSignUpModal = () => {
   const [showModal, setShowModal] = useState(false)
 
   const getItemLocalStorage = localStorage.getItem('ndembeleAccess')
-  const userId = JSON.parse(getItemLocalStorage)
+  const userId = (getItemLocalStorage)
 
   const [categoryOptions, setCategoryOptions] = useState([])
 

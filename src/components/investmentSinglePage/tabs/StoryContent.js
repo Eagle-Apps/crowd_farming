@@ -1,7 +1,8 @@
 import React from 'react'
 import { FiCheck, FiCheckCircle } from 'react-icons/fi'
 
-const StoryContent = () => {
+const StoryContent = ({ investments }) => {
+  // console.log('Story', investments.budget)
   return (
     <div
       className='tab-pane animated fadeIn show active'
@@ -10,11 +11,13 @@ const StoryContent = () => {
     >
       <div className='project-details-content-top'>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+          {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
           vulputate sed mauris vitae pellentesque. Nunc ut ullamcorper libero.
           Aenean fringilla mauris quis risus laoreet interdum. Quisque imperdiet
           orci in metus aliquam egestas. Fusce elit libero, imperdiet nec orci
-          quis, convallis hendrerit nisl. Cras auctor nec purus at placerat.
+          quis, convallis hendrerit nisl. Cras auctor nec purus at placerat. */}
+
+          {/* {investments.descp} */}
         </p>
         <ul className=''>
           <li className='flex gap-3'>

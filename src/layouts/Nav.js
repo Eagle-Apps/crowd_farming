@@ -44,11 +44,11 @@ const Nav = () => {
   const handleSignOut = () => {
     const confirmLogout = window.confirm('Are you sure you want to log out?')
     if (confirmLogout) {
-      localStorage.removeItem('ndembeleUserId')
+      localStorage.removeItem('ndembeleAccess')
       setIsSignedIn(false)
     }
 
-    navigate('/login')
+    navigate('/')
   }
 
   return (

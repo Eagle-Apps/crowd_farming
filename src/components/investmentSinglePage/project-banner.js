@@ -11,10 +11,10 @@ const ProjectBanner = () => {
           {/* Overlay */}
           <div className='absolute w-full h-full text-gray-200 max-h-[500px] bg-black/40 flex flex-col justify-center'>
             <h1 className='px-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-center'>
-              Single <span className='text-emerald-500'>Page</span>
+               <span className='text-emerald-500'>Investment</span>
             </h1>
             <h1 className='px-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold'>
-              <span className='text-orange-500'>New </span> Oil
+              {/* <span className='text-orange-500'>Investment </span>  */}
             </h1>
           </div>
           <img

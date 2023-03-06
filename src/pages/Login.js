@@ -11,7 +11,6 @@ import { Link, Loader } from '../utils/utils'
 import AuthLayout from '../layouts/AuthLayout'
 import { AuthContext } from '../context/AuthContext'
 
-
 const Login = () => {
   const navigate = useNavigate()
   const { setIsSignedIn } = useContext(AuthContext)
@@ -20,12 +19,9 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-
-
   const handleLogin = async (e) => {
     e.preventDefault()
     setLoading(true)
-   
 
     // Make an HTTP request to submit the data
     const dataUser = {
@@ -37,6 +33,7 @@ const Login = () => {
       const res = await fetch('https://ndembele.onrender.com/login', {
         method: 'POST',
         headers: {
+          // Authorization: `Bearer ${localStorage.getItem('ndembeleAccess')}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(dataUser),
@@ -47,12 +44,9 @@ const Login = () => {
 
       // if (res.ok) {
       if (data) {
-        // console.log(data.userID)
-        // setUserId(data.userID)
-        localStorage.setItem(
-          'ndembeleAccess',
-          JSON.stringify(data.access_token)
-        )
+        localStorage.setItem('ndembeleAccess', data.access_token)
+
+        localStorage.setItem('ndembeleRefresh', data.refreshToken)
 
         toast.success('Login Successful !', {
           position: toast.POSITION.TOP_CENTER,
@@ -154,7 +148,7 @@ const Login = () => {
         </div>
 
         <p className='text-2xl text-center'>
-          Don't have an account? <Link href='/register'>Register</Link>
+          Don't have an account? <Link to='/register'>Register</Link>
         </p>
       </form>
     </AuthLayout>

@@ -22,7 +22,7 @@ const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(false)
   // const [test, setTest] = useState(0)
   useEffect(() => {
-    if (localStorage.getItem('ndembeleUserId')) {
+    if (localStorage.getItem('ndembeleAccess')) {
       setIsSignedIn(true)
     }
   }, [])
