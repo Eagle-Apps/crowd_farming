@@ -134,7 +134,7 @@ const ProjectDetails2 = (props) => {
   let pay = () => {
     handleFlutterPayment({
       callback: async (response) => {
-        console.log(response);
+        // console.log(response);
         await subscribe()
         await payment(response.data.flw_ref)
         closePaymentModal() // this will close the modal programmatically
