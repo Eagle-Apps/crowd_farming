@@ -17,19 +17,10 @@ const Login = () => {
   const { setIsSignedIn } = useContext(AuthContext)
 
   const [loading, setLoading] = useState(false)
-  // const [errorMessage, setErrorMessage] = useState(null)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  // const [isLoggedIn, setIsLoggedIn] = useState(false)
-  // const [userId, setUserId] = useState(null)
 
-  // useEffect(() => {
-  //   const storedUserId = localStorage.getItem('ndembeleUserId')
-  //   if (storedUserId) {
-  //     setIsLoggedIn(true)
-  //     setUserId(storedUserId)
-  //   }
-  // }, [])
+
 
   const handleLogin = async (e) => {
     e.preventDefault()
@@ -59,7 +50,7 @@ const Login = () => {
         // console.log(data.userID)
         // setUserId(data.userID)
         localStorage.setItem(
-          'ndembeleUserId',
+          'ndembeleAccess',
           JSON.stringify(data.access_token)
         )
 
