@@ -38,17 +38,14 @@ const SingleInvestmentLandOwner = () => {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("ndembeleAccess")}`
       }
-      // credentials: "same-origin"
     })
       .then((e) => e.json())
       .then((res) => {
-        console.log(res)
-        if (res.msg === "Unauthorized User" || res.msg === "Invalid Authentication.") {
+        if (res.msg === "Unauthorized User" || res.msg === "Invalid Authentication." || res.status === 400) {
           updateAccessToken()
         } else {
           setUser(res)
         }
-
       });
   };
 
