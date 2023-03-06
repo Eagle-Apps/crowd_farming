@@ -114,6 +114,7 @@ const ProjectDetails2 = (props) => {
   };
 
   let payment = (e) => {
+    console.log(e)
     let data = { investmentId: id.id, amount: amount, transactionRef: e }
     let url = mainUrl + "/payment";
     fetch(url, {
