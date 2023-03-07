@@ -204,6 +204,13 @@ const Nav = () => {
         <div className='md:flex hidden items-center space-x-3'>
           {isSignedIn ? (
             <>
+              <Link
+                to='/profile'
+                className='transition-all duration-300 px-3 lg:px-4 xl:px-8 font-medium py-2 xl:py-3 text-emerald-600 hover:text-gray-500'
+              >
+                Profile
+              </Link>
+
               <button
                 onClick={handleSignOut}
                 className='transition-all duration-300 px-3 lg:px-4 xl:px-8 font-medium py-2 xl:py-3 text-emerald-600 hover:text-emerald-500'

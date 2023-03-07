@@ -16,8 +16,8 @@ const Profile = () => {
   const [address, setAddress] = useState('')
   const [userName, setUserName] = useState('')
   const [userActive, setUserActive] = useState('')
-  const [commitment, setCommitment] = useState('')
-  const [project, setProject] = useState('')
+  // const [commitment, setCommitment] = useState('')
+  const [project, setProject] = useState([])
   const [invests, setInvests] = useState([])
   const [farms, setFarms] = useState([])
   // const [farmId, setFarmId] = useState([])
@@ -43,9 +43,9 @@ const Profile = () => {
   const subscribeUser = () => {
     myAxios('/subscribe-user')
       .then((userSubs) => {
-        setCommitment(userSubs.data.map((user) => user.commitment))
-        setProject(userSubs.data.map((user) => user.investmentId.title))
-        // console.log(userSubs.data)
+        setProject(userSubs.data.map((user) => user))
+        // setCommitment(userSubs.data.map((user) => user.commitment))
+        console.log(userSubs.data.map((user) => user))
         setLoading(false)
       })
       .catch((error) => {
@@ -135,7 +135,7 @@ const Profile = () => {
                   <input
                     onChange={(e) => setName(e.target.value)}
                     type='text'
-                    className='form-control'
+                    className='form-control text-[1.5rem]'
                     value={name}
                     disabled
                   />
@@ -146,7 +146,7 @@ const Profile = () => {
                   <label className='labels'>Mobile Number</label>
                   <input
                     type='text'
-                    className='form-control'
+                    className='form-control text-[1.5rem]'
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     disabled
@@ -156,7 +156,7 @@ const Profile = () => {
                   <label className='labels'>Address</label>
                   <input
                     type='text'
-                    className='form-control'
+                    className='form-control text-[1.5rem]'
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     disabled
@@ -167,7 +167,7 @@ const Profile = () => {
                   <label className='labels'>Email</label>
                   <input
                     type='text'
-                    className='form-control'
+                    className='form-control text-[1.5rem]'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     disabled
@@ -177,7 +177,7 @@ const Profile = () => {
                   <label className='labels'>User Name</label>
                   <input
                     type='text'
-                    className='form-control'
+                    className='form-control text-[1.5rem]'
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
                     disabled
@@ -199,7 +199,7 @@ const Profile = () => {
                   <label className='labels'>Status</label>
                   <input
                     type='text'
-                    className='form-control'
+                    className='form-control text-[1.5rem]'
                     value={userActive}
                     onChange={(e) => setUserActive(e.target.value)}
                     disabled
@@ -215,15 +215,15 @@ const Profile = () => {
           </div>
           <div className='col-md-4'>
             <div className='p-3 py-5'>
-              <div className='d-flex justify-content-between align-items-center experience'>
-                {/* <span>Edit Experience</span> */}
+              {/* <div className='d-flex justify-content-between align-items-center experience'>
+               
                 <span className='border px-3 p-1 add-experience'>
                   <i className='fa fa-plus' />
                   &nbsp; Subscribe Project
                 </span>
               </div>
-              <br />
-              <div className='col-md-12'>
+              <br /> */}
+              {/* <div className='col-md-12'>
                 <label className='labels'>Commitment</label>
                 <input
                   type='text'
@@ -232,33 +232,46 @@ const Profile = () => {
                   onChange={(e) => setCommitment(e.target.value)}
                   disabled
                 />
-              </div>
-              <br />
+              </div> */}
+              {/* <br /> */}
               <div className='col-md-12'>
-                <label className='labels'>Name Of Project</label>
-                <input
+                <label className='labels'>
+                  PROJECTS A USER HAS INVESTED IN
+                </label>
+
+                {/* <input
                   type='text'
                   className='form-control'
                   value={project}
                   onChange={(e) => setProject(e.target.value)}
                   disabled
-                />
+                /> */}
+                <ul value={project}>
+                  {project?.map((pro) => (
+                    <>
+                      <li>{pro.investmentId.title}</li>
+                      <div>Commitment</div>
+                      <li>{pro.commitment}</li>
+                      <br />
+                    </>
+                  ))}
+                </ul>
               </div>
             </div>
 
-            <div className='p-3 py-5'>
+            <div className='pr-2 ml-4'>
               <div className='d-flex justify-content-between align-items-center experience'>
                 {/* <span>Edit Experience</span> */}
                 {/* <Link to={`/investment/${investId}`} key={investId}> */}
-                  <span className='border px-3 p-1 add-experience cursor-pointer'>
-                    <i className='fa fa-plus' />
-                    &nbsp; View Investment
-                  </span>
+                <span className='border px-3 cursor-pointer'>
+                  {/* <i className='fa fa-plus' /> */}
+                  &nbsp; PROJECTS USER CREATED
+                </span>
                 {/* </Link> */}
               </div>
               <br />
               <div className='col-md-12'>
-                <label className='labels'>Investment Name</label>
+                {/* <label className='labels'>Investment Name</label> */}
                 {/* <input
                   type='text'
                   className='form-control'
@@ -269,7 +282,7 @@ const Profile = () => {
                 <ul value={invests}>
                   {invests?.map((invest) => (
                     <Link to={`/investment/${invest._id}`} key={invest._id}>
-                      <li className='cursor-pointer'>{invest.title}</li>
+                      <li className='cursor-pointer ml-4'>{invest.title}</li>
                     </Link>
                   ))}
                 </ul>
@@ -277,16 +290,16 @@ const Profile = () => {
               <br />
             </div>
 
-            <div className='p-3 py-5'>
+            <div className='pr-2 ml-4'>
               <div className='d-flex justify-content-between align-items-center experience'>
                 <span className='border px-3 p-1 add-experience cursor-pointer'>
-                  <i className='fa fa-plus' />
-                  &nbsp; View Fram
+                  {/* <i className='fa fa-plus' /> */}
+                  &nbsp; FARMS A USER CREATED
                 </span>
               </div>
               <br />
               <div className='col-md-12'>
-                <label className='labels'>Farm Name</label>
+                {/* <label className='labels'>Farm Name</label> */}
                 {/* <input
                   type='text'
                   className='form-control'
@@ -297,7 +310,7 @@ const Profile = () => {
                 <ul value={farms}>
                   {farms?.map((farm) => (
                     <Link to={`/farm/${farm._id}`} key={farm._id}>
-                      <li className='cursor-pointer'>{farm.name}</li>
+                      <li className='cursor-pointer ml-4'>{farm.name}</li>
                     </Link>
                   ))}
                 </ul>
