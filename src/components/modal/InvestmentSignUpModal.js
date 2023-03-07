@@ -2,21 +2,18 @@
 import React, { useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate } from 'react-router-dom'
 
 import { Loader } from '../../utils/utils'
 
-
 const InvestmentSignUpModal = () => {
   const [loading, setLoading] = useState(false)
-  const navigate = useNavigate();
-
+  const navigate = useNavigate()
 
   const [showModal, setShowModal] = useState(false)
 
   const getItemLocalStorage = localStorage.getItem('ndembeleAccess')
-  const ownerId = (getItemLocalStorage)
+  const ownerId = getItemLocalStorage
 
   const [categoryOptions, setCategoryOptions] = useState([])
 
@@ -47,6 +44,8 @@ const InvestmentSignUpModal = () => {
     ownerCommitment: '',
     images: [],
     category: '63e3c390f0fea8fb1ab01e7b',
+    cycle: '',
+    duration: '',
   })
 
   const {
@@ -59,6 +58,8 @@ const InvestmentSignUpModal = () => {
     ownerCommitment,
     images,
     category,
+    cycle,
+    duration,
   } = investmentData
 
   const handleInputChange = (event) => {
@@ -98,6 +99,8 @@ const InvestmentSignUpModal = () => {
     formData.append('roi', roi)
     formData.append('ownerCommitment', ownerCommitment)
     formData.append('category', category)
+    formData.append('cycle', cycle)
+    formData.append('duration', duration)
 
     images.forEach((image) => {
       formData.append('images', image)
@@ -107,7 +110,6 @@ const InvestmentSignUpModal = () => {
       title,
       ownerId,
       descp,
-      
       phone,
       budget,
       terms,
@@ -115,6 +117,8 @@ const InvestmentSignUpModal = () => {
       ownerCommitment,
       category,
       images,
+      cycle,
+      duration,
     })
 
     try {
@@ -150,15 +154,14 @@ const InvestmentSignUpModal = () => {
   }
   return (
     <div>
-     <button
+      <button
         className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'
         onClick={() => {
           if (ownerId != null) {
             setShowModal(true)
           } else {
-            navigate("/login");
+            navigate('/login')
           }
-
         }}
       >
         Create Investment
@@ -277,6 +280,44 @@ const InvestmentSignUpModal = () => {
                       id='roi'
                       name='roi'
                       value={roi}
+                      className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
+                      onChange={handleInputChange}
+                      // onChange={(event) => setRoi(event.target.value)}
+                    />
+                  </div>
+
+                  <div className='col-span-6 sm:col-span-3'>
+                    <label
+                      htmlFor='cycle'
+                      className='block text-2xl font-bold text-white'
+                    >
+                      Cycle
+                    </label>
+
+                    <input
+                      type='text'
+                      id='cycle'
+                      name='cycle'
+                      value={cycle}
+                      className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
+                      onChange={handleInputChange}
+                      // onChange={(event) => setRoi(event.target.value)}
+                    />
+                  </div>
+
+                  <div className='col-span-6 sm:col-span-3'>
+                    <label
+                      htmlFor='duration'
+                      className='block text-2xl font-bold text-white'
+                    >
+                      Duration
+                    </label>
+
+                    <input
+                      type='text'
+                      id='duration'
+                      name='duration'
+                      value={duration}
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
                       onChange={handleInputChange}
                       // onChange={(event) => setRoi(event.target.value)}
