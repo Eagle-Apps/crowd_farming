@@ -6,12 +6,13 @@ import {
   AiOutlineWhatsApp,
 } from 'react-icons/ai';
 import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom';
 
 const ProjectDetails2 = (props) => {
   let [mainUrl] = useState("https://ndembele.onrender.com");
   const [investment, setInvestment] = useState(null);
   const [user, setUser] = useState({});
+  let navigate = useNavigate()
 
   const id = useParams();
   const [showModal, setShowModal] = useState(false);
@@ -41,16 +42,17 @@ const ProjectDetails2 = (props) => {
     fetch(url, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("ndembeleAccess")}`
-      },
-      credentials: "same-origin"
+      }
     })
-      .then((e) => e.json())
-      .then((res) => {
-        if (res.msg === "Unauthorized User" || res.msg === "Invalid Authentication.") {
-          updateAccessToken()
+      .then((e) => {
+        if (!e.status === 200) {
+          return updateAccessToken()
         } else {
-          setUser(res)
+          return e.json()
         }
+      })
+      .then((res) => {
+        setUser(res)
       });
   };
 
@@ -80,7 +82,7 @@ const ProjectDetails2 = (props) => {
     currency: 'NGN',
     payment_options: 'card,mobilemoney,ussd',
     customer: {
-      email: user.email,
+      email: "meedoo4lif@gmail.com",
       phone_number: user.phone,
       name: user.name,
     },
@@ -95,11 +97,10 @@ const ProjectDetails2 = (props) => {
   let handleFlutterPayment = useFlutterwave(config);
 
   let subscribe = () => {
-    let data = { investmentId: id.id, commitment: amount }
+    let data = { investmentId: id.id, commitment: Number(amount).toLocaleString(), userId: user._id }
     let url = mainUrl + "/subscribe";
     fetch(url, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("ndembeleAccess")}`,
         "content-type": "application/json"
       },
       method: "POST",
@@ -107,18 +108,17 @@ const ProjectDetails2 = (props) => {
     })
       .then(e => e.json())
       .then(result => {
-        console.log(result)
+        console.log(result.msg)
+        navigate(`/investment/${id.id}`)
       })
     setAmount("50000")
   };
 
   let payment = (e) => {
-    console.log(e)
-    let data = { investmentId: id.id, amount: amount, transactionRef: e }
+    let data = { investmentId: id.id, amount: amount, transactionRef: e, userId: user._id }
     let url = mainUrl + "/payment";
     fetch(url, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("ndembeleAccess")}`,
         "content-type": "application/json"
       },
       method: "POST",
@@ -126,23 +126,24 @@ const ProjectDetails2 = (props) => {
     })
       .then(e => e.json())
       .then(result => {
-        console.log(result)
+        console.log("Payment Successful")
       })
   };
 
-  let pay = () => {
+  let pay = async () => {
+    loadUser()
     handleFlutterPayment({
       callback: async (response) => {
-        // console.log(response);
-        await subscribe()
-        await payment(response.data.flw_ref)
+        subscribe()
+        payment(response.tx_ref)
         closePaymentModal() // this will close the modal programmatically
       },
-      onClose: () => { subscribe() }
+      // onClose: () => {  }
     });
   };
 
   let checkAmount = (e) => {
+    loadUser()
     let investAmount = investment.available.replaceAll(",", "");
     let startPayment = window.confirm("Are you sure?")
     if (startPayment && Number(investAmount) >= Number(e)) {
