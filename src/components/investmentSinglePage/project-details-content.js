@@ -11,7 +11,7 @@ import { useParams } from 'react-router-dom'
 const ProjectDetailsContent = ({ investments }) => {
   console.log('Props', investments)
   // const [investment, setInvestment] = useState()
-  const { _id } = useParams()
+  const { id } = useParams()
   let [msg, setMsg] = useState('')
   let [message, setMessage] = useState('')
   let [progress, setProgress] = useState('')
@@ -28,7 +28,7 @@ const ProjectDetailsContent = ({ investments }) => {
   }, [message, msg])
 
   let postToForum = () => {
-    let data = { message, investment_id: _id }
+    let data = { message, investment_id: id.id }
     let url = baseUrl + '/forum'
     fetch(url, {
       headers: {
@@ -73,7 +73,7 @@ const ProjectDetailsContent = ({ investments }) => {
   }
 
   let postReport = () => {
-    let data = { message: msg, progress, investment_id: _id }
+    let data = { message: msg, progress, investment_id: id.id }
     let url = baseUrl + '/report'
     fetch(url, {
       headers: {
@@ -92,7 +92,7 @@ const ProjectDetailsContent = ({ investments }) => {
   }
 
   let loadForum = () => {
-    let url = baseUrl + '/forums/' + _id
+    let url = baseUrl + '/forums/' + id.id
     fetch(url)
       .then((e) => e.json())
       .then((res) => {
@@ -101,7 +101,7 @@ const ProjectDetailsContent = ({ investments }) => {
   }
 
   let loadReport = () => {
-    let url = baseUrl + '/reports/' + _id
+    let url = baseUrl + '/reports/' + id.id
     fetch(url)
       .then((e) => e.json())
       .then((res) => {
@@ -112,11 +112,12 @@ const ProjectDetailsContent = ({ investments }) => {
   let [hide, setHide] = useState('none')
 
   let loadSubscription = () => {
-    let url = baseUrl + '/subscribe/' + _id
+    let url = baseUrl + '/subscribe/' + id.id
     fetch(url)
       .then((e) => e.json())
       .then((res) => {
         let arr = []
+        console.log(res)
         res.map((e, i) => {
           arr.push(e.userId._id)
         })
