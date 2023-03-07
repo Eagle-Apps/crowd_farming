@@ -17,7 +17,7 @@ import UserProfile from './pages/UserProfile'
 import Terms from './pages/Terms'
 import Privacy from './pages/Privacy'
 import SingleFarm from './pages/SingleFarm'
-import SingleInvestmentLandOwner from './pages/SingleInvestmentLandOwner'
+// import SingleInvestmentLandOwner from './pages/SingleInvestmentLandOwner'
 import "./main.css";
 
 const App = () => {
@@ -44,7 +44,7 @@ const App = () => {
         {/* <Route path='/investment-page' element={<SingleInvestment />} /> */}
         <Route>
           <Route path='/investment' element={<Investments />} />
-          <Route path='/investments/:_id' element={<SingleInvestment />} />
+          <Route path='/investment/:id' element={<SingleInvestment />} />
           {/* <Route path='/investment/:id' element={<SingleInvestmentLandOwner />} /> */}
         </Route>
 
