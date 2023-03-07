@@ -4,8 +4,9 @@ import {
   SlSocialLinkedin,
   SlSocialTwitter,
 } from 'react-icons/sl'
+import { Link } from 'react-router-dom'
 
-import { Container } from '../components/utils'
+import { Container } from '../utils/utils'
 
 const Footer = () => {
   return (
@@ -18,21 +19,33 @@ const Footer = () => {
         /> */}
         <nav className='flex flex-col justify-items-center items-center'>
           <ul className='flex text-[16px] gap-x-[2rem]'>
-            <li className='flex cursor-pointer hover:text-emerald-400 active:text-emerald-500 focus:outline-none focus:ring focus:ring-text-emerald-100  '>
-              Contact Us
-            </li>
-            <li className='flex cursor-pointer hover:text-emerald-400 active:text-emerald-500 focus:outline-none focus:ring focus:ring-text-emerald-100  '>
-              About Us
-            </li>
-            <li className='flex cursor-pointer hover:text-emerald-400 active:text-emerald-500 focus:outline-none focus:ring focus:ring-text-emerald-100  '>
-              Terms of Service{' '}
-            </li>
+            <Link to='/contact'>
+              <li className='flex cursor-pointer hover:text-emerald-400 active:text-emerald-500 focus:outline-none focus:ring focus:ring-text-emerald-100  '>
+                Contact Us
+              </li>
+            </Link>
+
+            <Link to='/about'>
+              <li className='flex cursor-pointer hover:text-emerald-400 active:text-emerald-500 focus:outline-none focus:ring focus:ring-text-emerald-100  '>
+                About Us
+              </li>
+            </Link>
+
+            <Link to='/terms'>
+              <li className='flex cursor-pointer hover:text-emerald-400 active:text-emerald-500 focus:outline-none focus:ring focus:ring-text-emerald-100  '>
+                Terms of Service
+              </li>
+            </Link>
+
             <li className='flex cursor-pointer hover:text-emerald-400 active:text-emerald-500 focus:outline-none focus:ring focus:ring-text-emerald-100  '>
               Privacy Policy
             </li>
-            <li className='flex cursor-pointer hover:text-emerald-400 active:text-emerald-500 focus:outline-none focus:ring focus:ring-text-emerald-100  '>
-              Privacy Settings
-            </li>
+
+            <Link to='/privacy-settings'>
+              <li className='flex cursor-pointer hover:text-emerald-400 active:text-emerald-500 focus:outline-none focus:ring focus:ring-text-emerald-100  '>
+                Privacy Settings
+              </li>
+            </Link>
           </ul>
         </nav>
 

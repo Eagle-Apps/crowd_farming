@@ -1,6 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
+import { Tab, Tabs } from 'react-bootstrap'
+import History from './tabs/History'
+import Mission from './tabs/Mission'
+import Vision from './tabs/Vision'
 
 const FundNext = () => {
   return (
@@ -11,52 +15,40 @@ const FundNext = () => {
             <div className='next-big-thing-content'>
               <span>Get to Know Krowd</span>
               <h3 className='title'>Fund the Next Big Thing</h3>
-              <ul className='nav nav-pills' id='pills-tab' role='tablist'>
-                <li className='nav-item' role='presentation'>
-                  <a className='nav-link cursor-pointer active' role='tab'>
-                    Our Mission
-                  </a>
-                </li>
-                <li className='nav-item' role='presentation'>
-                  <a className='nav-link cursor-pointer' role='tab'>
-                    Our Vision
-                  </a>
-                </li>
-                <li className='nav-item' role='presentation'>
-                  <a className='nav-link cursor-pointer' role='tab'>
-                    Our History
-                  </a>
-                </li>
-              </ul>
-              <div className='tab-content' id='pills-tabContent'>
-                <div
-                  className='tab-pane animated fadeIn show active'
-                  id='pills-home'
+              {/* <ul className='nav nav-pills' id='pills-tab' role='tablist'> */}
+              <Tabs
+                defaultActiveKey='mission'
+                id='pills-tab '
+                className='tab-content'
+              >
+                <Tab
+                  eventKey='mission'
+                  title=' Our Mission'
+                  className='nav-item nav-link '
+                  role='presentation'
                 >
-                  <p>
-                    There are many variations of passages of available but the
-                    majority have in some form, by injected humou or words which
-                    don't look even slightly believable. There are many
-                    variations of but the majority have suffered.
-                  </p>
-                </div>
-                <div className='tab-pane animated' id='pills-profile'>
-                  <p>
-                    There are many variations of passages of available but the
-                    majority have in some form, by injected humou or words which
-                    don't look even slightly believable. There are many
-                    variations of but the majority have suffered.
-                  </p>
-                </div>
-                <div className='tab-pane animated' id='pills-contact'>
-                  <p>
-                    There are many variations of passages of available but the
-                    majority have in some form, by injected humou or words which
-                    don't look even slightly believable. There are many
-                    variations of but the majority have suffered.
-                  </p>
-                </div>
-              </div>
+                  <Mission />
+                </Tab>
+
+                <Tab
+                  eventKey='vision'
+                  title=' Our Vision'
+                  className='nav-item nav-link '
+                  role='presentation'
+                >
+                  <Vision />
+                </Tab>
+                <Tab
+                  eventKey='history'
+                  title=' Our History'
+                  className='nav-item nav-link '
+                  role='presentation'
+                >
+                  <History />
+                </Tab>
+              </Tabs>
+              {/* </ul> */}
+              <div className='tab-content' id='pills-tabContent'></div>
             </div>
           </div>
           <div className='col-lg-6'>
@@ -69,11 +61,7 @@ const FundNext = () => {
               </p>
               <div className='next-big-thing-list'>
                 <div className='thumb'>
-                  <img
-                    src='assets/next-big-thing-thumb.2567adce.png'
-                    alt
-                    className
-                  />
+                  <img src='assets/next-big-thing-thumb.2567adce.png' alt='' />
                 </div>
                 <div className='list'>
                   <ul>

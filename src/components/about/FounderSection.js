@@ -15,11 +15,11 @@ const FounderSection = () => {
           <div className='col-lg-4 col-md-7'>
             <div className='team-item mt-30'>
               <div className='team-thumb'>
-                <img src='assets/team-1.66a07c6a.jpg' alt='team' className />
+                <img src='assets/team-1.66a07c6a.jpg' alt='team' />
                 <div className='share'>
                   <BiShareAlt size={20} />
-                  <ul className=''>
-                    <li className=''>
+                  <ul>
+                    <li>
                       <a href='https://krowd-nextjs.vercel.app/about#'>
                         <FaTwitter />
                       </a>
@@ -51,7 +51,7 @@ const FounderSection = () => {
           <div className='col-lg-4 col-md-7'>
             <div className='team-item mt-30'>
               <div className='team-thumb'>
-                <img src='assets/team-2.654ed381.jpg' alt='team' className />
+                <img src='assets/team-2.654ed381.jpg' alt='team' />
                 <div className='share'>
                   <i className='fa fa-share-alt' />
                   <ul>
@@ -87,7 +87,7 @@ const FounderSection = () => {
           <div className='col-lg-4 col-md-7'>
             <div className='team-item mt-30'>
               <div className='team-thumb'>
-                <img src='assets/team-3.a14d3fa4.jpg' alt='team' className />
+                <img src='assets/team-3.a14d3fa4.jpg' alt='team' />
                 <div className='share'>
                   <i className='fa fa-share-alt' />
                   <ul>

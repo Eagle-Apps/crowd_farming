@@ -2,21 +2,25 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Hero from '../components/Hero'
-import FarmSignUpModal from '../components/modal/FarmSignUpModal'
 import InvestmentSignUpModal from '../components/modal/InvestmentSignUpModal'
-// import axios from 'axios'
+import CardSkeleton from '../utils/card-Skeleton'
+// import { AuthContext } from '../context/AuthContext'
 
 // import { data } from '../data/data'
-
 
 const Investment = () => {
   // const [foods, setFoods] = useState(data)
   const [investments, setInvestments] = useState([])
+  const [loading, setLoading] = useState(true)
+  // const { setIsSignedIn } = useContext(AuthContext)
 
   useEffect(() => {
     fetch('https://ndembele.onrender.com/investments')
       .then((response) => response.json())
-      .then((data) => setInvestments(data.pageOfItems))
+      .then((data) => {
+        setInvestments(data.pageOfItems)
+        setLoading(false)
+      })
   }, [])
 
   const res = Array.from(investments)
@@ -36,15 +40,13 @@ const Investment = () => {
   // }
 
   return (
-    <div className='max-w-[1640px] bg-slate-300'>
-  
+    <div className='max-w-[1640px]'>
       <Hero />
 
-      <div className='max-w-[1640px] m-auto px-[4rem] py-12 '>
+      <div className='max-w-[1740px] m-auto px-[4rem] py-12 '>
         <h1 className='text-orange-600 font-bold text-4xl text-center mt-[2rem]'>
           All Investments
         </h1>
-
         {/* Filter Row */}
         <div className='flex flex-col  justify-between lg:flex-row'>
           {/* Filter Type */}
@@ -88,45 +90,54 @@ const Investment = () => {
             {/* <button className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'>
               Create Investment
             </button> */}
+            {/* {setIsSignedIn(true) ? (
+              <InvestmentSignUpModal />
+            ) : (
+              <p>Please sign in</p>
+            )} */}
             <InvestmentSignUpModal />
           </div>
         </div>
-
         {/* Display foods */}
-        <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4 shadow dark:bg-gray-800 dark:border-gray-700'>
-          {res.map((investment) => (
-            <Link to={`/investment/${investment._id}`} key={investment._id}>
-              <div
-                // key={investment._id}
-                className='border shadow-lg rounded-lg hover:scale-105 duration-300 cursor-pointer'
-              >
-                <img
-                  src={investment.images[0]}
-                  alt={investment.title}
-                  className='w-full h-[200px] object-cover rounded-t-lg'
-                />
-                <div className='flex justify-between px-2 py-4'>
-                  <p className='font-bold'>{investment.title}</p>
-                  <p>
-                    <span className='text-white p-1 '>
-                      {investment.category.map((item) => item.title)}
-                    </span>
+        <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4 shadow bg-slate-300 border-gray-500 overflow-hidden'>
+          {loading ? (
+            <>
+              <CardSkeleton />
+            </>
+          ) : res.length > 0 ? (
+            res.map((investment) => (
+              <Link to={`/investment/${investment._id}`} key={investment._id}>
+                <div
+                  // key={investment._id}
+                  className='border shadow-lg rounded-lg hover:scale-105 duration-300 cursor-pointer'
+                >
+                  <img
+                    src={investment.images[0]}
+                    alt={investment.title}
+                    className='w-full h-[200px] object-cover rounded-t-lg'
+                  />
+                  <div className='flex justify-between px-2 py-4'>
+                    <p className='font-bold'>{investment.title}</p>
+                    <p>
+                      <span className='text-white p-1 '>
+                        {investment.category.map((item) => item.title)}
+                      </span>
+                    </p>
+                  </div>
+                  <p className='px-5 font-normal text-gray-700'>
+                    {investment.descp.substring(0, 60)}...
+                  </p>
+                  <p className='px-5 font-normal text-gray-700'>
+                    {investment.budget}
                   </p>
                 </div>
-                <p className='px-5 font-normal text-gray-700 dark:text-gray-400'>
-                  {investment.descp.substring(0, 60)}...
-                </p>
-                <p className='px-5 font-normal text-gray-700 dark:text-gray-400'>
-                  {investment.budget}
-                </p>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))
+          ) : (
+            <p>No Investment</p>
+          )}
         </div>
       </div>
-
-      {/* <FarmSignUpModal /> */}
-    
     </div>
   )
 }

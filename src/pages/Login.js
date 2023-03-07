@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { FcGoogle } from 'react-icons/fc'
 import { RiFacebookCircleFill } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
@@ -7,31 +7,21 @@ import 'react-toastify/dist/ReactToastify.css'
 
 import { PrimaryButton, SecondaryButton } from '../components/buttons'
 import { Checkbox, Input } from '../components/field'
-import { Link, Loader } from '../components/utils'
+import { Link, Loader } from '../utils/utils'
 import AuthLayout from '../layouts/AuthLayout'
+import { AuthContext } from '../context/AuthContext'
 
 const Login = () => {
   const navigate = useNavigate()
+  const { setIsSignedIn } = useContext(AuthContext)
 
   const [loading, setLoading] = useState(false)
-  // const [errorMessage, setErrorMessage] = useState(null)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  // const [isLoggedIn, setIsLoggedIn] = useState(false)
-  // const [userId, setUserId] = useState(null)
-
-  // useEffect(() => {
-  //   const storedUserId = localStorage.getItem('ndembeleUserId')
-  //   if (storedUserId) {
-  //     setIsLoggedIn(true)
-  //     setUserId(storedUserId)
-  //   }
-  // }, [])
 
   const handleLogin = async (e) => {
     e.preventDefault()
     setLoading(true)
-    // setIsLoggedIn(true)
 
     // Make an HTTP request to submit the data
     const dataUser = {
@@ -43,6 +33,7 @@ const Login = () => {
       const res = await fetch('https://ndembele.onrender.com/login', {
         method: 'POST',
         headers: {
+          // Authorization: `Bearer ${localStorage.getItem('ndembeleAccess')}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(dataUser),
@@ -53,14 +44,18 @@ const Login = () => {
 
       // if (res.ok) {
       if (data) {
-        // console.log(data.userID)
-        // setUserId(data.userID)
-        localStorage.setItem('ndembeleUserId', JSON.stringify(data.userID))
-        
+        // console.log('Data', data)
+        localStorage.setItem('ndembeleAccess', data.access_token)
+
+        // console.log(localStorage.getItem('ndembeleAccess'))
+
+        localStorage.setItem('ndembeleRefresh', data.refreshToken)
+
         toast.success('Login Successful !', {
           position: toast.POSITION.TOP_CENTER,
         })
-       
+
+        setIsSignedIn(true)
         navigate('/')
       } else {
         // throw new Error(data.message)
@@ -97,7 +92,7 @@ const Login = () => {
       )} */}
       <ToastContainer />
 
-      <form className='space-y-5 text-4xl' onSubmit={handleLogin}>
+      <form className='space-y-5' onSubmit={handleLogin}>
         <div>
           <Input
             label={'Email'}
@@ -126,7 +121,6 @@ const Login = () => {
           <Link href='/forgot-password'>Forgot Password?</Link>
         </div>
 
-        
         <PrimaryButton type='submit' disabled={loading}>
           {loading && <Loader color={'white'} />}
           <span className='text-[1.5rem]'>Login to account</span>
@@ -157,7 +151,7 @@ const Login = () => {
         </div>
 
         <p className='text-2xl text-center'>
-          Don't have an account? <Link href='/register'>Register</Link>
+          Don't have an account? <Link to='/register'>Register</Link>
         </p>
       </form>
     </AuthLayout>

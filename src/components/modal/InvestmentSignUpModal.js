@@ -2,36 +2,21 @@
 import React, { useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { useNavigate } from "react-router-dom";
 
-import { Link, Loader } from '../../components/utils'
 
+import { Loader } from '../../utils/utils'
 
-// const categories = [
-//   {
-//     categoryId: '001Farm',
-//     name: 'Farm',
-//   },
-//   {
-//     categoryId: '63e3c390f0fea8fb1ab01e7b',
-//     name: 'Crops',
-//   },
-//   {
-//     categoryId: '003Cashew',
-//     name: 'Cashew',
-//   },
-//   {
-//     categoryId: '004Burger',
-//     name: 'Burger',
-//   },
-// ]
 
 const InvestmentSignUpModal = () => {
   const [loading, setLoading] = useState(false)
+  const navigate = useNavigate();
+
 
   const [showModal, setShowModal] = useState(false)
 
-  const getItemLocalStorage = localStorage.getItem('ndembeleUserId')
-  const ownerId = JSON.parse(getItemLocalStorage)
+  const getItemLocalStorage = localStorage.getItem('ndembeleAccess')
+  const ownerId = (getItemLocalStorage)
 
   const [categoryOptions, setCategoryOptions] = useState([])
 
@@ -41,6 +26,7 @@ const InvestmentSignUpModal = () => {
   //     .then((response) => response.json())
   //     .then((data) => setCategoryOptions(data))
   // }, [])
+
   useEffect(() => {
     const categoryUrl = 'https://ndembele.onrender.com/category'
     const fetchData = async () => {
@@ -121,6 +107,7 @@ const InvestmentSignUpModal = () => {
       title,
       ownerId,
       descp,
+      
       phone,
       budget,
       terms,
@@ -163,9 +150,16 @@ const InvestmentSignUpModal = () => {
   }
   return (
     <div>
-      <button
+     <button
         className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'
-        onClick={() => setShowModal(true)}
+        onClick={() => {
+          if (ownerId != null) {
+            setShowModal(true)
+          } else {
+            navigate("/login");
+          }
+
+        }}
       >
         Create Investment
       </button>
@@ -324,8 +318,6 @@ const InvestmentSignUpModal = () => {
                       // onChange={(event) => setTerms(event.target.value)}
                     />
                   </div>
-
-                 
 
                   <div className='col-span-6 sm:col-span-3'>
                     <label

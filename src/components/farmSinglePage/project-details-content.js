@@ -44,7 +44,7 @@ const ProjectDetailsContent = () => {
             <div className='project-details-sidebar'>
               <div className='project-details-info mt-70 box'>
                 <div className='info'>
-                  <img src='/assets/project-info.8826c26f.jpg' alt className />
+                  <img src='/assets/project-info.8826c26f.jpg' alt='' />
                   <h5 className='title'>John Smith</h5>
                   <span>20 backed</span>
                 </div>
@@ -55,7 +55,7 @@ const ProjectDetailsContent = () => {
               </div>
               <div className='project-details-park mt-30 box'>
                 <h4 className='title'>Select a Perk</h4>
-                <img src='/assets/project-perk.45d57acc.jpg' alt className />
+                <img src='/assets/project-perk.45d57acc.jpg' alt='' />
                 <span>SAPPHIRE(50 sold already)</span>
                 <p>$5,800 (62% OFF)</p>
                 <ul>

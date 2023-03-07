@@ -6,7 +6,7 @@ import { Fragment } from 'react'
 import { HiMenu } from 'react-icons/hi'
 import { GiBlackcurrant } from 'react-icons/gi'
 import { Link, useNavigate } from 'react-router-dom'
-import { Container } from '../components/utils'
+import { Container } from '../utils/utils'
 
 import { AuthContext } from '../context/AuthContext'
 
@@ -14,14 +14,7 @@ const Nav = () => {
   const navigate = useNavigate()
   const { isSignedIn, setIsSignedIn } = useContext(AuthContext)
 
-  console.log(isSignedIn)
-  // console.log(test)
-
-  // useEffect(() => {
-  //   if (localStorage.getItem('ndembeleUserId')) {
-  //     setIsSignedIn(true)
-  //   }
-  // }, [isSignedIn])
+  // console.log(isSignedIn)
 
   // const links = [
   //   {
@@ -49,12 +42,13 @@ const Nav = () => {
   // console.log(localStorage.getItem('ndembeleUserId'))
 
   const handleSignOut = () => {
-    localStorage.removeItem('ndembeleUserId')
-    setIsSignedIn(false)
+    const confirmLogout = window.confirm('Are you sure you want to log out?')
+    if (confirmLogout) {
+      localStorage.removeItem('ndembeleAccess')
+      setIsSignedIn(false)
+    }
 
-    // setIsSignedIn(localStorage.removeItem('ndembeleUserId'))
-    // setIsSignedIn(true)
-    navigate('/login')
+    navigate('/')
   }
 
   return (
@@ -94,14 +88,14 @@ const Nav = () => {
             >
               Home
             </Link>
-            {isSignedIn && (
-              <Link
-                to='/investment'
-                className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'
-              >
-                Investments
-              </Link>
-            )}
+            {/* {isSignedIn && ( */}
+            <Link
+              to='/investment'
+              className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'
+            >
+              Investments
+            </Link>
+            {/* )} */}
             <Link
               to='/farm'
               className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'
@@ -210,6 +204,13 @@ const Nav = () => {
         <div className='md:flex hidden items-center space-x-3'>
           {isSignedIn ? (
             <>
+              <Link
+                to='/profile'
+                className='transition-all duration-300 px-3 lg:px-4 xl:px-8 font-medium py-2 xl:py-3 text-emerald-600 hover:text-gray-500'
+              >
+                Profile
+              </Link>
+
               <button
                 onClick={handleSignOut}
                 className='transition-all duration-300 px-3 lg:px-4 xl:px-8 font-medium py-2 xl:py-3 text-emerald-600 hover:text-emerald-500'
