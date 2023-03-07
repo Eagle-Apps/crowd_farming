@@ -1,0 +1,122 @@
+.flex {
+    display: flex;
+}
+
+#project-review-ah {
+    color: #000000;
+    text-transform: capitalize;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.forum-msgs-header-ah {
+    display: flex;
+    justify-content: space-between;
+    color: #000000;
+}
+
+.forum-msgs-header-ah img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.forum-msgs-header-ah h6 {
+    text-transform: capitalize;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    margin-top: auto;
+    cursor: pointer;
+}
+
+.forum-msgs-header-ah p {
+    font-size: 10px;
+}
+
+.forum-msgs-body-ah {
+    color: black;
+    font-size: 11px;
+    line-height: 12.89px;
+    letter-spacing: 0.4px;
+}
+
+.forum-msgs-ah {
+    border: 2px solid gainsboro;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.post-forum-ah {
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid gainsboro;
+    height: 44px;
+    border-radius: 5px;
+    padding: 5px 5px;
+}
+
+.post-forum-ah button,
+.post-forum-ah input {
+    border: none;
+    outline: none;
+    height: 100%;
+    padding: 10px;
+}
+
+.post-forum-ah input {
+    width: 100%;
+    padding-left: 30px;
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+}
+
+.post-forum-ah input::placeholder {
+    color: #B4B4B4;
+    font-size: 11px;
+    letter-spacing: 0.4px;
+}
+
+.post-forum-ah button {
+    background-color: #7fc027;
+    padding: 0px 15px;
+    border-radius: 5px;
+    color: white;
+}
+
+/* width */
+.forum-msgs-ah::-webkit-scrollbar,
+.tableBody::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+    border-radius: 20px;
+}
+
+/* Track */
+.forum-msgs-ah::-webkit-scrollbar-track,
+.tableBody::-webkit-scrollbar-track {
+    background: whitesmoke;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+
+/* Handle */
+.forum-msgs-ah::-webkit-scrollbar-thumb,
+.tableBody::-webkit-scrollbar-thumb {
+    background: #069046;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.forum-msgs-ah::-webkit-scrollbar-thumb:hover,
+.tableBody::-webkit-scrollbar-thumb:hover {
+    background: #0e7407;
+}
+
+#reportBtn button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}

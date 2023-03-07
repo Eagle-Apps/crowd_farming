@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Hero from '../components/Hero'
 import InvestmentSignUpModal from '../components/modal/InvestmentSignUpModal'
 import CardSkeleton from '../utils/card-Skeleton'
-import { AuthContext } from '../context/AuthContext'
+// import { AuthContext } from '../context/AuthContext'
 
 // import { data } from '../data/data'
 
@@ -12,7 +12,7 @@ const Investment = () => {
   // const [foods, setFoods] = useState(data)
   const [investments, setInvestments] = useState([])
   const [loading, setLoading] = useState(true)
-  const { setIsSignedIn } = useContext(AuthContext)
+  // const { setIsSignedIn } = useContext(AuthContext)
 
   useEffect(() => {
     fetch('https://ndembele.onrender.com/investments')

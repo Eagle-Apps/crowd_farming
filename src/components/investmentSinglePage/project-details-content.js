@@ -9,7 +9,7 @@ import Updates from './tabs/Updates'
 import { useParams } from 'react-router-dom'
 
 const ProjectDetailsContent = ({ investments }) => {
-  console.log('Props', investments)
+  // console.log('Props', investments)
   // const [investment, setInvestment] = useState()
   const { _id } = useParams()
   let [msg, setMsg] = useState('')

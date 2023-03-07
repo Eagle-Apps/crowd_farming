@@ -17,7 +17,7 @@ const StoryContent = ({ investments }) => {
           orci in metus aliquam egestas. Fusce elit libero, imperdiet nec orci
           quis, convallis hendrerit nisl. Cras auctor nec purus at placerat. */}
 
-          {/* {investments.descp} */}
+          {investments?.descp}
         </p>
         <ul className=''>
           <li className='flex gap-3'>
@@ -48,7 +48,8 @@ const StoryContent = ({ investments }) => {
           </li>
         </ul>
         <div className='project-details-thumb'>
-          <img src='/assets/project-details-thumb.a427b972.jpg' alt='' />
+          {/* <img src='/assets/project-details-thumb.a427b972.jpg' alt='' /> */}
+          <img src={investments?.images[0]} alt='' />
         </div>
       </div>
       <div className='project-details-item'>

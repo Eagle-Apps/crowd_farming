@@ -17,6 +17,7 @@ import UserProfile from './pages/UserProfile'
 import Terms from './pages/Terms'
 import Privacy from './pages/Privacy'
 import SingleFarm from './pages/SingleFarm'
+import './main.css'
 
 const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(false)

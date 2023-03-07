@@ -2,17 +2,19 @@
 import React, { useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { useNavigate } from 'react-router-dom'
 
 import { Loader } from '../../utils/utils'
 // import { PrimaryButton } from '../buttons'
 
 const FarmSignUpModal = () => {
   const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
 
   const [showModal, setShowModal] = useState(false)
 
   const getItemLocalStorage = localStorage.getItem('ndembeleAccess')
-  const userId = (getItemLocalStorage)
+  const userId = getItemLocalStorage
 
   const [categoryOptions, setCategoryOptions] = useState([])
 
@@ -113,7 +115,13 @@ const FarmSignUpModal = () => {
     <div>
       <button
         className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'
-        onClick={() => setShowModal(true)}
+        onClick={() => {
+          if (userId != null) {
+            setShowModal(true)
+          } else {
+            navigate('/login')
+          }
+        }}
       >
         Create Farm
       </button>

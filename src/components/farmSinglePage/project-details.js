@@ -44,7 +44,7 @@ const ProjectDetails = ({ farm }) => {
               <h3 className='title'>{farm.name}</h3>
               <div className='project-details-item'>
                 <div className='item text-center'>
-                  <h5 className='title'>${farm.phone}</h5>
+                  <h5 className='title'>{farm.phone}</h5>
                   <span>Phone Number</span>
                 </div>
                 {/* <div className='item text-center'>
@@ -67,7 +67,7 @@ const ProjectDetails = ({ farm }) => {
               </div>
               <div className='projects-goal'>
                 <span>
-                  Goal: <span>3600.00 USD</span>
+                  Goal: <span>3600.00 </span>
                 </span>
               </div>
               <div className='project-btn mt-25'>

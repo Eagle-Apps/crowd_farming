@@ -44,7 +44,10 @@ const Login = () => {
 
       // if (res.ok) {
       if (data) {
+        // console.log('Data', data)
         localStorage.setItem('ndembeleAccess', data.access_token)
+
+        // console.log(localStorage.getItem('ndembeleAccess'))
 
         localStorage.setItem('ndembeleRefresh', data.refreshToken)
 
