@@ -3,16 +3,16 @@ import React, { useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import { Link, Loader } from '../../components/utils'
-import { PrimaryButton } from '../buttons'
+import { Loader } from '../../utils/utils'
+// import { PrimaryButton } from '../buttons'
 
 const FarmSignUpModal = () => {
   const [loading, setLoading] = useState(false)
 
   const [showModal, setShowModal] = useState(false)
 
-  const getItemLocalStorage = localStorage.getItem('ndembeleUserId')
-  const userId = JSON.parse(getItemLocalStorage)
+  const getItemLocalStorage = localStorage.getItem('ndembeleAccess')
+  const userId = (getItemLocalStorage)
 
   const [categoryOptions, setCategoryOptions] = useState([])
 

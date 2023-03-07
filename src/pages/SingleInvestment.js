@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-
-import ProjectDetails from '../components/singlepage/project-details'
-import ProjectBanner from '../components/singlepage/project-banner'
-import ProjectDetailsContent from '../components/singlepage/project-details-content'
-import ProjectCard from '../components/singlepage/project-card'
-
+import ProjectDetails from '../components/investmentSinglePage/project-details'
+import ProjectBanner from '../components/investmentSinglePage/project-banner'
+import ProjectDetailsContent from '../components/investmentSinglePage/project-details-content'
+import ProjectCard from '../components/investmentSinglePage/project-card'
 
 const SingleInvestment = () => {
   const [investment, setInvestment] = useState(null)
   const { _id } = useParams()
+  const [userId, setUserId] = useState(_id)
 
   console.log('ID', _id)
 
@@ -22,10 +21,11 @@ const SingleInvestment = () => {
   // }, [_id])
 
   useEffect(() => {
-    fetch(`https://ndembele.onrender.com/investment/${_id}`)
+    setUserId(userId);
+    fetch(`https://ndembele.onrender.com/investment/${userId}`)
       .then((response) => response.json())
       .then((data) => setInvestment(data))
-  }, [_id])
+  }, [userId])
 
   console.log('Investment', investment)
 
@@ -34,8 +34,9 @@ const SingleInvestment = () => {
       <div>
         <ProjectBanner />
         {investment && <ProjectDetails investments={investment} />}
-        <ProjectDetailsContent />
-        <ProjectCard /> 
+        <ProjectDetailsContent investments={investment} />
+
+        <ProjectCard />
       </div>
 
       {/* {investments && (

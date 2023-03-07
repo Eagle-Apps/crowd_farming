@@ -3,8 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import { Link, Loader } from '../../components/utils'
-
+import { Loader } from '../../utils/utils'
 
 // const categories = [
 //   {
@@ -30,8 +29,8 @@ const InvestmentSignUpModal = () => {
 
   const [showModal, setShowModal] = useState(false)
 
-  const getItemLocalStorage = localStorage.getItem('ndembeleUserId')
-  const ownerId = JSON.parse(getItemLocalStorage)
+  const getItemLocalStorage = localStorage.getItem('ndembeleAccess')
+  const ownerId = (getItemLocalStorage)
 
   const [categoryOptions, setCategoryOptions] = useState([])
 
@@ -121,6 +120,7 @@ const InvestmentSignUpModal = () => {
       title,
       ownerId,
       descp,
+      
       phone,
       budget,
       terms,
@@ -324,8 +324,6 @@ const InvestmentSignUpModal = () => {
                       // onChange={(event) => setTerms(event.target.value)}
                     />
                   </div>
-
-                 
 
                   <div className='col-span-6 sm:col-span-3'>
                     <label

@@ -7,7 +7,7 @@ const Comments = () => {
     <h3 className="comment-one__block-title">2 Comments</h3>
     <div className="comment-one__single">
       <div className="comment-one__image">
-        <img src="/assets/comment-2.2.e62f4322.jpg" alt className />
+        <img src="/assets/comment-2.2.e62f4322.jpg" alt='' />
       </div>
       <div className="comment-one__content">
         <h3>
@@ -28,7 +28,7 @@ const Comments = () => {
     </div>
     <div className="comment-one__single">
       <div className="comment-one__image">
-        <img src="/assets/comment-2.1.e9c6ad7a.jpg" alt className />
+        <img src="/assets/comment-2.1.e9c6ad7a.jpg" alt='' />
       </div>
       <div className="comment-one__content">
         <h3>

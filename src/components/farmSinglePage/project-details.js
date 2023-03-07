@@ -6,14 +6,14 @@ import {
   AiOutlineWhatsApp,
 } from 'react-icons/ai'
 
-const ProjectDetails = ({ investments }) => {
+const ProjectDetails = ({ farm }) => {
   const icons = [
     AiFillFacebook,
     AiFillInstagram,
     AiFillTwitterCircle,
     AiOutlineWhatsApp,
   ]
-  console.log('From project banner', investments)
+  console.log('From project banner', farm)
 
   return (
     <section className='project-details-area pt-120 pb-190'>
@@ -23,8 +23,8 @@ const ProjectDetails = ({ investments }) => {
             <div className='project-details-thumb'>
               <img
                 // src='/assets/single-project-thumb.2959a928.jpg'
-                src={investments.images[0]}
-                alt={investments.title}
+                src={farm.images[0]}
+                alt={farm.name}
                 className='h-[85vh]'
               />
               <div className='icon'>
@@ -41,16 +41,16 @@ const ProjectDetails = ({ investments }) => {
                   <p>Nigeria</p>
                 </div>
               </div>
-              <h3 className='title'>{investments.title}</h3>
+              <h3 className='title'>{farm.name}</h3>
               <div className='project-details-item'>
                 <div className='item text-center'>
-                  <h5 className='title'>${investments.budget}</h5>
-                  <span>Budget</span>
+                  <h5 className='title'>${farm.phone}</h5>
+                  <span>Phone Number</span>
                 </div>
-                <div className='item text-center'>
-                  <h5 className='title'>{investments.roi}</h5>
-                  <span>ROI</span>
-                </div>
+                {/* <div className='item text-center'>
+                  <h5 className='title'>{farm.category}</h5>
+                  <span>Category</span>
+                </div> */}
                 <div className='item text-center'>
                   <h5 className='title'>20</h5>
                   <span>Days Left</span>

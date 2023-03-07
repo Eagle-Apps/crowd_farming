@@ -2,17 +2,17 @@ import { Menu, Transition } from '@headlessui/react'
 import React, { useState } from 'react'
 import { HiChevronRight } from 'react-icons/hi'
 import { IoMdSync } from 'react-icons/io'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 
 // import { checkUser, formatToCurrency, toast } from '../helpers'
 
-import { Loader } from './utils'
+// import { Loader } from '../utils/utils'
 
 const TransferForm = () => {
-  const defaultMessage = {
-    amount: [],
-    phoneNumber: [],
-  }
+  // const defaultMessage = {
+  //   amount: [],
+  //   phoneNumber: [],
+  // }
   const countries = [
     {
       text: 'Bénin',
@@ -28,40 +28,17 @@ const TransferForm = () => {
     },
   ]
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
-  const [errorMessage, setErrorMessage] = useState(defaultMessage)
-  const [loading, setLoading] = useState(false)
+  // const [errorMessage, setErrorMessage] = useState(defaultMessage)
+  // const [loading, setLoading] = useState(false)
   const [country, setCountry] = useState(countries[0])
-  const [currency, setCurrency] = useState('XOF')
+  // const [currency, setCurrency] = useState('XOF')
   const [amount, setAmount] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
 
   const submit = () => {
-    // if (!checkUser()) {
-    //   toast('error', 'This action requires you to be connected')
-    //   navigate('/login')
-    // } else {
-    //   setLoading(true)
-    //   setTimeout(() => {
-    //     const newErrorMessage = defaultMessage
-    //     if (!amount) {
-    //       newErrorMessage.amount = ['This field is required']
-    //     }
-    //     if (!phoneNumber) {
-    //       newErrorMessage.phoneNumber = ['This field is required']
-    //     }
-    //     if (amount && phoneNumber) {
-    //       toast('success', 'Successful transfer')
-    //       setAmount('')
-    //       setCurrency('')
-    //     } else {
-    //       toast('error', 'Transfer failure')
-    //     }
-    //     setErrorMessage(newErrorMessage)
-    //     setLoading(false)
-    //   }, 3000)
-    // }
+
   }
 
   return (
@@ -72,27 +49,27 @@ const TransferForm = () => {
             <h6 className='text-sm text-indigo-900'>You send</h6>
             <input
               type='number'
-              className={`p-0 w-full bg-indigo-50 border-0 border-b-2 ${
-                errorMessage.amount.length
-                  ? 'border-red-600 focus:border-red-600'
-                  : 'border-gray-300 focus:border-indigo-800'
-              } text-indigo-800 placeholder-indigo-900 placeholder-opacity-80 font-bold text-xl lg:text-2xl focus:ring-0`}
+              className={`p-0 w-full bg-indigo-50 border-0 border-b-2 
+                // errorMessage.amount.length
+                //   ? 'border-red-600 focus:border-red-600'
+                //   : 'border-gray-300 focus:border-indigo-800'
+               text-indigo-800 placeholder-indigo-900 placeholder-opacity-80 font-bold text-xl lg:text-2xl focus:ring-0`}
               placeholder='0,000'
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
             />
-            {errorMessage.amount.length > 0 && (
+            {/* {errorMessage.amount.length > 0 && (
               <p className='absolute text-sm text-red-600'>
                 {errorMessage.amount}
               </p>
-            )}
+            )} */}
           </div>
 
           <Menu>
             {({ open }) => (
               <div className='relative w-1/4 md:w-1/3'>
                 <Menu.Button className='w-full shadow-sm flex items-center space-x-2 justify-center text-indigo-900 bg-white py-3 md:py-4 rounded-lg md:text-lg font-bold uppercase font-semibold'>
-                  <span>{currency}</span>
+                  {/* <span>{currency}</span> */}
                   <HiChevronRight
                     className={`transition-all duration-300 ${
                       open ? 'rotate-90' : ''
@@ -167,20 +144,20 @@ const TransferForm = () => {
             </h6>
             <input
               type='tel'
-              className={`p-0 w-full bg-indigo-50 border-0 border-b-2 ${
-                errorMessage.phoneNumber.length
-                  ? 'border-red-600 focus:border-red-600'
-                  : 'border-gray-300 focus:border-indigo-800'
-              } text-indigo-800 placeholder-indigo-900 placeholder-opacity-80 font-bold text-xl lg:text-2xl focus:ring-0`}
+              className={`p-0 w-full bg-indigo-50 border-0 border-b-2 
+                // errorMessage.phoneNumber.length
+                //   ? 'border-red-600 focus:border-red-600'
+                //   : 'border-gray-300 focus:border-indigo-800'
+               text-indigo-800 placeholder-indigo-900 placeholder-opacity-80 font-bold text-xl lg:text-2xl focus:ring-0`}
               placeholder='68 89 54 89'
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
             />
-            {errorMessage.phoneNumber.length > 0 && (
+            {/* {errorMessage.phoneNumber.length > 0 && (
               <p className='absolute text-sm text-red-600'>
                 {errorMessage.phoneNumber}
               </p>
-            )}
+            )} */}
           </div>
 
           <Menu>
@@ -237,7 +214,7 @@ const TransferForm = () => {
         onClick={submit}
         className='w-full flex items-center justify-center space-x-3 transition-all text-center duration-300 px-3 lg:px-4 xl:px-8 font-medium lg:text-lg py-3 bg-indigo-600 text-white rounded-md focus:outline-none hover:bg-indigo-700 focus:ring focus:border-indigo-500 focus:ring-indigo-500/50'
       >
-        {loading && <Loader color={'white'} />}
+        {/* {loading && <Loader color={'white'} />} */}
         <span>Get started</span>
       </button>
     </>

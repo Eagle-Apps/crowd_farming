@@ -6,21 +6,21 @@ const Contact = () => {
       <div className='relative max-h-[500px]'>
         {/* Overlay */}
         <div className='absolute w-full h-[550px] text-gray-200 bg-black/5 flex flex-col justify-center'>
-          <h1 className='px-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-center'>
-            Contact <span className='text-emerald-500'>Us</span>
+          <h1 className='px-4 text-[3rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold text-center text-emerald-100'>
+            Contact Us
           </h1>
           <h1 className='px-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold'>
             {/* <span className='text-orange-500'>New </span> Oil */}
           </h1>
         </div>
         <img
-          className='w-full max-h-[550px] object-cover'
-          src='./images/contactban2.jpg'
+          className='w-full max-h-[500px] object-cover'
+          src='./images/contactban.jpg'
           alt='/'
         />
       </div>
-      <section className='mt-[12rem] text-gray-800'>
-        <h2 class='text-4xl lg:text-5xl font-bold leading-tight text-center'>
+      <section className='mt-[6rem] text-gray-800'>
+        <h2 className='text-4xl lg:text-5xl font-bold leading-tight text-center'>
           Lets talk about everything!
         </h2>
         <div className='container text-gray-800 px-4 md:px-12'>
@@ -65,7 +65,7 @@ const Contact = () => {
                 </form>
               </div>
               <div className='grow-0 shrink-0 basis-auto w-full xl:w-7/12'>
-                <div className='flex flex-wrap'>
+                <div className='flex flex-wrap mt-[6rem] ml-12'>
                   <div className='mb-12 grow-0 shrink-0 basis-auto w-full md:w-6/12 px-3 lg:px-6'>
                     <div className='flex items-start'>
                       <div className='shrink-0'>

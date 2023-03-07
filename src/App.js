@@ -13,6 +13,10 @@ import Nav from './layouts/Nav'
 import Footer from './pages/Footer'
 import { AuthContext } from './context/AuthContext'
 import Farms from './pages/Farms'
+import UserProfile from './pages/UserProfile'
+import Terms from './pages/Terms'
+import Privacy from './pages/Privacy'
+import SingleFarm from './pages/SingleFarm'
 import SingleInvestmentLandOwner from './pages/SingleInvestmentLandOwner'
 import "./main.css";
 
@@ -20,7 +24,7 @@ const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(false)
   // const [test, setTest] = useState(0)
   useEffect(() => {
-    if (localStorage.getItem('ndembeleUserId')) {
+    if (localStorage.getItem('ndembeleAccess')) {
       setIsSignedIn(true)
     }
   }, [])
@@ -35,15 +39,25 @@ const App = () => {
 
         <Route path='/register' element={<Register />} />
 
-        <Route path='/farm' element={<Farms />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
         {/* <Route path='/investment-page' element={<SingleInvestment />} /> */}
         <Route>
           <Route path='/investment' element={<Investments />} />
           <Route path='/investments/:_id' element={<SingleInvestment />} />
-          <Route path='/investment/:id' element={<SingleInvestmentLandOwner />} />
+          {/* <Route path='/investment/:id' element={<SingleInvestmentLandOwner />} /> */}
         </Route>
+
+        <Route>
+          <Route path='/farm' element={<Farms />} />
+          <Route path='/farm/:_id' element={<SingleFarm />} />
+        </Route>
+
+        <Route path='/profile' element={<UserProfile />} />
+
+        <Route path='/terms' element={<Terms />} />
+
+        <Route path='/privacy-settings' element={<Privacy />} />
       </Routes>
 
       <Footer />
