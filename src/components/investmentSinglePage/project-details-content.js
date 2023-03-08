@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from 'react'
 import Tab from 'react-bootstrap/Tab'
 import Tabs from 'react-bootstrap/Tabs'
-import Comments from './tabs/Comments'
-import Faq from './tabs/Faq'
+// import Comments from './tabs/Comments'
+// import Faq from './tabs/Faq'
 import StoryContent from './tabs/StoryContent'
-import Updates from './tabs/Updates'
+// import Updates from './tabs/Updates'
 import { useParams } from 'react-router-dom'
 
 const ProjectDetailsContent = ({ investments }) => {
@@ -142,7 +142,7 @@ const ProjectDetailsContent = ({ investments }) => {
               {/* <ul className='nav nav-pills' id='pills-tab' role='tablist'> */}
               <Tab
                 eventKey='story'
-                title='Story'
+                title='Description'
                 className='nav-item'
                 role='tab'
               >

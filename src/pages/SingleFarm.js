@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import ProjectDetails from '../components/farmSinglePage/project-details'
 import ProjectBanner from '../components/farmSinglePage/project-banner'
 import ProjectDetailsContent from '../components/farmSinglePage/project-details-content'
-import ProjectCard from '../components/farmSinglePage/project-card'
+// import ProjectCard from '../components/farmSinglePage/project-card'
 
 const SingleFarm = () => {
   const [farm, setFarm] = useState(null)
@@ -26,7 +26,7 @@ const SingleFarm = () => {
         <ProjectBanner />
         {farm && <ProjectDetails farm={farm} />}
         <ProjectDetailsContent />
-        <ProjectCard />
+        {/* <ProjectCard /> */}
       </div>
     </>
   )

@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   AiFillFacebook,
-  AiFillInstagram,
   AiFillTwitterCircle,
   AiOutlineWhatsApp,
 } from 'react-icons/ai'
@@ -102,16 +101,18 @@ const ProjectDetails = ({ investments }) => {
     // redirect_url: `http://localhost:3000/investment/${investment?._id}`
   }
 
+  console.log('Config', config)
+
   let handleFlutterPayment = useFlutterwave(config)
   let subscribe = () => {
     let data = {
       investmentId: _id,
       commitment: Number(amount).toLocaleString(),
-      userId: user._id,
     }
     let url = mainUrl + '/subscribe'
     fetch(url, {
       headers: {
+        Authorization: `Bearer ${localStorage.getItem('ndembeleAccess')}`,
         'content-type': 'application/json',
       },
       method: 'POST',
@@ -119,21 +120,21 @@ const ProjectDetails = ({ investments }) => {
     })
       .then((e) => e.json())
       .then((result) => {
-        console.log(result.msg)
-        navigate(`/investment/${_id}`)
+        loadProject()
+        // console.log(result.msg)
+        // console.log('runnnnnnnnnn')
+        // navigate(`/investment/${id.id}`)
       })
+    loadProject()
     setAmount('50000')
   }
+
   let payment = (e) => {
-    let data = {
-      investmentId: _id,
-      amount: amount,
-      transactionRef: e,
-      userId: user._id,
-    }
+    let data = { investmentId: _id, amount: amount, transactionRef: e }
     let url = mainUrl + '/payment'
     fetch(url, {
       headers: {
+        Authorization: `Bearer ${localStorage.getItem('ndembeleAccess')}`,
         'content-type': 'application/json',
       },
       method: 'POST',
@@ -158,12 +159,15 @@ const ProjectDetails = ({ investments }) => {
   }
 
   let checkAmount = (e) => {
+    // console.log(Number(e))
     loadUser()
     let investAmount = investment.available.replaceAll(',', '')
     let startPayment = window.confirm('Are you sure?')
-    if (startPayment && Number(investAmount) >= Number(e)) {
+    if (startPayment && Number(e) < 50000) {
+      alert('Proposed Amount cannot be Less Than 50000')
+    } else if (Number(investAmount) >= Number(e)) {
       pay()
-    } else if (Number(investAmount) << Number(e)) {
+    } else if (Number(investAmount) < Number(e)) {
       alert('Proposed Amount Greater Than Available Investment')
     }
   }
@@ -181,7 +185,7 @@ const ProjectDetails = ({ investments }) => {
                   // src='/assets/single-project-thumb.2959a928.jpg'
                   src={investments.images[0]}
                   alt={investments.title}
-                  className='h-[60vh]'
+                  className='h-[50vh]'
                 />
                 <div className='icon'>
                   <i className='fa fa-heart' />

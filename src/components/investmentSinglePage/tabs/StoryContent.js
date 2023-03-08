@@ -1,7 +1,8 @@
 import React from 'react'
-import { FiCheck, FiCheckCircle } from 'react-icons/fi'
+// import { FiCheck, FiCheckCircle } from 'react-icons/fi'
 
 const StoryContent = ({ investments }) => {
+  console.log('Commitment', investments?.ownerCommitment?.name)
   // console.log('Story', investments.budget)
   return (
     <div
@@ -49,15 +50,15 @@ const StoryContent = ({ investments }) => {
         </ul> */}
         <div className='project-details-thumb'>
           {/* <img src='/assets/project-details-thumb.a427b972.jpg' alt='' /> */}
-          <img src={investments?.images[0]} alt='' />
+          <img src={investments?.images[0]} alt='' className='h-[50vh]' />
         </div>
       </div>
       <div className='project-details-item'>
         <div className='flex flex-col gap-2 mt-4'>
           <span>Terms: {investments?.terms}</span>
           <span> Cycles: {investments?.cycle}</span>
-          <span> Farms: {investments?.ownerCommitment?.name}</span>
-        </div>{' '}
+          <span> Farm: {investments?.ownerCommitment?.name}</span>
+        </div>
         <p>
           {/* Integer feugiat est in tincidunt congue. Nam eget accumsan ligula.
           Nunc auctor ligula a quam fermentum, non iaculis diam suscipit.

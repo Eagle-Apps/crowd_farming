@@ -16,7 +16,7 @@ const StoryContent = () => {
           orci in metus aliquam egestas. Fusce elit libero, imperdiet nec orci
           quis, convallis hendrerit nisl. Cras auctor nec purus at placerat.
         </p>
-        <ul className=''>
+        {/* <ul className=''>
           <li className='flex gap-3'>
             <FiCheck className='mt-3' />
             <span>Nsectetur cing mauris quis risus laoreet elit.</span>
@@ -43,13 +43,18 @@ const StoryContent = () => {
             <FiCheck className='mt-3' />
             <span>Nsectetur cing mauris quis risus laoreet elit.</span>
           </li>
-        </ul>
+        </ul> */}
+
         <div className='project-details-thumb'>
-          <img src='/assets/project-details-thumb.a427b972.jpg' alt='' />
+          <img
+            src='/assets/project-details-thumb.a427b972.jpg'
+            alt=''
+            className='h-[50vh]'
+          />
         </div>
       </div>
       <div className='project-details-item'>
-        <p>
+        {/* <p>
           Integer feugiat est in tincidunt congue. Nam eget accumsan ligula.
           Nunc auctor ligula a quam fermentum, non iaculis diam suscipit.
           Aliquam lacinia lorem vel suscipit pulvinar. Etiam condimentum nunc
@@ -103,7 +108,7 @@ const StoryContent = () => {
           magna eu blandit. Nam sed efficitur ante. Quisque lobortis sodales
           risus, eu dapibus dolor porta vitae. Vestibulum eu ex auctor,
           scelerisque velit sit amet, vehicula sapien.
-        </p>
+        </p> */}
       </div>
     </div>
   )
