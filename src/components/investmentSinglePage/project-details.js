@@ -120,8 +120,9 @@ const ProjectDetails = ({ investments }) => {
     })
       .then((e) => e.json())
       .then((result) => {
-        console.log(result.msg)
-        console.log('runnnnnnnnnn')
+        loadProject()
+        // console.log(result.msg)
+        // console.log('runnnnnnnnnn')
         // navigate(`/investment/${id.id}`)
       })
     loadProject()
