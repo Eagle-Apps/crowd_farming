@@ -19,7 +19,7 @@ const StoryContent = ({ investments }) => {
 
           {investments?.descp}
         </p>
-        <ul className=''>
+        {/* <ul className=''>
           <li className='flex gap-3'>
             <FiCheck className='mt-3' />
             <span>Nsectetur cing mauris quis risus laoreet elit.</span>
@@ -46,24 +46,29 @@ const StoryContent = ({ investments }) => {
             <FiCheck className='mt-3' />
             <span>Nsectetur cing mauris quis risus laoreet elit.</span>
           </li>
-        </ul>
+        </ul> */}
         <div className='project-details-thumb'>
           {/* <img src='/assets/project-details-thumb.a427b972.jpg' alt='' /> */}
           <img src={investments?.images[0]} alt='' />
         </div>
       </div>
       <div className='project-details-item'>
+        <div className='flex flex-col gap-2 mt-4'>
+          <span>Terms: {investments?.terms}</span>
+          <span> Cycles: {investments?.cycle}</span>
+          <span> Farms: {investments?.ownerCommitment?.name}</span>
+        </div>{' '}
         <p>
-          Integer feugiat est in tincidunt congue. Nam eget accumsan ligula.
+          {/* Integer feugiat est in tincidunt congue. Nam eget accumsan ligula.
           Nunc auctor ligula a quam fermentum, non iaculis diam suscipit.
           Aliquam lacinia lorem vel suscipit pulvinar. Etiam condimentum nunc
           non ultricies hendrerit. Sed nec blandit libero, ut gravida quam. Nam
           tortor est, faucibus at dolor id, blandit venenatis leo. Praesent
           euismod tempus libero et accumsan. Nunc ultrices sit amet urna sed
           euismod. Pellentesque finibus ipsum non mi sodales, vel ullamcorper
-          ipsum pharetra. Praesent nec pharetra neque.
+          ipsum pharetra. Praesent nec pharetra neque. */}
         </p>
-        <div className='item flex gap-5'>
+        {/* <div className='item flex gap-5'>
           <span>
             <FiCheckCircle size={30} />
           </span>
@@ -74,8 +79,8 @@ const StoryContent = ({ investments }) => {
               lorem is simply free text quis bibendum.
             </p>
           </div>
-        </div>
-        <div className='item flex gap-5'>
+        </div> */}
+        {/* <div className='item flex gap-5'>
           <span>
             <FiCheckCircle size={30} />
           </span>
@@ -86,20 +91,22 @@ const StoryContent = ({ investments }) => {
               lorem is simply free text quis bibendum.
             </p>
           </div>
-        </div>
+        </div> */}
         <div className='row'>
           <div className='col-lg-6 col-md-6 col-sm-6'>
             <div className='project-details-thumb'>
-              <img src='/assets/project-details-1.41b346ac.jpg' alt='' />
+              {/* <img src='/assets/project-details-1.41b346ac.jpg' alt='' /> */}
+              <img src={investments?.images[0]} alt='' className='w-full' />
             </div>
           </div>
           <div className='col-lg-6 col-md-6 col-sm-6'>
             <div className='project-details-thumb'>
-              <img src='/assets/project-details-2.35f078dd.jpg' alt='' />
+              {/* <img src='/assets/project-details-2.35f078dd.jpg' alt='' /> */}
+              <img src={investments?.images[0]} alt='' className='w-full' />
             </div>
           </div>
         </div>
-        <p className='text'>
+        {/* <p className='text'>
           Nulla in ex at mi viverra sagittis ut non erat raesent nec congue
           elit. Nunc arcu odio, convallis a lacinia ut, tristique id eros.
           Suspendisse leo erat, pellentesque et commodo vel, varius in felis.
@@ -107,7 +114,7 @@ const StoryContent = ({ investments }) => {
           magna eu blandit. Nam sed efficitur ante. Quisque lobortis sodales
           risus, eu dapibus dolor porta vitae. Vestibulum eu ex auctor,
           scelerisque velit sit amet, vehicula sapien.
-        </p>
+        </p> */}
       </div>
     </div>
   )

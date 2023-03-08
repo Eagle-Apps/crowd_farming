@@ -52,6 +52,7 @@ const ProjectDetails = ({ investments }) => {
       },
     })
       .then((e) => {
+        console.log(e)
         if (!e.status === 200) {
           return updateAccessToken()
         } else {
@@ -83,7 +84,7 @@ const ProjectDetails = ({ investments }) => {
   }
 
   const config = {
-    public_key: 'FLWPUBK_TEST-21cc0116b2bd6553bc6a06119aa2c3c2-X',
+    public_key: 'FLWPUBK_TEST-4a929b9f2a420b56df76d4c612c2cba8-X',
     tx_ref: Date.now(),
     amount: amount,
     currency: 'NGN',
@@ -95,7 +96,7 @@ const ProjectDetails = ({ investments }) => {
     },
     customizations: {
       title: `Payment for Investment on Ndembele (${investment?.title})`,
-      description: `Payment for Investment ${investment?.title}`,
+      description: `Payment for Investment ${investment?.title} by ${user.name}`,
       logo: 'https://ndembele-admin.vercel.app/static/media/NDEMBELE1.dcd65b71.png',
     },
     // redirect_url: `http://localhost:3000/investment/${investment?._id}`
@@ -145,7 +146,7 @@ const ProjectDetails = ({ investments }) => {
   }
 
   let pay = async () => {
-    loadUser()
+    // loadUser()
     handleFlutterPayment({
       callback: async (response) => {
         subscribe()
@@ -180,7 +181,7 @@ const ProjectDetails = ({ investments }) => {
                   // src='/assets/single-project-thumb.2959a928.jpg'
                   src={investments.images[0]}
                   alt={investments.title}
-                  className='h-[85vh]'
+                  className='h-[60vh]'
                 />
                 <div className='icon'>
                   <i className='fa fa-heart' />

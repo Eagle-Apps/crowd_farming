@@ -152,7 +152,7 @@ const InvestmentSignUpModal = () => {
         method: 'POST',
         headers: new Headers({
           Authorization: `Bearer ${token}`,
-          'Content-Type': 'multipart/form-data',
+          // 'Content-Type': 'multipart/form-data',
         }),
         // headers:{
         //   "Content-Type": "multipart/form-data",

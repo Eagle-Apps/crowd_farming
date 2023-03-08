@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import ProjectDetails from '../components/investmentSinglePage/project-details'
 import ProjectBanner from '../components/investmentSinglePage/project-banner'
 import ProjectDetailsContent from '../components/investmentSinglePage/project-details-content'
-import ProjectCard from '../components/investmentSinglePage/project-card'
+// import ProjectCard from '../components/investmentSinglePage/project-card'
 
 const SingleInvestment = () => {
   const [investment, setInvestment] = useState(null)
@@ -36,7 +36,7 @@ const SingleInvestment = () => {
         {investment && <ProjectDetails investments={investment} />}
         <ProjectDetailsContent investments={investment} />
 
-        <ProjectCard />
+        {/* <ProjectCard /> */}
       </div>
 
       {/* {investments && (

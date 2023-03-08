@@ -86,11 +86,12 @@ const FarmSignUpModal = () => {
         method: 'POST',
         headers: new Headers({
           Authorization: `Bearer ${token}`,
-          'Content-Type': 'multipart/form-data',
+          // 'Content-Type': 'multipart/form-data',
         }),
         body: formData,
       })
 
+      console.log('Token', token)
       // const responseData = await res.json()
       console.log(res)
       if (res.ok) {
