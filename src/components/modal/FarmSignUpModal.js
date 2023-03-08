@@ -98,6 +98,7 @@ const FarmSignUpModal = () => {
         toast.success('Registration Successful !', {
           position: toast.POSITION.TOP_CENTER,
         })
+
         // console.log('Register Investment Successful')
       } else {
         // throw new Error(data.message)
@@ -169,7 +170,7 @@ const FarmSignUpModal = () => {
                   Eligendi nam dolorum aliquam, quibusdam aperiam voluptatum.
                 </p>
 
-                <ToastContainer />
+                <ToastContainer className='mt-[9rem]' />
 
                 <form
                   className='mt-8 grid grid-cols-6 gap-6'

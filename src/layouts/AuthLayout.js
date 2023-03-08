@@ -1,4 +1,4 @@
-import { GiBlackcurrant } from 'react-icons/gi'
+// import { GiBlackcurrant } from 'react-icons/gi'
 import { Link } from 'react-router-dom'
 
 const AuthLayout = ({ title = '', children }) => {
@@ -10,9 +10,9 @@ const AuthLayout = ({ title = '', children }) => {
 
           <div className='space-y-8 p-9'>
             <Link to='/' className='flex items-center space-x-3'>
-              <GiBlackcurrant className='w-9 h-9 md:w-12 md:h-12 text-emerald-600' />
+              {/* <GiBlackcurrant className='w-9 h-9 md:w-12 md:h-12 text-emerald-600' /> */}
               <div>
-                <p className='inline text-xl md:text-2xl uppercase font-bold leading-[0.5rem]'>
+                {/* <p className='inline text-xl md:text-2xl uppercase font-bold leading-[0.5rem]'>
                   Ndem<span className='font-[300]'>bele</span>
                 </p>
                 <div className='flex items-center space-x-0.5 leading-[0.5rem]'>
@@ -20,18 +20,23 @@ const AuthLayout = ({ title = '', children }) => {
                     Invest in the new oil
                   </span>
                   <hr className='w-5 border-emerald-600' />
-                </div>
+                </div> */}
+                <img
+                  src='./images/logo.png'
+                  alt=''
+                  className='w-[6rem] h-[6rem] md:w-[7rem] md:h-[7rem] '
+                />
               </div>
             </Link>
 
             <div className='space-y-4'>
               <h1 className='text-2xl lg:text-4xl font-semibold'>{title}</h1>
 
-              <p className='font-medium'>
+              <p className='font-medium text-emerald-100'>
                 Discover how to raise funds for your projects and invest in{' '}
                 <br className='hidden lg:inline-block xl:hidden' /> projects.
                 Crowd Farming helps <br className='hidden xl:inline-block' /> to
-                connect projects to investors{' '}
+                connect projects to investors
                 <br className='hidden lg:inline-block xl:hidden' /> to boost
                 productivity
               </p>
@@ -49,7 +54,7 @@ const AuthLayout = ({ title = '', children }) => {
                 ))}
               </div>
 
-              <p className='font-medium text-sm'>
+              <p className='font-medium text-sm text-emerald-50'>
                 More than 2k people have invested, it's your turn
               </p>
             </div>

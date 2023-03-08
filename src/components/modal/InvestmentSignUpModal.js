@@ -118,7 +118,7 @@ const InvestmentSignUpModal = () => {
     const formData = new FormData()
     // formData.append('ownerId', ownerId)
     formData.append('title', title)
-    formData.append('description', descp)
+    formData.append('descp', descp)
     formData.append('phone', phone)
     formData.append('budget', budget)
     formData.append('terms', terms)
@@ -237,7 +237,7 @@ const InvestmentSignUpModal = () => {
                   Eligendi nam dolorum aliquam, quibusdam aperiam voluptatum.
                 </p>
 
-                <ToastContainer />
+                <ToastContainer className='mt-[9rem]' />
 
                 <form
                   className='mt-8 grid grid-cols-6 gap-6'

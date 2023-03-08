@@ -73,12 +73,12 @@ const Login = () => {
   return (
     <AuthLayout
       title={
-        <>
+        <div className='text-emerald-100'>
           Welcome back to <br /> Crowd Farming
-        </>
+        </div>
       }
     >
-      <h3 className='text-center text-2xl font-semibold text-gray-700'>
+      <h3 className='text-center text-2xl mt-[5rem] font-semibold text-gray-600'>
         Login to Account
       </h3>
       <p className='text-center text-[1.5rem] mt-2 mb-10'>
@@ -90,7 +90,7 @@ const Login = () => {
           Invalid email or password
         </div>
       )} */}
-      <ToastContainer />
+      <ToastContainer className='mt-[9rem]' />
 
       <form className='space-y-5' onSubmit={handleLogin}>
         <div>

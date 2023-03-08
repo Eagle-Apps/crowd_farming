@@ -22,6 +22,14 @@ const Profile = () => {
   const [farms, setFarms] = useState([])
   // const [farmId, setFarmId] = useState([])
 
+  useEffect(() => {
+    setLoading(true)
+    userData()
+    subscribeUser()
+    investmentsUser()
+    farmsUser()
+  }, [])
+
   const userData = () => {
     myAxios('/user')
       .then((user) => {
@@ -87,14 +95,6 @@ const Profile = () => {
         console.log(error)
       })
   }
-
-  useEffect(() => {
-    setLoading(true)
-    userData()
-    subscribeUser()
-    investmentsUser()
-    farmsUser()
-  }, [])
 
   // console.log(userData)
 
@@ -289,7 +289,9 @@ const Profile = () => {
                 <ul value={invests} className='grid grid-cols-2 ml-4'>
                   {invests?.map((invest) => (
                     <Link to={`/investment/${invest._id}`} key={invest._id}>
-                      <li className='cursor-pointer ml-4'>{invest.title}</li>
+                      <li key={invest._id} className='cursor-pointer ml-4'>
+                        {invest.title}
+                      </li>
                     </Link>
                   ))}
                 </ul>
@@ -304,7 +306,7 @@ const Profile = () => {
                   &nbsp; FARMS CREATED
                 </span>
               </div>
-       
+
               <div className='col-md-12'>
                 {/* <label className='labels'>Farm Name</label> */}
                 {/* <input
@@ -317,7 +319,9 @@ const Profile = () => {
                 <ul value={farms} className='flex flex-col ml-4'>
                   {farms?.map((farm) => (
                     <Link to={`/farm/${farm._id}`} key={farm._id}>
-                      <li className='cursor-pointer ml-4 '>{farm.name}</li>
+                      <li key={farm._id} className='cursor-pointer ml-4 '>
+                        {farm.name}
+                      </li>
                     </Link>
                   ))}
                 </ul>

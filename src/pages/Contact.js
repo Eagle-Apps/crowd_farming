@@ -6,8 +6,8 @@ const Contact = () => {
       <div className='relative max-h-[500px]'>
         {/* Overlay */}
         <div className='absolute w-full h-[550px] text-gray-200 bg-black/5 flex flex-col justify-center'>
-          <h1 className='px-4 text-[3rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold text-center text-emerald-100'>
-            Contact Us
+        <h1 className='px-4 text-4xl text-emerald-100 sm:text-5xl md:text-6xl lg:text-7xl font-bold'>
+            Contact <span>Us</span>
           </h1>
           <h1 className='px-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold'>
             {/* <span className='text-orange-500'>New </span> Oil */}

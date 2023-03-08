@@ -121,14 +121,14 @@ const Register = () => {
         </>
       }
     >
-      <h3 className='text-center text-xl font-semibold text-gray-700'>
+      <h3 className='text-center text-[1.6rem] mt-[6rem] font-semibold text-gray-700'>
         Create New Account
       </h3>
-      <p className='text-center text-sm mt-2 mb-10'>
+      <p className='text-center text-xl mt-2 mb-10'>
         Create an account to start investing in crowd farming projects
       </p>
 
-      <ToastContainer />
+      <ToastContainer className='mt-[9rem]' />
 
       <form className='space-y-5' onSubmit={handleRegister}>
         <div>

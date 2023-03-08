@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
@@ -14,30 +14,36 @@ const Nav = () => {
   const navigate = useNavigate()
   const { isSignedIn, setIsSignedIn } = useContext(AuthContext)
 
+  const [activeLink, setActiveLink] = useState('Home')
+
+  const handleFieldClick = (field) => {
+    setActiveLink(field)
+  }
+
   // console.log(isSignedIn)
 
-  // const links = [
-  //   {
-  //     name: 'Home',
-  //     to: '/',
-  //   },
-  //   {
-  //     name: 'Investments',
-  //     to: '/investment',
-  //   },
-  //   {
-  //     name: 'Return',
-  //     to: '#how-it-work',
-  //   },
-  //   {
-  //     name: 'Contact Us',
-  //     to: '/contact',
-  //   },
-  //   {
-  //     name: 'About Us',
-  //     to: '/about',
-  //   },
-  // ]
+  const links = [
+    {
+      name: 'Home',
+      path: '/',
+    },
+    {
+      name: 'Investments',
+      path: '/investment',
+    },
+    {
+      name: 'Farm',
+      path: '/farm',
+    },
+    {
+      name: 'Contact Us',
+      path: '/contact',
+    },
+    {
+      name: 'About Us',
+      path: '/about',
+    },
+  ]
 
   // console.log(localStorage.getItem('ndembeleUserId'))
 
@@ -56,7 +62,7 @@ const Nav = () => {
       <Container className='flex items-center justify-between py-2 xl:py-0'>
         <div className='flex items-center space-x-12'>
           <Link to='/' className='flex items-center space-x-3'>
-            <GiBlackcurrant className='w-9 h-9 md:w-12 md:h-12 text-emerald-600' />
+            {/* <GiBlackcurrant className='w-9 h-9 md:w-12 md:h-12 text-emerald-600' />
             <div>
               <p className='inline text-xl md:text-2xl uppercase font-bold leading-[0.5rem]'>
                 Ndem<span className='font-[300]'>bele</span>
@@ -67,35 +73,48 @@ const Nav = () => {
                 </span>
                 <hr className='w-5 border-emerald-600' />
               </div>
-            </div>
+            </div> */}
+            <img
+                  src='./images/logo.png'
+                  alt=''
+                  className='w-[6rem] h-[6rem] md:w-[7rem] md:h-[7rem] '
+                />
           </Link>
 
-          {/* <div className='space-x-4 xl:space-x-8 hidden md:block'>
-            {links.map((link, ind) => (
+          <div className='space-x-4 xl:space-x-8 hidden md:block'>
+            {links.map((link) => (
               <Link
-                to={link.to}
-                key={ind}
-                className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'
+                onClick={() => handleFieldClick(link.name)}
+                to={link.path}
+                key={link.name}
+                className={`transition-all duration-300 text-xl font-medium py-2 xl:py-3 hover:text-emerald-400 ${
+                  activeLink === link.name
+                    ? 'text-emerald-600 border-b-2 border-yellow-400'
+                    : 'hover:text-emerald-400'
+                }`}
               >
                 {link.name}
               </Link>
-            ))} */}
+            ))}
 
-          <div className='space-x-4 xl:space-x-8 hidden md:block'>
+            {/* <div className='space-x-4 xl:space-x-8 hidden md:block'>
             <Link
+              onClick={() => handleFieldClick('Home')}
               to='/'
-              className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'
+              className={`transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600 ${
+                activeField === 'Home' ? 'border-bottom text-emerald-500' : ''
+              }`}
             >
               Home
             </Link>
-            {/* {isSignedIn && ( */}
+
             <Link
               to='/investment'
               className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'
             >
               Investments
             </Link>
-            {/* )} */}
+
             <Link
               to='/farm'
               className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'
@@ -113,7 +132,7 @@ const Nav = () => {
               className='transition-all duration-300 font-medium py-2 xl:py-3 hover:text-emerald-600'
             >
               Contact us
-            </Link>
+            </Link> */}
           </div>
         </div>
         {/* {checkUser() ? (
@@ -257,7 +276,7 @@ const Nav = () => {
                 <div className=''>
                   <Menu.Item>
                     <Link
-                      to='/#personal'
+                      to='/'
                       className='block transition-all duration-300 font-medium py-2 hover:text-emerald-600'
                     >
                       Home
