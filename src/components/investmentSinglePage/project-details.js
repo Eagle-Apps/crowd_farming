@@ -106,11 +106,11 @@ const ProjectDetails = ({ investments }) => {
     let data = {
       investmentId: _id,
       commitment: Number(amount).toLocaleString(),
-      userId: user._id,
     }
     let url = mainUrl + '/subscribe'
     fetch(url, {
       headers: {
+        Authorization: `Bearer ${localStorage.getItem('ndembeleAccess')}`,
         'content-type': 'application/json',
       },
       method: 'POST',
@@ -119,20 +119,19 @@ const ProjectDetails = ({ investments }) => {
       .then((e) => e.json())
       .then((result) => {
         console.log(result.msg)
-        navigate(`/investment/${_id}`)
+        console.log('runnnnnnnnnn')
+        // navigate(`/investment/${id.id}`)
       })
+    loadProject()
     setAmount('50000')
   }
+
   let payment = (e) => {
-    let data = {
-      investmentId: _id,
-      amount: amount,
-      transactionRef: e,
-      userId: user._id,
-    }
+    let data = { investmentId: _id, amount: amount, transactionRef: e }
     let url = mainUrl + '/payment'
     fetch(url, {
       headers: {
+        Authorization: `Bearer ${localStorage.getItem('ndembeleAccess')}`,
         'content-type': 'application/json',
       },
       method: 'POST',
@@ -157,7 +156,7 @@ const ProjectDetails = ({ investments }) => {
   }
 
   let checkAmount = (e) => {
-    console.log(Number(e))
+    // console.log(Number(e))
     loadUser()
     let investAmount = investment.available.replaceAll(',', '')
     let startPayment = window.confirm('Are you sure?')

@@ -2,6 +2,7 @@ import React from 'react'
 // import { FiCheck, FiCheckCircle } from 'react-icons/fi'
 
 const StoryContent = ({ investments }) => {
+  console.log('Commitment', investments?.ownerCommitment?.name)
   // console.log('Story', investments.budget)
   return (
     <div
@@ -56,7 +57,7 @@ const StoryContent = ({ investments }) => {
         <div className='flex flex-col gap-2 mt-4'>
           <span>Terms: {investments?.terms}</span>
           <span> Cycles: {investments?.cycle}</span>
-          <span> Farms: {investments?.ownerCommitment?.name}</span>
+          <span> Farm: {investments?.ownerCommitment?.name}</span>
         </div>
         <p>
           {/* Integer feugiat est in tincidunt congue. Nam eget accumsan ligula.

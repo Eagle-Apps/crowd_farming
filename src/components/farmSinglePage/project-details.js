@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React from 'react'
 import {
   AiFillFacebook,
@@ -8,11 +9,16 @@ import {
 
 const ProjectDetails = ({ farm }) => {
   const icons = [
-    AiFillFacebook,
-    AiFillInstagram,
-    AiFillTwitterCircle,
-    AiOutlineWhatsApp,
+    { icon: AiFillFacebook, share: 'https://www.facebook.com/sharer.php?u=' },
+    {
+      icon: AiFillTwitterCircle,
+      share: 'https://twitter.com/intent/tweet/?url=',
+    },
+    { icon: AiOutlineWhatsApp, share: 'https://wa.me/?text=' },
   ]
+
+  const URL = window.location.href.slice(7)
+  
   console.log('From project banner', farm)
 
   return (
@@ -35,7 +41,7 @@ const ProjectDetails = ({ farm }) => {
           <div className='col-lg-5'>
             <div className='project-details-content'>
               <div className='details-btn'>
-                <span>Subscribe</span>
+                {/* <span>Subscribe</span> */}
                 <div className='flag'>
                   <img src='/assets/flag.3de87ccd.png' alt='' className='' />
                   <p>Nigeria</p>
@@ -43,8 +49,8 @@ const ProjectDetails = ({ farm }) => {
               </div>
               <h3 className='title'>{farm.name}</h3>
               <div className='project-details-item'>
-                <div className='item text-center w-[5rem]'>
-                  <h5 className='title'>{farm.phone}</h5>
+                <div className='item text-center'>
+                  <h6 className=''>{farm.phone}</h6>
                   <span>Phone Number</span>
                 </div>
                 {/* <div className='item text-center'>
@@ -70,21 +76,22 @@ const ProjectDetails = ({ farm }) => {
                   Goal: <span>3600.00 </span>
                 </span>
               </div>
-              <div className='project-btn mt-25'>
+              {/* <div className='project-btn mt-25'>
                 <a
                   className='main-btn'
                   href='https://krowd-nextjs.vercel.app/single-project#'
                 >
                   Back this project
                 </a>
-              </div>
+              </div> */}
               <div className='project-share d-flex align-items-center'>
                 <span>Share this Project</span>
                 <ul>
                   {icons.map((Icon, ind) => (
                     <li key={ind}>
-                      <a href='https://krowd-nextjs.vercel.app/single-project#'>
-                        <Icon />
+                      {/* <a href='https://krowd-nextjs.vercel.app/single-project#'> */}
+                      <a href={Icon.share + URL}>
+                        <Icon.icon />
                       </a>
                     </li>
                   ))}

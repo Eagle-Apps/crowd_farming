@@ -15,7 +15,7 @@ const Profile = () => {
   const [email, setEmail] = useState('')
   const [address, setAddress] = useState('')
   const [userName, setUserName] = useState('')
-  const [userActive, setUserActive] = useState('')
+  // const [userActive, setUserActive] = useState('')
   // const [commitment, setCommitment] = useState('')
   const [project, setProject] = useState([])
   const [invests, setInvests] = useState([])
@@ -30,7 +30,7 @@ const Profile = () => {
         setEmail(user.data.email)
         setAddress(user.data.address)
         setUserName(user.data.userName)
-        setUserActive(user.data.status)
+        // setUserActive(user.data.status)
         // setUserData(user.data)
         // console.log(user.data)
         setLoading(false)
@@ -195,7 +195,7 @@ const Profile = () => {
                   />
                 </div> */}
 
-                <div className='col-span-6'>
+                {/* <div className='col-span-6'>
                   <label className='labels'>Status</label>
                   <input
                     type='text'
@@ -204,7 +204,7 @@ const Profile = () => {
                     onChange={(e) => setUserActive(e.target.value)}
                     disabled
                   />
-                </div>
+                </div> */}
               </div>
               {/* <div className='mt-5 text-center'>
                 <button className='' type='button'>
@@ -234,9 +234,9 @@ const Profile = () => {
                 />
               </div> */}
               {/* <br /> */}
-              <div className='col-md-12'>
-                <label className='labels'>
-                  PROJECTS A USER HAS INVESTED IN
+              <div className='col-md-12 ml-4'>
+                <label className='labels text-emerald-500'>
+                  PROJECTS INVESTED IN
                 </label>
 
                 {/* <input
@@ -248,28 +248,35 @@ const Profile = () => {
                 /> */}
                 <ul value={project}>
                   {project?.map((pro) => (
-                    <>
-                      <li>{pro.investmentId.title}</li>
-                      <div>Commitment</div>
-                      <li>{pro.commitment}</li>
-                      <br />
-                    </>
+                    <div className='flex gap-4'>
+                      <div className='mt-3'>
+                        <h5>Title</h5>
+                        <li>{pro.investmentId.title}</li>
+                      </div>
+
+                      <div className='mt-3'>
+                        <h5>Commitment</h5>
+                        <li>{pro.commitment}</li>
+                      </div>
+
+                      {/* <br /> */}
+                    </div>
                   ))}
                 </ul>
               </div>
             </div>
 
             <div className='pr-2 ml-4'>
-              <div className='d-flex justify-content-between align-items-center experience'>
+              <div className=''>
                 {/* <span>Edit Experience</span> */}
                 {/* <Link to={`/investment/${investId}`} key={investId}> */}
-                <span className='border px-3 cursor-pointer'>
+                <span className=' px-3 text-emerald-500'>
                   {/* <i className='fa fa-plus' /> */}
-                  &nbsp; PROJECTS USER CREATED
+                  &nbsp; PROJECTS CREATED
                 </span>
                 {/* </Link> */}
               </div>
-              <br />
+              {/* <br /> */}
               <div className='col-md-12'>
                 {/* <label className='labels'>Investment Name</label> */}
                 {/* <input
@@ -279,7 +286,7 @@ const Profile = () => {
                   onChange={(e) => setInvests(e.target.value)}
                   disabled
                 /> */}
-                <ul value={invests}>
+                <ul value={invests} className='grid grid-cols-2 ml-4'>
                   {invests?.map((invest) => (
                     <Link to={`/investment/${invest._id}`} key={invest._id}>
                       <li className='cursor-pointer ml-4'>{invest.title}</li>
@@ -292,12 +299,12 @@ const Profile = () => {
 
             <div className='pr-2 ml-4'>
               <div className='d-flex justify-content-between align-items-center experience'>
-                <span className='border px-3 p-1 add-experience cursor-pointer'>
+                <span className='px-3 p-1 text-emerald-500'>
                   {/* <i className='fa fa-plus' /> */}
-                  &nbsp; FARMS A USER CREATED
+                  &nbsp; FARMS CREATED
                 </span>
               </div>
-              <br />
+       
               <div className='col-md-12'>
                 {/* <label className='labels'>Farm Name</label> */}
                 {/* <input
@@ -307,10 +314,10 @@ const Profile = () => {
                   onChange={(e) => setFarms(e.target.value)}
                   disabled
                 /> */}
-                <ul value={farms}>
+                <ul value={farms} className='flex flex-col ml-4'>
                   {farms?.map((farm) => (
                     <Link to={`/farm/${farm._id}`} key={farm._id}>
-                      <li className='cursor-pointer ml-4'>{farm.name}</li>
+                      <li className='cursor-pointer ml-4 '>{farm.name}</li>
                     </Link>
                   ))}
                 </ul>
