@@ -148,7 +148,7 @@ const ProjectDetailsContent = ({ investments }) => {
               >
                 <StoryContent investments={investments} />
               </Tab>
-              <Tab eventKey='faqs' title='FAQS' role='tab'>
+              {/* <Tab eventKey='faqs' title='FAQS' role='tab'>
                 <Faq />
               </Tab>
               <Tab eventKey='updates' title='UPDATES'>
@@ -156,7 +156,7 @@ const ProjectDetailsContent = ({ investments }) => {
               </Tab>
               <Tab eventKey='comments' title='COMMENTS' role='tab'>
                 <Comments />
-              </Tab>
+              </Tab> */}
             </Tabs>
             <div className='tab-content' id='pills-tabContent'></div>
           </div>

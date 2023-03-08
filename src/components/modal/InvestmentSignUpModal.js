@@ -2,23 +2,25 @@
 import React, { useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate } from 'react-router-dom'
 
 import { Loader } from '../../utils/utils'
-
+import myAxios from '../../utils/token'
 
 const InvestmentSignUpModal = () => {
   const [loading, setLoading] = useState(false)
-  const navigate = useNavigate();
-
+  const navigate = useNavigate()
 
   const [showModal, setShowModal] = useState(false)
 
-  const getItemLocalStorage = localStorage.getItem('ndembeleAccess')
-  const ownerId = (getItemLocalStorage)
+  // const getItemLocalStorage = localStorage.getItem('ndembeleAccess')
+  const token = localStorage.getItem('ndembeleAccess')
+  // const ownerId = getItemLocalStorage
 
   const [categoryOptions, setCategoryOptions] = useState([])
+  const [farms, setFarms] = useState([])
+
+  // console.log('Farms', farms)
 
   // Fetching category options
   // useEffect(() => {
@@ -27,14 +29,35 @@ const InvestmentSignUpModal = () => {
   //     .then((data) => setCategoryOptions(data))
   // }, [])
 
+  const farmsUser = () => {
+    myAxios('/farms-user')
+      .then((farmUser) => {
+        setFarms(farmUser.data.map((user) => user))
+        // setFarmId(farmUser.data.map((userId) => userId._id))
+
+        console.log(
+          'FarmUser',
+          farmUser.data.map((user) => user)
+        )
+
+        // console.log('farmUser', farmUser.data)
+        setLoading(false)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   useEffect(() => {
     const categoryUrl = 'https://ndembele.onrender.com/category'
     const fetchData = async () => {
       const response = await fetch(categoryUrl)
       const data = await response.json()
+      // console.log('Data', data)
       setCategoryOptions(data)
     }
     fetchData()
+    farmsUser()
   }, [])
 
   const [investmentData, setInvestmentData] = useState({
@@ -44,9 +67,11 @@ const InvestmentSignUpModal = () => {
     budget: '',
     terms: '',
     roi: '',
-    ownerCommitment: '',
+    ownerCommitment: '63f5e549f46e5904240f8553',
     images: [],
     category: '63e3c390f0fea8fb1ab01e7b',
+    cycle: '',
+    duration: '',
   })
 
   const {
@@ -59,6 +84,8 @@ const InvestmentSignUpModal = () => {
     ownerCommitment,
     images,
     category,
+    cycle,
+    duration,
   } = investmentData
 
   const handleInputChange = (event) => {
@@ -89,7 +116,7 @@ const InvestmentSignUpModal = () => {
     // console.log(formData)
 
     const formData = new FormData()
-    formData.append('ownerId', ownerId)
+    // formData.append('ownerId', ownerId)
     formData.append('title', title)
     formData.append('description', descp)
     formData.append('phone', phone)
@@ -98,6 +125,8 @@ const InvestmentSignUpModal = () => {
     formData.append('roi', roi)
     formData.append('ownerCommitment', ownerCommitment)
     formData.append('category', category)
+    formData.append('cycle', cycle)
+    formData.append('duration', duration)
 
     images.forEach((image) => {
       formData.append('images', image)
@@ -105,9 +134,8 @@ const InvestmentSignUpModal = () => {
 
     console.log('Form data:', {
       title,
-      ownerId,
+      // ownerId,
       descp,
-      
       phone,
       budget,
       terms,
@@ -115,11 +143,20 @@ const InvestmentSignUpModal = () => {
       ownerCommitment,
       category,
       images,
+      cycle,
+      duration,
     })
 
     try {
       const res = await fetch('https://ndembele.onrender.com/investment', {
         method: 'POST',
+        headers: new Headers({
+          Authorization: `Bearer ${token}`,
+          // 'Content-Type': 'multipart/form-data',
+        }),
+        // headers:{
+        //   "Content-Type": "multipart/form-data",
+        // },
         body: formData,
       })
 
@@ -150,15 +187,14 @@ const InvestmentSignUpModal = () => {
   }
   return (
     <div>
-     <button
+      <button
         className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'
         onClick={() => {
-          if (ownerId != null) {
+          if (token != null) {
             setShowModal(true)
           } else {
-            navigate("/login");
+            navigate('/login')
           }
-
         }}
       >
         Create Investment
@@ -219,6 +255,7 @@ const InvestmentSignUpModal = () => {
                       type='text'
                       id='title'
                       name='title'
+                      placeholder='Title'
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
                       value={title}
                       onChange={handleInputChange}
@@ -238,6 +275,7 @@ const InvestmentSignUpModal = () => {
                       type='tel'
                       id='phone'
                       name='phone'
+                      placeholder='Phone Number'
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
                       value={phone}
                       onChange={handleInputChange}
@@ -257,6 +295,7 @@ const InvestmentSignUpModal = () => {
                       type='number'
                       id='budget'
                       name='budget'
+                      placeholder='budget'
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
                       value={budget}
                       onChange={handleInputChange}
@@ -276,7 +315,48 @@ const InvestmentSignUpModal = () => {
                       type='text'
                       id='roi'
                       name='roi'
+                      placeholder='Return of investment'
                       value={roi}
+                      className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
+                      onChange={handleInputChange}
+                      // onChange={(event) => setRoi(event.target.value)}
+                    />
+                  </div>
+
+                  <div className='col-span-6 sm:col-span-3'>
+                    <label
+                      htmlFor='cycle'
+                      className='block text-2xl font-bold text-white'
+                    >
+                      Cycle
+                    </label>
+
+                    <input
+                      type='text'
+                      id='cycle'
+                      name='cycle'
+                      placeholder='the number of expected months for a project e.g 12 months                      '
+                      value={cycle}
+                      className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
+                      onChange={handleInputChange}
+                      // onChange={(event) => setRoi(event.target.value)}
+                    />
+                  </div>
+
+                  <div className='col-span-6 sm:col-span-3'>
+                    <label
+                      htmlFor='duration'
+                      className='block text-2xl font-bold text-white'
+                    >
+                      Duration
+                    </label>
+
+                    <input
+                      type='text'
+                      id='duration'
+                      name='duration'
+                      placeholder='number of days an investment is available e.g 50 days'
+                      value={duration}
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
                       onChange={handleInputChange}
                       // onChange={(event) => setRoi(event.target.value)}
@@ -294,6 +374,7 @@ const InvestmentSignUpModal = () => {
                     <textarea
                       id='descp'
                       name='descp'
+                      placeholder='investment description'
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
                       value={descp}
                       onChange={handleInputChange}
@@ -312,6 +393,7 @@ const InvestmentSignUpModal = () => {
                     <textarea
                       id='terms'
                       name='terms'
+                      placeholder='Terms'
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
                       value={terms}
                       onChange={handleInputChange}
@@ -324,20 +406,23 @@ const InvestmentSignUpModal = () => {
                       htmlFor='ownerCommitment'
                       className='block text-2xl font-bold text-white'
                     >
-                      Commitment
+                      Farm
                     </label>
 
-                    <input
-                      type='text'
+                    <select
                       id='ownerCommitment'
                       name='ownerCommitment'
-                      value={ownerCommitment}
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
+                      value={ownerCommitment._id}
                       onChange={handleInputChange}
-                      // onChange={(event) =>
-                      //   setOwnerCommitment(event.target.value)
-                      // }
-                    />
+                      // onChange={(event) => setCategory(event.target.value)}
+                    >
+                      {farms.map((farm) => (
+                        <option key={farm._id} value={farm._id}>
+                          {farm.name}
+                        </option>
+                      ))}
+                    </select>
                   </div>
 
                   <div className='col-span-6 sm:col-span-3'>
@@ -386,12 +471,15 @@ const InvestmentSignUpModal = () => {
                   <div className='col-span-6'>
                     <p className='text-xl text-white'>
                       By creating an Investment, you agree to our &nbsp;
-                      <a href='#' className='text-blue-500 underline'>
+                      <a href='/terms' className='text-blue-500 underline'>
                         terms and conditions &nbsp;
                       </a>
                       and &nbsp;
-                      <a href='#' className='text-blue-500 underline'>
-                        privacy policy
+                      <a
+                        href='/privacy-settings'
+                        className='text-blue-500 underline'
+                      >
+                        privacy setting
                       </a>
                       .
                     </p>

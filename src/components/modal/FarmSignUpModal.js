@@ -13,8 +13,9 @@ const FarmSignUpModal = () => {
 
   const [showModal, setShowModal] = useState(false)
 
-  const getItemLocalStorage = localStorage.getItem('ndembeleAccess')
-  const userId = getItemLocalStorage
+  // const getItemLocalStorage = localStorage.getItem('ndembeleAccess')
+  // const userId = getItemLocalStorage
+  const token = localStorage.getItem('ndembeleAccess')
 
   const [categoryOptions, setCategoryOptions] = useState([])
 
@@ -59,7 +60,7 @@ const FarmSignUpModal = () => {
     // console.log(formData)
 
     const formData = new FormData()
-    formData.append('userId', userId)
+    // formData.append('userId', userId)
     formData.append('name', name)
     formData.append('address', address)
     formData.append('phone', phone)
@@ -73,7 +74,7 @@ const FarmSignUpModal = () => {
 
     console.log('Form data:', {
       name,
-      userId,
+      // userId,
       address,
       phone,
       category,
@@ -83,9 +84,14 @@ const FarmSignUpModal = () => {
     try {
       const res = await fetch('https://ndembele.onrender.com/farm', {
         method: 'POST',
+        headers: new Headers({
+          Authorization: `Bearer ${token}`,
+          // 'Content-Type': 'multipart/form-data',
+        }),
         body: formData,
       })
 
+      console.log('Token', token)
       // const responseData = await res.json()
       console.log(res)
       if (res.ok) {
@@ -116,7 +122,7 @@ const FarmSignUpModal = () => {
       <button
         className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'
         onClick={() => {
-          if (userId != null) {
+          if (token != null) {
             setShowModal(true)
           } else {
             navigate('/login')
@@ -181,6 +187,7 @@ const FarmSignUpModal = () => {
                       type='text'
                       id='name'
                       name='name'
+                      placeholder='Name of Farm'
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
                       value={name}
                       onChange={handleInputChange}
@@ -200,6 +207,7 @@ const FarmSignUpModal = () => {
                       type='tel'
                       id='phone'
                       name='phone'
+                      placeholder='Phone Number'
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
                       value={phone}
                       onChange={handleInputChange}
@@ -217,6 +225,7 @@ const FarmSignUpModal = () => {
                     <textarea
                       id='address'
                       name='address'
+                      placeholder='Address of Farm'
                       className='mt-1 w-full rounded-md border-gray-200 bg-white text-gray-700 shadow-sm py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
                       value={address}
                       onChange={handleInputChange}
@@ -268,12 +277,15 @@ const FarmSignUpModal = () => {
                   <div className='col-span-6'>
                     <p className='text-xl text-white'>
                       By creating an Investment, you agree to our &nbsp;
-                      <a href='#' className='text-blue-500 underline'>
+                      <a href='terms' className='text-blue-500 underline'>
                         terms and conditions &nbsp;
                       </a>
                       and &nbsp;
-                      <a href='#' className='text-blue-500 underline'>
-                        privacy policy
+                      <a
+                        href='/privacy-settings'
+                        className='text-blue-500 underline'
+                      >
+                        privacy setting
                       </a>
                       .
                     </p>
