@@ -2,7 +2,7 @@
 import React from 'react'
 import {
   AiFillFacebook,
-  AiFillInstagram,
+  // AiFillInstagram,
   AiFillTwitterCircle,
   AiOutlineWhatsApp,
 } from 'react-icons/ai'

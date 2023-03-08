@@ -101,6 +101,8 @@ const ProjectDetails = ({ investments }) => {
     // redirect_url: `http://localhost:3000/investment/${investment?._id}`
   }
 
+  console.log('Config', config)
+
   let handleFlutterPayment = useFlutterwave(config)
   let subscribe = () => {
     let data = {
