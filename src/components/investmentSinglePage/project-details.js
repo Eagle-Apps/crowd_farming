@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-pascal-case */
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   AiFillFacebook,
   AiFillInstagram,
@@ -13,6 +14,7 @@ const ProjectDetails = ({ investments }) => {
   let [mainUrl] = useState('https://ndembele.onrender.com')
   const [investment, setInvestment] = useState(null)
   const [user, setUser] = useState({})
+  const navigate = useNavigate()
 
   const { _id } = useParams()
   const [showModal, setShowModal] = useState(false)
@@ -25,11 +27,9 @@ const ProjectDetails = ({ investments }) => {
     },
     { icon: AiOutlineWhatsApp, share: 'https://wa.me/?text=' },
   ]
-
   useEffect(() => {
     loadProject()
     loadUser()
-    // updateAccessToken()
   }, [])
 
   let loadProject = () => {
@@ -46,31 +46,25 @@ const ProjectDetails = ({ investments }) => {
 
   let loadUser = () => {
     let url = mainUrl + '/user'
-    // console.log(url)
     fetch(url, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('ndembeleAccess')}`,
       },
-      credentials: 'same-origin',
     })
-      .then((e) => e.json())
-      .then((res) => {
-        console.log(res)
-        if (
-          res.msg === 'Unauthorized User' ||
-          res.msg === 'Invalid Authentication.'
-        ) {
-          updateAccessToken()
+      .then((e) => {
+        if (!e.status === 200) {
+          return updateAccessToken()
         } else {
-          // console.log('testing', res)
-          setUser(res)
+          return e.json()
         }
+      })
+      .then((res) => {
+        setUser(res)
       })
   }
 
   let updateAccessToken = () => {
     let token = localStorage.getItem('ndembeleRefresh')
-    // console.log('Token', token)
     let url = mainUrl + '/refresh'
     fetch(url, {
       headers: {
@@ -81,7 +75,6 @@ const ProjectDetails = ({ investments }) => {
     })
       .then((e) => e.json())
       .then((result) => {
-        console.log(result)
         if (result.msg === 'Access token created successfully') {
           localStorage.setItem('ndembeleAccess', result.accessToken)
           loadUser()
@@ -109,13 +102,15 @@ const ProjectDetails = ({ investments }) => {
   }
 
   let handleFlutterPayment = useFlutterwave(config)
-
   let subscribe = () => {
-    let data = { investmentId: _id, commitment: amount }
+    let data = {
+      investmentId: _id,
+      commitment: Number(amount).toLocaleString(),
+      userId: user._id,
+    }
     let url = mainUrl + '/subscribe'
     fetch(url, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('ndembeleAccess')}`,
         'content-type': 'application/json',
       },
       method: 'POST',
@@ -123,18 +118,21 @@ const ProjectDetails = ({ investments }) => {
     })
       .then((e) => e.json())
       .then((result) => {
-        console.log(result)
+        console.log(result.msg)
+        navigate(`/investment/${_id}`)
       })
     setAmount('50000')
   }
-
   let payment = (e) => {
-    console.log(e)
-    let data = { investmentId: _id, amount: amount, transactionRef: e }
+    let data = {
+      investmentId: _id,
+      amount: amount,
+      transactionRef: e,
+      userId: user._id,
+    }
     let url = mainUrl + '/payment'
     fetch(url, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('ndembeleAccess')}`,
         'content-type': 'application/json',
       },
       method: 'POST',
@@ -142,25 +140,24 @@ const ProjectDetails = ({ investments }) => {
     })
       .then((e) => e.json())
       .then((result) => {
-        console.log(result)
+        console.log('Payment Successful')
       })
   }
 
-  let pay = () => {
+  let pay = async () => {
+    loadUser()
     handleFlutterPayment({
       callback: async (response) => {
-        // console.log(response);
-        await subscribe()
-        await payment(response.data.flw_ref)
+        subscribe()
+        payment(response.tx_ref)
         closePaymentModal() // this will close the modal programmatically
       },
-      onClose: () => {
-        subscribe()
-      },
+      // onClose: () => {  }
     })
   }
 
   let checkAmount = (e) => {
+    loadUser()
     let investAmount = investment.available.replaceAll(',', '')
     let startPayment = window.confirm('Are you sure?')
     if (startPayment && Number(investAmount) >= Number(e)) {

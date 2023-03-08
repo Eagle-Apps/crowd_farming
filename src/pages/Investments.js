@@ -125,7 +125,7 @@ const Investment = () => {
                     </p>
                   </div>
                   <p className='px-5 font-normal text-gray-700'>
-                    {investment.descp.substring(0, 60)}...
+                    {investment?.descp?.substring(0, 60)}...
                   </p>
                   <p className='px-5 font-normal text-gray-700'>
                     {investment.budget}
