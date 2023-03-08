@@ -26,7 +26,7 @@ const SingleFarm = () => {
         <ProjectBanner />
         {farm && <ProjectDetails farm={farm} />}
         <ProjectDetailsContent />
-        <ProjectCard />
+        {/* <ProjectCard /> */}
       </div>
     </>
   )

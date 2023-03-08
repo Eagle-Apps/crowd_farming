@@ -25,7 +25,7 @@ const ProjectDetails = ({ farm }) => {
                 // src='/assets/single-project-thumb.2959a928.jpg'
                 src={farm.images[0]}
                 alt={farm.name}
-                className='h-[85vh]'
+                className='h-[50vh]'
               />
               <div className='icon'>
                 <i className='fa fa-heart' />
@@ -43,7 +43,7 @@ const ProjectDetails = ({ farm }) => {
               </div>
               <h3 className='title'>{farm.name}</h3>
               <div className='project-details-item'>
-                <div className='item text-center'>
+                <div className='item text-center w-[5rem]'>
                   <h5 className='title'>{farm.phone}</h5>
                   <span>Phone Number</span>
                 </div>
