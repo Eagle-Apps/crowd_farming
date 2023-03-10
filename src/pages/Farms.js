@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import Hero from '../components/Hero'
+import Hero from '../layouts/Hero'
 import FarmSignUpModal from '../components/modal/FarmSignUpModal'
 import CardSkeleton from '../utils/card-Skeleton'
 

@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import Hero from '../components/Hero'
+import Hero from '../layouts/Hero'
 import InvestmentSignUpModal from '../components/modal/InvestmentSignUpModal'
 import CardSkeleton from '../utils/card-Skeleton'
+import { Container } from '../utils/utils'
 // import { AuthContext } from '../context/AuthContext'
 
 // import { data } from '../data/data'
@@ -44,7 +45,7 @@ const Investment = () => {
       <Hero />
 
       <div className='max-w-[1740px] m-auto px-[4rem] py-12 '>
-        <h1 className='text-orange-600 font-bold text-4xl text-center mt-[2rem]'>
+        <h1 className='text-emerald-600 font-bold text-4xl text-center mt-[2rem]'>
           All Investments
         </h1>
         {/* Filter Row */}
@@ -99,44 +100,58 @@ const Investment = () => {
           </div>
         </div>
         {/* Display foods */}
-        <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4 shadow bg-slate-300 border-gray-500 overflow-hidden'>
-          {loading ? (
-            <>
-              <CardSkeleton />
-            </>
-          ) : res.length > 0 ? (
-            res.map((investment) => (
-              <Link to={`/investment/${investment._id}`} key={investment._id}>
-                <div
-                  // key={investment._id}
-                  className='border shadow-lg rounded-lg hover:scale-105 duration-300 cursor-pointer'
-                >
-                  <img
-                    src={investment.images[0]}
-                    alt={investment.title}
-                    className='w-full h-[200px] object-cover rounded-t-lg'
-                  />
-                  <div className='flex justify-between px-2 py-4'>
-                    <p className='font-bold'>{investment.title}</p>
-                    <p>
-                      <span className='text-white p-1 '>
-                        {investment.category.map((item) => item.title)}
-                      </span>
+        <Container className='mt-[2rem] '>
+          <div className='pt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6'>
+            {loading ? (
+              <>
+                <CardSkeleton />
+              </>
+            ) : res.length > 0 ? (
+              res.map((investment) => (
+                <Link to={`/investment/${investment._id}`} key={investment._id}>
+                  <div
+                    // key={investment._id}
+                    // className='border shadow-sm rounded-lg hover:scale-105 duration-300 cursor-pointer'
+                    className='w-2/3 mx-auto md:w-full bg-white transition-all hover:scale-105 duration-300 cursor-pointer border border-gray-200 border-opacity-50 rounded-3xl p-4 lg:p-8 text-center flex flex-col space-y-8 shadow-xl'
+                  >
+                    <div className='flex items-center justify-center'>
+                      <img
+                        src={investment.images[0]}
+                        alt={investment.title}
+                        className='w-full h-[200px] object-cover rounded-t-lg'
+                      />
+                    </div>
+                    {/* <div className='flex justify-between px-2 py-4'>
+                      <p className='font-bold'>{investment.title}</p>
+                      <p>
+                        <span className='text-white p-1 '>
+                          {investment.category.map((item) => item.title)}
+                     
+                        </span>
+                      </p>
+                    </div> */}
+                    <h3 className='text-xl lg:text-2xl font-bold text-emerald-900'>
+                      {investment.title}
+                    </h3>
+                    <p className='max-w-lg text-lg text-emerald-900'>
+                      {investment?.descp?.substring(0, 40)}...
                     </p>
+                    <div className='flex justify-between px-2 py-4'>
+                      <p className='font-bold text-emerald-900'>
+                        {investment.category.map((item) => item.title)}
+                      </p>
+                      {/* <p className='px-5 font-normal text-gray-700'>
+                        {investment.budget}
+                      </p> */}
+                    </div>
                   </div>
-                  <p className='px-5 font-normal text-gray-700'>
-                    {investment?.descp?.substring(0, 60)}...
-                  </p>
-                  <p className='px-5 font-normal text-gray-700'>
-                    {investment.budget}
-                  </p>
-                </div>
-              </Link>
-            ))
-          ) : (
-            <p>No Investment</p>
-          )}
-        </div>
+                </Link>
+              ))
+            ) : (
+              <p>No Investment</p>
+            )}
+          </div>
+        </Container>
       </div>
     </div>
   )

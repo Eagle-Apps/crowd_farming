@@ -1,4 +1,4 @@
-import { css, StyleSheet } from 'aphrodite'
+// import { css, StyleSheet } from 'aphrodite'
 import { HiBeaker } from 'react-icons/hi2'
 import { Link as RouterLink } from 'react-router-dom'
 // import { ToastContainer, toast } from 'react-toastify'
@@ -29,29 +29,29 @@ export const Container = ({ children, className }) => {
   )
 }
 
-const styles = StyleSheet.create({
-  fadeInDown: {
-    animationName: {
-      from: {
-        opacity: 0,
-        transform: 'translate3d(0, -20px, 0)',
-      },
-      to: {
-        opacity: 1,
-        transform: 'none',
-      },
-    },
-    animationDuration: '0.5s',
-  },
-})
+// const styles = StyleSheet.create({
+//   fadeInDown: {
+//     animationName: {
+//       from: {
+//         opacity: 0,
+//         transform: 'translate3d(0, -20px, 0)',
+//       },
+//       to: {
+//         opacity: 1,
+//         transform: 'none',
+//       },
+//     },
+//     animationDuration: '0.5s',
+//   },
+// })
 
-export const PageAnimation = (props) => {
-  return (
-    <div id='top-page' className={css(styles.fadeInDown)}>
-      {props.children}
-    </div>
-  )
-}
+// export const PageAnimation = (props) => {
+//   return (
+//     <div id='top-page' className={css(styles.fadeInDown)}>
+//       {props.children}
+//     </div>
+//   )
+// }
 
 export const LogoLink = ({ url = '/' }) => {
   return (

@@ -1,24 +1,26 @@
 import React from 'react'
+import { Container } from '../utils/utils'
 
 const Contact = () => {
   return (
     <div className='max-w-[1640px] bg-slate-500'>
-      <div className='relative max-h-[500px]'>
-        {/* Overlay */}
-        <div className='absolute w-full h-[550px] text-gray-200 bg-black/5 flex flex-col justify-center'>
-        <h1 className='px-4 text-4xl text-emerald-100 sm:text-5xl md:text-6xl lg:text-7xl font-bold'>
-            Contact <span>Us</span>
-          </h1>
-          <h1 className='px-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold'>
-            {/* <span className='text-orange-500'>New </span> Oil */}
-          </h1>
+      <section className='w-full h-[40rem] overflow-hidden bg-[#f2f3f9] wow fadeInUp'>
+      <div
+        className='relative bg-cover bg-no-repeat bg-white/5 bg-[top_95px_right] md:bg-[top_45px_right] lg:bg-[top_75px_right]'
+        style={{ backgroundImage: "url('/images/contactban.jpg')" }}
+      >
+        <div className='pt-[150px] pb-[250px] xl:pb-[200px]'>
+          <Container className='pt-5 flex flex-col md:flex-row md:items-center space-y-6 md:space-y-0 md:space-x-4 lg:space-x-0 lg:justify-between relative z-10'>
+            <div className='mt-[8rem]'>
+              
+              <h1 className='text-5xl lg:text-6xl xl:text-7xl font-bold text-emerald-100'>
+                Contact Us
+              </h1>
+            </div>
+          </Container>
         </div>
-        <img
-          className='w-full max-h-[500px] object-cover'
-          src='./images/contactban.jpg'
-          alt='/'
-        />
       </div>
+    </section>
       <section className='mt-[6rem] text-gray-800'>
         <h2 className='text-4xl lg:text-5xl font-bold leading-tight text-center'>
           Lets talk about everything!

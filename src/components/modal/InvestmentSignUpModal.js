@@ -188,7 +188,7 @@ const InvestmentSignUpModal = () => {
   return (
     <div>
       <button
-        className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'
+        className='m-1 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white'
         onClick={() => {
           if (token != null) {
             setShowModal(true)

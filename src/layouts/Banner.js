@@ -33,6 +33,7 @@ const Banner = () => {
             alt=''
           />
         </div>
+        
 
         <div className='pt-[150px] pb-[250px] xl:pb-[200px]'>
           <Container className='pt-5 flex flex-col md:flex-row md:items-center space-y-6 md:space-y-0 md:space-x-4 lg:space-x-0 lg:justify-between relative z-10'>
