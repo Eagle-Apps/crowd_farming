@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FcGoogle } from 'react-icons/fc'
 import { RiFacebookCircleFill } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
@@ -14,6 +14,26 @@ const Register = () => {
   const navigate = useNavigate()
 
   const [loading, setLoading] = useState(false)
+
+  const [countries, setCountries] = useState([])
+
+  console.log(countries)
+
+  useEffect(() => {
+    fetch('https://api.countrystatecity.in/v1/countries', {
+      headers: {
+        'X-CSCAPI-KEY': 'your_api_key_here',
+      },
+    })
+      .then((response) => response.json())
+      .then((responseData) => {
+        setCountries(responseData)
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }, [])
+
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
@@ -22,21 +42,43 @@ const Register = () => {
     phone: '',
     userName: '',
     address: '',
+    confirmPassword: '',
+    country: '',
+    terms: false,
   })
 
-  const { firstname, lastname, address, phone, userName, email, password } =
-    formData
+  const {
+    firstname,
+    lastname,
+    address,
+    phone,
+    userName,
+    email,
+    password,
+    confirmPassword,
+    country,
+    terms,
+  } = formData
 
   const handleChange = (e) => {
+    const { name, value, type, checked } = e.target
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      // [e.target.name]: e.target.value,
+      [name]: type === 'checkbox' ? checked : value,
     })
   }
 
   const handleRegister = async (e) => {
     e.preventDefault()
     setLoading(true)
+
+    const { confirmPassword, terms, ...data } = formData
+
+    if (password !== confirmPassword) {
+      alert('Passwords do not match')
+      return
+    }
 
     // Checking for password Length
     if (password.length < 8) {
@@ -64,7 +106,7 @@ const Register = () => {
     try {
       const response = await fetch('https://ndembele.onrender.com/register', {
         method: 'POST',
-        body: JSON.stringify(formData),
+        body: JSON.stringify(data),
         headers: {
           'Content-type': 'application/json',
         },
@@ -88,6 +130,8 @@ const Register = () => {
           email: '',
           password: '',
           userName: '',
+          confirmPassword: '',
+          terms: false,
         })
       } else {
         // throw new Error(data.message)
@@ -181,6 +225,48 @@ const Register = () => {
 
         <div>
           <Input
+            label={'Confirm Password'}
+            id='confirmPassword'
+            type='password'
+            name='confirmPassword'
+            placeholder='Enter Confirm password'
+            value={confirmPassword}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div>
+          {/* <label>
+           Country:
+           <select
+             name='country'
+             value={country}
+             onChange={handleChange}
+           >
+             <option value=''>Select a country</option>
+             {countries?.map((country) => (
+               <option key={country.iso2} value={country.name}>
+                 {country.name}
+               </option>
+             ))}
+           </select>
+         </label> */}
+        </div>
+
+        <div>
+          <Input
+            label={'Address'}
+            id='address'
+            type='textarea'
+            name='address'
+            placeholder='Enter your Address'
+            value={address}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div>
+          <Input
             label={'Phone No:'}
             id='number'
             type='number'
@@ -204,19 +290,13 @@ const Register = () => {
         </div>
 
         <div>
-          <Input
-            label={'Address'}
-            id='address'
-            type='textarea'
-            name='address'
-            placeholder='Enter your Address'
-            value={address}
+          <Checkbox
+            name='terms'
+            id='remember'
+            checked={terms}
             onChange={handleChange}
+            label='I agree to privacy policy & terms'
           />
-        </div>
-
-        <div>
-          <Checkbox id='remember' label='I agree to privacy policy & terms' />
         </div>
 
         <PrimaryButton type='submit'>
@@ -230,7 +310,7 @@ const Register = () => {
           <hr className='w-12' />
         </div>
 
-        <div className='flex items-center space-x-4 lg:space-x-2 xl:space-x-4 text-sm font-semibold'>
+        {/* <div className='flex items-center space-x-4 lg:space-x-2 xl:space-x-4 text-sm font-semibold'>
           <SecondaryButton as='a' href='#auth-google'>
             <FcGoogle className='h-5 w-5 lg:w-4 lg:h-4 xl:h-5 xl:w-5' />
 
@@ -246,7 +326,7 @@ const Register = () => {
               Continue with Facebook
             </span>
           </SecondaryButton>
-        </div>
+        </div> */}
 
         <p className='text-sm text-center'>
           Already have an account? <Link href='/login'>Login</Link>

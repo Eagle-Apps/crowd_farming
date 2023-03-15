@@ -139,7 +139,7 @@ const FarmSignUpModal = () => {
       )}
 
       {showModal && (
-        <section className='fixed top-[20%] left-[25%] bg-slate-600 z-10 overflow-y-auto w-[50vw] h-[80vh]'>
+        <section className='fixed top-[20%] left-[25%] bg-emerald-600 z-10 overflow-y-auto w-[50vw] h-[80vh]'>
           <div className=' lg:min-h-screen'>
             <main
               aria-label='Main'

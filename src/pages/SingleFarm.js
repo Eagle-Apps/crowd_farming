@@ -23,7 +23,7 @@ const SingleFarm = () => {
   return (
     <>
       <div>
-        <ProjectBanner />
+        {/* <ProjectBanner /> */}
         {farm && <ProjectDetails farm={farm} />}
         <ProjectDetailsContent />
         {/* <ProjectCard /> */}
