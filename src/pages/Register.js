@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { FcGoogle } from 'react-icons/fc'
-import { RiFacebookCircleFill } from 'react-icons/ri'
+// import dotenv from 'dotenv'
+// import { FcGoogle } from 'react-icons/fc'
+// import { RiFacebookCircleFill } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import { PrimaryButton, SecondaryButton } from '../components/buttons'
+import { PrimaryButton } from '../components/buttons'
 import { Checkbox, Input } from '../components/field'
 import { Link, Loader } from '../utils/utils'
 import AuthLayout from '../layouts/AuthLayout'
@@ -17,12 +18,12 @@ const Register = () => {
 
   const [countries, setCountries] = useState([])
 
-  console.log(countries)
+  // console.log(countries)
 
   useEffect(() => {
     fetch('https://api.countrystatecity.in/v1/countries', {
       headers: {
-        'X-CSCAPI-KEY': 'your_api_key_here',
+        'X-CSCAPI-KEY': 'NnhWVDAxU1pFVkNFN0I2UHVCd2NwRG5IS2dlVVc2TVlYa1lQYUhvRQ==',
       },
     })
       .then((response) => response.json())
@@ -236,21 +237,22 @@ const Register = () => {
         </div>
 
         <div>
-          {/* <label>
-           Country:
-           <select
-             name='country'
-             value={country}
-             onChange={handleChange}
-           >
-             <option value=''>Select a country</option>
-             {countries?.map((country) => (
-               <option key={country.iso2} value={country.name}>
-                 {country.name}
-               </option>
-             ))}
-           </select>
-         </label> */}
+          <label className='block text-gray-700 font-bold mb-2'>
+            Country <span className='text-red-500'>*</span>
+          </label>
+          <select
+            name='country'
+            value={country}
+            onChange={handleChange}
+            className='w-full transition-all duration-300 p-3 text-2xl border-gray-300 focus:border-indigo-500 focus:ring-indigo-500/20 rounded-md'
+          >
+            <option value={country.name}>Select a country</option>
+            {countries?.map((country) => (
+              <option key={country.iso2} value={country.name}>
+                {country.name}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div>
