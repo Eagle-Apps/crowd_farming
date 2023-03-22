@@ -71,10 +71,9 @@ const Footer = () => {
           </div>
         </div>
 
-       
         <div className='mt-[3rem]'>
           <p className='text-center text-emerald-50 uppercase text-[1rem] md:text-base'>
-            &copy; 2023 Your Ndembele. All rights reserved.
+            &copy; 2023 Ndembele. All rights reserved.
           </p>
         </div>
       </div>
