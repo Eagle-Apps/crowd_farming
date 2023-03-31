@@ -1,11 +1,9 @@
 import React, { useState, useContext } from 'react'
-import { FcGoogle } from 'react-icons/fc'
-import { RiFacebookCircleFill } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import { PrimaryButton, SecondaryButton } from '../components/buttons'
+import { PrimaryButton } from '../components/buttons'
 import { Checkbox, Input } from '../components/field'
 import { Link, Loader } from '../utils/utils'
 import AuthLayout from '../layouts/AuthLayout'

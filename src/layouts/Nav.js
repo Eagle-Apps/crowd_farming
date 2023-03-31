@@ -4,7 +4,6 @@ import { Menu, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 // import { AiOutlineDashboard } from 'react-icons/ai'
 import { HiMenu } from 'react-icons/hi'
-import { GiBlackcurrant } from 'react-icons/gi'
 import { Link, useNavigate } from 'react-router-dom'
 import { Container } from '../utils/utils'
 
@@ -77,8 +76,8 @@ const Nav = () => {
                 key={link.name}
                 className={`transition-all duration-300 text-xl font-medium py-2 xl:py-3 hover:text-emerald-400 ${
                   activeLink === link.name
-                    ? 'text-emerald-600 border-b-2 border-yellow-400'
-                    : 'hover:text-emerald-400'
+                    ? 'text-[#0f7508] border-b-2 border-[#bf9000]'
+                    : 'hover:text-[#277508]'
                 }`}
               >
                 {link.name}
@@ -92,14 +91,14 @@ const Nav = () => {
             <>
               <Link
                 to='/profile'
-                className='transition-all duration-300 px-3 lg:px-4 xl:px-8 font-medium py-2 xl:py-3 text-emerald-600 hover:text-gray-500'
+                className='transition-all duration-300 px-3 lg:px-4 xl:px-8 font-medium py-2 xl:py-3 text-[#0f7508] hover:text-gray-500'
               >
                 Profile
               </Link>
 
               <button
                 onClick={handleSignOut}
-                className='transition-all duration-300 px-3 lg:px-4 xl:px-8 font-medium py-2 xl:py-3 text-emerald-600 hover:text-emerald-500 bg-emerald-600 text-white rounded-md focus:outline-none hover:bg-emerald-700 focus:ring focus:border-emerald-500 focus:ring-emerald-500/50'
+                className='transition-all duration-300 px-3 lg:px-4 xl:px-8 font-medium py-2 xl:py-3 hover:text-emerald-500 bg-[#0f7508] text-white rounded-md focus:outline-none hover:bg-emerald-700 focus:ring focus:border-emerald-500 focus:ring-emerald-500/50'
               >
                 Logout
               </button>
@@ -115,7 +114,7 @@ const Nav = () => {
 
               <Link
                 to='/register'
-                className='transition-all duration-300 px-3 lg:px-4 xl:px-8 font-medium py-2 xl:py-3 bg-emerald-600 text-white rounded-md focus:outline-none hover:bg-emerald-700 focus:ring focus:border-emerald-500 focus:ring-emerald-500/50'
+                className='transition-all duration-300 px-3 lg:px-4 xl:px-8 font-medium py-2 xl:py-3 bg-[#0f7508] text-white rounded-md focus:outline-none hover:bg-emerald-700 focus:ring focus:border-emerald-500 focus:ring-emerald-500/50'
               >
                 Sign Up
               </Link>

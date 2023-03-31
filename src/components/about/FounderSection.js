@@ -17,26 +17,26 @@ const FounderSection = () => {
               <div className='team-thumb'>
                 <img src='assets/team-1.66a07c6a.jpg' alt='team' />
                 <div className='share'>
-                  <BiShareAlt size={20} />
+                  <BiShareAlt size={20} className='fa' />
                   <ul>
                     <li>
                       <a href='https://krowd-nextjs.vercel.app/about#'>
-                        <FaTwitter />
+                        <FaTwitter className='fa' />
                       </a>
                     </li>
                     <li>
                       <a href='https://krowd-nextjs.vercel.app/about#'>
-                        <FaFacebookSquare />
+                        <FaFacebookSquare className='fa' />
                       </a>
                     </li>
                     <li>
                       <a href='https://krowd-nextjs.vercel.app/about#'>
-                        <FaPinterest />
+                        <FaPinterest className='fa'/>
                       </a>
                     </li>
                     <li>
                       <a href='https://krowd-nextjs.vercel.app/about#'>
-                        <FaInstagram />
+                        <FaInstagram className='fa' />
                       </a>
                     </li>
                   </ul>
@@ -53,26 +53,26 @@ const FounderSection = () => {
               <div className='team-thumb'>
                 <img src='assets/team-2.654ed381.jpg' alt='team' />
                 <div className='share'>
-                  <i className='fa fa-share-alt' />
+                  <BiShareAlt size={20} className='fa' />
                   <ul>
                     <li>
                       <a href='https://krowd-nextjs.vercel.app/about#'>
-                        <i className='fa fa-twitter' />
+                        <FaTwitter className='fa' />
                       </a>
                     </li>
                     <li>
                       <a href='https://krowd-nextjs.vercel.app/about#'>
-                        <i className='fa fa-facebook-official' />
+                        <FaFacebookSquare className='fa' />
                       </a>
                     </li>
                     <li>
                       <a href='https://krowd-nextjs.vercel.app/about#'>
-                        <i className='fa fa-pinterest' />
+                        <FaPinterest className='fa'/>
                       </a>
                     </li>
                     <li>
                       <a href='https://krowd-nextjs.vercel.app/about#'>
-                        <i className='fa fa-instagram' />
+                        <FaInstagram className='fa' />
                       </a>
                     </li>
                   </ul>
@@ -89,26 +89,26 @@ const FounderSection = () => {
               <div className='team-thumb'>
                 <img src='assets/team-3.a14d3fa4.jpg' alt='team' />
                 <div className='share'>
-                  <i className='fa fa-share-alt' />
+                  <BiShareAlt size={20} className='fa' />
                   <ul>
                     <li>
                       <a href='https://krowd-nextjs.vercel.app/about#'>
-                        <i className='fa fa-twitter' />
+                        <FaTwitter className='fa' />
                       </a>
                     </li>
                     <li>
                       <a href='https://krowd-nextjs.vercel.app/about#'>
-                        <i className='fa fa-facebook-official' />
+                        <FaFacebookSquare className='fa' />
                       </a>
                     </li>
                     <li>
                       <a href='https://krowd-nextjs.vercel.app/about#'>
-                        <i className='fa fa-pinterest' />
+                        <FaPinterest className='fa'/>
                       </a>
                     </li>
                     <li>
                       <a href='https://krowd-nextjs.vercel.app/about#'>
-                        <i className='fa fa-instagram' />
+                        <FaInstagram className='fa' />
                       </a>
                     </li>
                   </ul>

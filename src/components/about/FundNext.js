@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import { Tab, Tabs } from 'react-bootstrap'
+import { Tab, Tabs, TabContainer } from 'react-bootstrap'
 import History from './tabs/History'
 import Mission from './tabs/Mission'
 import Vision from './tabs/Vision'
@@ -15,12 +15,8 @@ const FundNext = () => {
             <div className='next-big-thing-content'>
               <span>Get to Know Krowd</span>
               <h3 className='title'>Fund the Next Big Thing</h3>
-              {/* <ul className='nav nav-pills' id='pills-tab' role='tablist'> */}
-              <Tabs
-                defaultActiveKey='mission'
-                id='pills-tab '
-                className='tab-content'
-              >
+              {/* <ul className='text-[#0f7508]'> */}
+              <Tabs defaultActiveKey='mission' className='mb-1 text-green-700' >
                 <Tab
                   eventKey='mission'
                   title=' Our Mission'
@@ -30,20 +26,10 @@ const FundNext = () => {
                   <Mission />
                 </Tab>
 
-                <Tab
-                  eventKey='vision'
-                  title=' Our Vision'
-                  className='nav-item nav-link '
-                  role='presentation'
-                >
+                <Tab eventKey='vision' title=' Our Vision'>
                   <Vision />
                 </Tab>
-                <Tab
-                  eventKey='history'
-                  title=' Our History'
-                  className='nav-item nav-link '
-                  role='presentation'
-                >
+                <Tab eventKey='history' title=' Our History'>
                   <History />
                 </Tab>
               </Tabs>

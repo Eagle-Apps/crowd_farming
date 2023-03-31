@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
-    <footer className='bg-emerald-600 text-emerald-50 w-full '>
+    <footer className='bg-[#0f7508] text-emerald-50 w-full '>
       {/* <img
           src='/images/footer-bg.png'
           className='w-full object-center object-cover border-b'

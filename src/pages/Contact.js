@@ -3,7 +3,7 @@ import { Container } from '../utils/utils'
 
 const Contact = () => {
   return (
-    <div className='max-w-[1640px] bg-slate-500'>
+    <div className='max-w-[1640px] bg-[#11AB4C]'>
       <section className='w-full h-[40rem] overflow-hidden bg-[#f2f3f9] wow fadeInUp'>
       <div
         className='relative bg-cover bg-no-repeat bg-white/5 bg-[top_95px_right] md:bg-[top_45px_right] lg:bg-[top_75px_right]'
@@ -60,7 +60,7 @@ const Contact = () => {
 
                   <button
                     type='submit'
-                    className=' w-full px-6 py-6 bg-emerald-600 text-white font-medium text-2xl leading-tight uppercase rounded shadow-md hover:bg-emerald-700 hover:shadow-lg focus:bg-emerald-700 focus:shadow-lg focus:outline-none active:bg-emerald-800 transition duration-150 ease-in-out'
+                    className=' w-full px-6 py-6 bg-[#0f7508] text-white font-medium text-2xl leading-tight uppercase rounded shadow-md hover:bg-emerald-700 hover:shadow-lg focus:bg-emerald-700 focus:shadow-lg focus:outline-none active:bg-emerald-800 transition duration-150 ease-in-out'
                   >
                     Send
                   </button>
@@ -71,7 +71,7 @@ const Contact = () => {
                   <div className='mb-12 grow-0 shrink-0 basis-auto w-full md:w-6/12 px-3 lg:px-6'>
                     <div className='flex items-start'>
                       <div className='shrink-0'>
-                        <div className='p-4 bg-emerald-600 rounded-md shadow-md w-14 h-14 flex items-center justify-center'>
+                        <div className='p-4 bg-[#0f7508] rounded-md shadow-md w-14 h-14 flex items-center justify-center'>
                           <svg
                             aria-hidden='true'
                             focusable='false'
@@ -101,7 +101,7 @@ const Contact = () => {
                   <div className='mb-12 grow-0 shrink-0 basis-auto w-full md:w-6/12 px-3 lg:px-6'>
                     <div className='flex items-start'>
                       <div className='shrink-0'>
-                        <div className='p-4 bg-emerald-600 rounded-md shadow-md w-14 h-14 flex items-center justify-center'>
+                        <div className='p-4 bg-[#0f7508] rounded-md shadow-md w-14 h-14 flex items-center justify-center'>
                           <svg
                             aria-hidden='true'
                             focusable='false'
@@ -131,7 +131,7 @@ const Contact = () => {
                   <div className='mb-12 md:mb-0 grow-0 shrink-0 basis-auto w-full md:w-6/12 px-3 lg:px-6'>
                     <div className='flex align-start'>
                       <div className='shrink-0'>
-                        <div className='p-4 bg-emerald-600 rounded-md shadow-md w-14 h-14 flex items-center justify-center'>
+                        <div className='p-4 bg-[#0f7508] rounded-md shadow-md w-14 h-14 flex items-center justify-center'>
                           <svg
                             aria-hidden='true'
                             focusable='false'
@@ -159,7 +159,7 @@ const Contact = () => {
                   <div className='grow-0 shrink-0 basis-auto w-full md:w-6/12 px-3 lg:px-6'>
                     <div className='flex align-start'>
                       <div className='shrink-0'>
-                        <div className='p-4 bg-emerald-600 rounded-md shadow-md w-14 h-14 flex items-center justify-center'>
+                        <div className='p-4 bg-[#0f7508] rounded-md shadow-md w-14 h-14 flex items-center justify-center'>
                           <svg
                             aria-hidden='true'
                             focusable='false'

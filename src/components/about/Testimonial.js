@@ -31,7 +31,7 @@ const Testimonial = () => {
                       transform: 'translate3d(0px, 0px, 0px)',
                     }}
                   >
-                    <div className='testimonials-box mt-30'>
+                    <div className='testimonials-box mt-10'>
                       <div className='row'>
                         <div className='col-lg-7'>
                           <div className='testimonials-content'>

@@ -34,12 +34,8 @@ const AboutContent = () => {
           </div>
           <div className='col-lg-7'>
             <div className='about-introduction-thumb'>
-              <img
-                src='assets/about-introduction-thumb.27a851a8.jpg'
-                alt=''
-              
-              />
-              <div className='about-introduction-customers'>
+              <img src='assets/about-introduction-thumb.27a851a8.jpg' alt='' />
+              <div className='about-introduction-customers '>
                 <h3 className='title odometer'>
                   <span>8000</span>
                 </h3>
