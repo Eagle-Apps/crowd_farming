@@ -15,11 +15,6 @@ const Investment = () => {
   const [selectedCategory, setSelectedCategory] = useState('')
   // const [data, setData] = useState({ pager: {}, pageOfItems: [] });
   const [loading, setLoading] = useState(true)
-  // const { setIsSignedIn } = useContext(AuthContext)
-
-  // console.log('Investment', investments)
-
-  // console.log('Category', filteredData)
 
   useEffect(() => {
     fetch('https://ndembele.onrender.com/investments')
@@ -51,7 +46,7 @@ const Investment = () => {
     setSelectedCategory(event.target.value)
   }
 
-  console.log('Selected', selectedCategory)
+  // console.log('Selected', selectedCategory)
   // Filter Type burger/pizza/etc
   // const filterType = (category) => {
   //   setInvestments(data.filter((item) => item.category === category))
@@ -62,22 +57,15 @@ const Investment = () => {
       <Hero />
 
       <div className='max-w-[1740px] m-auto px-[4rem] py-12 '>
-        <h1 className='text-emerald-600 font-bold text-4xl text-center mt-[2rem]'>
+        <h1 className='text-[#0f7508] font-bold text-4xl text-center mt-[2rem]'>
           Current Investments ( {investPager.totalItems} )
         </h1>
         {/* Filter Row */}
         <div className='flex flex-col justify-between lg:flex-row'>
           {/* Filter Type */}
-          <div>
-            <p className='font-bold text-gray-700'>Filter Type</p>
+          <div className='ml-10'>
+            <p className='font-bold text-[#bf9000]'>Filter Type</p>
             <div className='flex justify-between flex-wrap'>
-              {/* <button
-                className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'
-                // onClick={() => setInvestments(data)}
-              >
-                All
-              </button> */}
-
               <div>
                 <select
                   value={selectedCategory}
@@ -104,31 +92,6 @@ const Investment = () => {
                   ))}
                 </ul> */}
               </div>
-
-              {/* <button
-                className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'
-                onClick={() => filterType('burger')}
-              >
-                Burgers
-              </button>
-              <button
-                className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'
-                onClick={() => filterType('pizza')}
-              >
-                Pizza
-              </button>
-              <button
-                className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'
-                onClick={() => filterType('salad')}
-              >
-                Salads
-              </button>
-              <button
-                className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'
-                onClick={() => filterType('chicken')}
-              >
-                Chicken
-              </button> */}
             </div>
           </div>
 
@@ -159,14 +122,14 @@ const Investment = () => {
                       />
                     </div>
 
-                    <h3 className='text-xl lg:text-2xl font-bold text-emerald-900'>
+                    <h3 className='text-xl lg:text-2xl font-bold text-[#0f7508]'>
                       {investment.title}
                     </h3>
-                    <p className='max-w-lg text-lg text-emerald-900'>
+                    <p className='max-w-lg text-lg text-[#0f7508]'>
                       {investment?.descp?.substring(0, 40)}...
                     </p>
                     <div className='flex justify-between px-2 py-4'>
-                      <p className='font-bold text-emerald-900'>
+                      <p className='font-bold text-[#0f7508]'>
                         {investment.category.map((item) => item.title)}
                       </p>
                       {/* <p className='px-5 font-normal text-gray-700'>

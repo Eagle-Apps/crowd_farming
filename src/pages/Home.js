@@ -24,29 +24,29 @@ const Home = () => {
 
       <Container className='wow fadeInUp relative -mt-[110px]'>
         <div className='grid grid-cols-2 md:grid-cols-4 gap-4 bg-white border border-gray-200 border-opacity-50 shadow-2xl rounded-xl'>
-          <div className='text-center py-10 lg:py-16 space-y-3 text-emerald-900 font-medium'>
-            <h1 className='text-5xl lg:text-6xl font-semibold text-emerald-600'>
+          <div className='text-center py-10 lg:py-16 space-y-3 text-[#0f7508] font-medium'>
+            <h1 className='text-5xl lg:text-6xl font-semibold text-[#0f7508]'>
               <CountUp end={50} />+
             </h1>
             <p className='text-2xl lg:text-base'>Projects</p>
           </div>
 
-          <div className='text-center py-10 lg:py-16 space-y-3 text-emerald-900 font-medium'>
-            <h1 className='text-5xl lg:text-6xl font-semibold text-emerald-600'>
+          <div className='text-center py-10 lg:py-16 space-y-3 text-[#0f7508] font-medium'>
+            <h1 className='text-5xl lg:text-6xl font-semibold text-[#0f7508]'>
               <CountUp end={25} />%
             </h1>
             <p className='text-2xl lg:text-base'>ROI</p>
           </div>
 
-          <div className='text-center py-10 lg:py-16 space-y-3 text-emerald-900 font-medium'>
-            <h1 className='text-5xl lg:text-6xl font-semibold text-emerald-600'>
+          <div className='text-center py-10 lg:py-16 space-y-3 text-[#0f7508] font-medium'>
+            <h1 className='text-5xl lg:text-6xl font-semibold text-[#0f7508]'>
               <CountUp end={70} />+
             </h1>
             <p className='text-2xl lg:text-base'>Investments</p>
           </div>
 
-          <div className='text-center py-10 lg:py-16 space-y-3 text-emerald-900 font-medium'>
-            <h1 className='text-5xl lg:text-6xl font-semibold text-emerald-600'>
+          <div className='text-center py-10 lg:py-16 space-y-3 text-[#0f7508] font-medium'>
+            <h1 className='text-5xl lg:text-6xl font-semibold text-[#0f7508]'>
               <CountUp end={24} />/<CountUp end={24} />
             </h1>
             <p className='text-2xl lg:text-base'>Payouts</p>
@@ -90,14 +90,14 @@ const Home = () => {
                   className='w-full h-[200px] object-cover rounded-t-lg'
                 />
               </div>
-              <h3 className='text-xl lg:text-2xl font-bold text-emerald-900'>
+              <h3 className='text-xl lg:text-2xl font-bold text-[#0f7508]'>
                 {investment.title}
               </h3>
-              <p className='max-w-lg text-lg text-emerald-900'>
+              <p className='max-w-lg text-lg text-[#bf9000]'>
                 {investment.descp}
               </p>
               <div className='flex justify-between px-2 py-4'>
-                <p className='font-bold text-emerald-900'>
+                <p className='font-bold text-[#0f7508]'>
                   Farm
                   {/* {investment.category.map((item) => item.title)} */}
                 </p>
@@ -122,7 +122,7 @@ const Home = () => {
             <div className='flex items-center justify-center'>
               <img src='/images/global-payment-icon-1.png' alt='' />
             </div>
-            <h3 className='text-xl lg:text-2xl font-bold text-emerald-900'>
+            <h3 className='text-xl lg:text-2xl font-bold text-[#0f7508]'>
               Peace of Mind
             </h3>
             <p className='max-w-lg'>
@@ -135,7 +135,7 @@ const Home = () => {
             <div className='flex items-center justify-center'>
               <img src='/images/global-payment-icon-2.png' alt='' />
             </div>
-            <h3 className='text-xl lg:text-2xl font-bold text-emerald-900'>
+            <h3 className='text-xl lg:text-2xl font-bold text-[#0f7508]'>
               Earn at Ease
             </h3>
             <p className='max-w-lg'>
@@ -148,7 +148,7 @@ const Home = () => {
             <div className='flex items-center justify-center'>
               <img src='/images/global-payment-icon-3.png' alt='' />
             </div>
-            <h3 className='text-xl lg:text-2xl font-bold text-emerald-900'>
+            <h3 className='text-xl lg:text-2xl font-bold text-[#0f7508]'>
               100% Transparent
             </h3>
             <p className='max-w-lg'>
@@ -161,7 +161,7 @@ const Home = () => {
             <div className='flex items-center justify-center'>
               <img src='/images/global-payment-icon-4.png' alt='' />
             </div>
-            <h3 className='text-xl lg:text-2xl font-bold text-emerald-900'>
+            <h3 className='text-xl lg:text-2xl font-bold text-[#0f7508]'>
               International Network
             </h3>
             <p className='max-w-lg'>
@@ -195,10 +195,10 @@ const Home = () => {
             <div className='flex items-center justify-center'>
               <img src='/images/our-solutions-icon-1.png' alt='' />
             </div>
-            <h3 className='text-xl lg:text-2xl font-bold text-emerald-900'>
+            <h3 className='text-xl lg:text-2xl font-bold text-[#0f7508]'>
               Investment
             </h3>
-            <p className='max-w-lg text-lg text-emerald-900'>
+            <p className='max-w-lg text-lg text-[#bf9000]'>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry.
             </p>
@@ -208,10 +208,10 @@ const Home = () => {
             <div className='flex items-center justify-center'>
               <img src='/images/our-solutions-icon-2.png' alt='' />
             </div>
-            <h3 className='text-xl lg:text-2xl font-bold text-emerald-900'>
+            <h3 className='text-xl lg:text-2xl font-bold text-[#0f7508]'>
               Payouts
             </h3>
-            <p className='max-w-lg text-lg text-emerald-900'>
+            <p className='max-w-lg text-lg text-[#bf9000]'>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry.
             </p>
@@ -221,10 +221,10 @@ const Home = () => {
             <div className='flex items-center justify-center'>
               <img src='/images/our-solutions-icon-3.png' alt='' />
             </div>
-            <h3 className='text-xl lg:text-2xl font-bold text-emerald-900'>
+            <h3 className='text-xl lg:text-2xl font-bold text-[#0f7508]'>
               Project Maturity
             </h3>
-            <p className='max-w-lg text-lg text-emerald-900'>
+            <p className='max-w-lg text-lg text-[#bf9000]'>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry.
             </p>
@@ -234,10 +234,10 @@ const Home = () => {
             <div className='flex items-center justify-center'>
               <img src='/images/our-solutions-icon-4.png' alt='' />
             </div>
-            <h3 className='text-xl lg:text-2xl font-bold text-emerald-900'>
+            <h3 className='text-xl lg:text-2xl font-bold text-[#0f7508]'>
               Withdrawal
             </h3>
-            <p className='max-w-lg text-lg text-emerald-900'>
+            <p className='max-w-lg text-lg text-[#bf9000]'>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry.
             </p>
@@ -252,12 +252,12 @@ const Home = () => {
           />
 
           <div className='w-full lg:w-1/2 space-y-8'>
-            <div className='text-emerald-900 space-y-8 mt-28'>
-              <h4 className='text-xl text-emerald-600 lg:text-2xl font-bold'>
+            <div className='text-[#0f7508] space-y-8 mt-28'>
+              <h4 className='text-xl text-[#0f7508] lg:text-2xl font-bold'>
                 App Download
               </h4>
 
-              <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold'>
+              <h1 className='text-[#bf9000] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold'>
                 Fast, Secure projects <br className='hidden lg:block' /> and
                 farms
               </h1>
@@ -268,7 +268,7 @@ const Home = () => {
               </p>
             </div>
 
-            <div className='space-y-5 text-emerald-900'>
+            <div className='space-y-5 text-[#0f7508]'>
               <div className='flex items-center space-x-3 lg:space-x-5'>
                 <img src='/images/check.png' alt='' />
                 <p>

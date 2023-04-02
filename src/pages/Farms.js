@@ -41,16 +41,17 @@ const Farms = () => {
       <Hero />
 
       <div className='max-w-[1740px] m-auto px-[4rem] py-12 '>
-        <h1 className='text-emerald-600 font-bold text-4xl text-center mt-[2rem]'>
+        <h1 className='text-[#0f7508] font-bold text-4xl text-center mt-[2rem]'>
           Current Farms ({farmPager.totalItems})
         </h1>
 
         {/* Filter Row */}
         <div className='flex flex-col justify-between lg:flex-row'>
+          
           {/* Filter Type */}
 
-          <div>
-            <p className='font-bold text-gray-700'>Filter Type</p>
+          <div className='ml-10'>
+            <p className='font-bold text-[#bf9000]'>Filter Type</p>
             <div className='flex justify-between flex-wrap'>
               {/* <button
                 className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'
@@ -104,15 +105,15 @@ const Farms = () => {
                     </div>
 
                     <div className='flex justify-between px-2 py-4'>
-                      <p className='font-bold'>{farm.name}</p>
+                      <p className='font-bold text-[#0f7508]'>{farm.name}</p>
                       <p>
-                        <span className='text-xl lg:text-2xl font-bold text-emerald-900 '>
+                        <span className='text-xl lg:text-2xl font-bold text-[#0f7508] '>
                           {/* {farm.category.map((item) => item.title)} */}
                           {farm.category?.title}
                         </span>
                       </p>
                     </div>
-                    <p className='max-w-lg text-lg text-emerald-900'>
+                    <p className='max-w-lg text-lg text-[#bf9000]'>
                       {farm.address}...
                     </p>
                     {/* <p className='px-5 font-normal text-gray-700 dark:text-gray-400'>
