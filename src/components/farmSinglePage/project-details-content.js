@@ -22,7 +22,7 @@ const ProjectDetailsContent = () => {
               {/* <ul className='nav nav-pills' id='pills-tab' role='tablist'> */}
               <Tab
                 eventKey='story'
-                title='Story'
+                title='Description'
                 className='nav-item'
                 role='tab'
               >

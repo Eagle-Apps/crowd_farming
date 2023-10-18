@@ -32,7 +32,7 @@ const SingleInvestment = () => {
   return (
     <>
       <div>
-      <ProjectBanner />
+      {/* <ProjectBanner /> */}
         {investment && <ProjectDetails investments={investment} />}
         <ProjectDetailsContent investments={investment} />
 

@@ -33,6 +33,7 @@ const Banner = () => {
             alt=''
           />
         </div>
+        
 
         <div className='pt-[150px] pb-[250px] xl:pb-[200px]'>
           <Container className='pt-5 flex flex-col md:flex-row md:items-center space-y-6 md:space-y-0 md:space-x-4 lg:space-x-0 lg:justify-between relative z-10'>
@@ -42,10 +43,10 @@ const Banner = () => {
               alt=''
             />
             <div>
-              <h5 className='font-bold lg:text-xl xl:text-2xl text-emerald-700 mb-3'>
+              <h5 className='font-bold lg:text-xl xl:text-2xl text-[#0f7508] mb-3'>
                 Join over 1million investors
               </h5>
-              <h1 className='text-5xl lg:text-6xl xl:text-7xl font-bold text-emerald-900'>
+              <h1 className='text-5xl lg:text-6xl xl:text-7xl font-bold text-[#0f7508]'>
                 Invest,
                 <br /> Wait, Cashout.
               </h1>
@@ -63,7 +64,7 @@ const Banner = () => {
                 {/* {!checkUser() && ( */}
                 <Link
                   to='/register'
-                  className='lg:text-lg truncate transition-all duration-300 px-3 lg:px-4 xl:px-8 font-bold py-3 bg-emerald-600 text-white rounded-md focus:outline-none hover:bg-emerald-700 focus:ring focus:border-emerald-500 focus:ring-emerald-500/50'
+                  className='lg:text-lg truncate transition-all duration-300 px-3 lg:px-4 xl:px-8 font-bold py-3 bg-[#0f7508] text-white rounded-md focus:outline-none hover:bg-[#bf9000] focus:ring focus:border-emerald-500 focus:ring-emerald-500/50'
                 >
                   Open a Free Account
                 </Link>
@@ -71,7 +72,7 @@ const Banner = () => {
 
                 <Link
                   to='/about'
-                  className='lg:text-lg truncate transition-all duration-300 px-3 lg:px-4 xl:px-8 font-bold py-3 text-emerald-900 border border-emerald-900 rounded-md focus:outline-none hover:text-white hover:bg-emerald-700 focus:ring focus:border-emerald-500 focus:ring-emerald-500/50'
+                  className='lg:text-lg truncate transition-all duration-300 px-3 lg:px-4 xl:px-8 font-bold py-3 text-[#0f7508] border border-emerald-900 rounded-md focus:outline-none hover:text-white hover:bg-[#bf9000] focus:ring focus:border-emerald-500 focus:ring-emerald-500/50'
                 >
                   See How it Works
                 </Link>

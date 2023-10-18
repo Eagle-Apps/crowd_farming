@@ -1,11 +1,9 @@
 import React, { useState, useContext } from 'react'
-import { FcGoogle } from 'react-icons/fc'
-import { RiFacebookCircleFill } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import { PrimaryButton, SecondaryButton } from '../components/buttons'
+import { PrimaryButton } from '../components/buttons'
 import { Checkbox, Input } from '../components/field'
 import { Link, Loader } from '../utils/utils'
 import AuthLayout from '../layouts/AuthLayout'
@@ -73,12 +71,12 @@ const Login = () => {
   return (
     <AuthLayout
       title={
-        <>
+        <div className='text-emerald-100'>
           Welcome back to <br /> Crowd Farming
-        </>
+        </div>
       }
     >
-      <h3 className='text-center text-2xl font-semibold text-gray-700'>
+      <h3 className='text-center text-2xl mt-[5rem] font-semibold text-gray-600'>
         Login to Account
       </h3>
       <p className='text-center text-[1.5rem] mt-2 mb-10'>
@@ -90,7 +88,7 @@ const Login = () => {
           Invalid email or password
         </div>
       )} */}
-      <ToastContainer />
+      <ToastContainer className='mt-[9rem]' />
 
       <form className='space-y-5' onSubmit={handleLogin}>
         <div>
@@ -132,7 +130,7 @@ const Login = () => {
           <hr className='w-12' />
         </div>
 
-        <div className='flex items-center space-x-4 lg:space-x-2 xl:space-x-4 text-sm font-semibold'>
+        {/* <div className='flex items-center space-x-4 lg:space-x-2 xl:space-x-4 text-sm font-semibold'>
           <SecondaryButton as='a' href='#auth-google'>
             <FcGoogle className='h-5 w-5 lg:w-4 lg:h-4 xl:h-5 xl:w-5' />
 
@@ -148,7 +146,7 @@ const Login = () => {
               Continue with Facebook
             </span>
           </SecondaryButton>
-        </div>
+        </div> */}
 
         <p className='text-2xl text-center'>
           Don't have an account? <Link to='/register'>Register</Link>

@@ -176,7 +176,7 @@ const ProjectDetails = ({ investments }) => {
 
   return (
     <>
-      <section className='project-details-area pt-120 pb-190'>
+      <section className='project-details-area pt-170 pb-5'>
         <div className='container'>
           <div className='row'>
             <div className='col-lg-7'>

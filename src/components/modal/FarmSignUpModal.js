@@ -98,6 +98,7 @@ const FarmSignUpModal = () => {
         toast.success('Registration Successful !', {
           position: toast.POSITION.TOP_CENTER,
         })
+
         // console.log('Register Investment Successful')
       } else {
         // throw new Error(data.message)
@@ -120,7 +121,7 @@ const FarmSignUpModal = () => {
   return (
     <div>
       <button
-        className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'
+        className='ml-10 mt-5 space-x-3 transition-all duration-300 px-2 w-full font-medium py-3 border-1 rounded-md border-[#0f7508] text-[#0f7508] hover:bg-[#0f7508] hover:text-white'
         onClick={() => {
           if (token != null) {
             setShowModal(true)
@@ -138,14 +139,14 @@ const FarmSignUpModal = () => {
       )}
 
       {showModal && (
-        <section className='fixed top-[20%] left-[25%] bg-slate-600 z-10 overflow-y-auto w-[50vw] h-[80vh]'>
+        <section className='fixed top-[20%] left-[25%] bg-[#0f7508] z-10 overflow-y-auto w-[50vw] h-[80vh]'>
           <div className=' lg:min-h-screen'>
             <main
               aria-label='Main'
               className='flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6'
             >
               <div className='max-w-xl lg:max-w-3xl'>
-                <a className='block text-blue-600' href='/'>
+                <a className='block text-[#bf9000]' href='/'>
                   <span className='sr-only'>Home</span>
                   <svg
                     className='h-8 sm:h-10'
@@ -169,7 +170,7 @@ const FarmSignUpModal = () => {
                   Eligendi nam dolorum aliquam, quibusdam aperiam voluptatum.
                 </p>
 
-                <ToastContainer />
+                <ToastContainer className='mt-[9rem]' />
 
                 <form
                   className='mt-8 grid grid-cols-6 gap-6'

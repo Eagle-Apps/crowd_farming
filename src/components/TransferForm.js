@@ -46,14 +46,14 @@ const TransferForm = () => {
       <div className='rounded-lg bg-indigo-50 p-4 lg:p-5'>
         <div className='flex space-x-3 items-center'>
           <div className='w-2/3 relative'>
-            <h6 className='text-sm text-indigo-900'>You send</h6>
+            <h6 className='text-sm text-[#bf9000]'>You send</h6>
             <input
               type='number'
               className={`p-0 w-full bg-indigo-50 border-0 border-b-2 
                 // errorMessage.amount.length
                 //   ? 'border-red-600 focus:border-red-600'
                 //   : 'border-gray-300 focus:border-indigo-800'
-               text-indigo-800 placeholder-indigo-900 placeholder-opacity-80 font-bold text-xl lg:text-2xl focus:ring-0`}
+               text-[#bf9000] placeholder-[#0f7508] placeholder-opacity-80 font-bold text-xl lg:text-2xl focus:ring-0`}
               placeholder='0,000'
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
@@ -68,7 +68,7 @@ const TransferForm = () => {
           <Menu>
             {({ open }) => (
               <div className='relative w-1/4 md:w-1/3'>
-                <Menu.Button className='w-full shadow-sm flex items-center space-x-2 justify-center text-indigo-900 bg-white py-3 md:py-4 rounded-lg md:text-lg font-bold uppercase font-semibold'>
+                <Menu.Button className='w-full shadow-sm flex items-center space-x-2 justify-center text-[#0f7508] bg-white py-3 md:py-4 rounded-lg md:text-lg font-bold uppercase'>
                   {/* <span>{currency}</span> */}
                   <HiChevronRight
                     className={`transition-all duration-300 ${
@@ -103,8 +103,8 @@ const TransferForm = () => {
         </div>
       </div>
 
-      <div className='space-y-3 lg:space-y-5 text-indigo-900'>
-        <div className='flex items-center space-x-4 text-indigo-600 text-sm'>
+      <div className='space-y-3 lg:space-y-5 text-[#0f7508]'>
+        <div className='flex items-center space-x-4 text-[#0f7508] text-sm'>
           <IoMdSync className='w-5 h-5' />
           <span>Show calculations</span>
         </div>
@@ -139,7 +139,7 @@ const TransferForm = () => {
       <div className='rounded-lg bg-indigo-50 p-4 lg:p-5'>
         <div className='flex space-x-3 items-center'>
           <div className='w-2/3 relative'>
-            <h6 className='text-sm text-indigo-900'>
+            <h6 className='text-sm text-[#bf9000]'>
               Recipient's phone number
             </h6>
             <input
@@ -148,7 +148,7 @@ const TransferForm = () => {
                 // errorMessage.phoneNumber.length
                 //   ? 'border-red-600 focus:border-red-600'
                 //   : 'border-gray-300 focus:border-indigo-800'
-               text-indigo-800 placeholder-indigo-900 placeholder-opacity-80 font-bold text-xl lg:text-2xl focus:ring-0`}
+               text-[#0f7508] placeholder-[#0f7508] placeholder-opacity-80 font-bold text-xl lg:text-2xl focus:ring-0`}
               placeholder='68 89 54 89'
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
@@ -190,7 +190,7 @@ const TransferForm = () => {
                         <Menu.Item
                           key={index}
                           as={'button'}
-                          className='flex items-center space-x-3 px-3 py-2 text-sm hover:text-indigo-600'
+                          className='flex items-center space-x-3 px-3 py-2 text-sm hover:text-[#0f7508]'
                           onClick={() => setCountry(item)}
                         >
                           <img
@@ -212,7 +212,7 @@ const TransferForm = () => {
 
       <button
         onClick={submit}
-        className='w-full flex items-center justify-center space-x-3 transition-all text-center duration-300 px-3 lg:px-4 xl:px-8 font-medium lg:text-lg py-3 bg-indigo-600 text-white rounded-md focus:outline-none hover:bg-indigo-700 focus:ring focus:border-indigo-500 focus:ring-indigo-500/50'
+        className='w-full flex items-center justify-center space-x-3 transition-all text-center duration-300 px-3 lg:px-4 xl:px-8 font-medium lg:text-lg py-3 bg-[#0f7508] text-white rounded-md focus:outline-none hover:bg-[#bf9000] focus:ring focus:border-[#0f7508] focus:ring-[#0f7508]/50'
       >
         {/* {loading && <Loader color={'white'} />} */}
         <span>Get started</span>

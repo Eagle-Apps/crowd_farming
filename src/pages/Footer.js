@@ -6,75 +6,86 @@ import {
 } from 'react-icons/sl'
 import { Link } from 'react-router-dom'
 
-import { Container } from '../utils/utils'
-
 const Footer = () => {
   return (
-    <footer className='bg-emerald-600 py-24 mt-24 border-t border-indigo-100 text-[#FBFBFF] '>
-      <Container>
-        {/* <img
-          src='/images/footer-bg.png'
-          className='w-full object-center object-cover border-b'
-          alt=''
-        /> */}
-        <nav className='flex flex-col justify-items-center items-center'>
-          <ul className='flex text-[16px] gap-x-[2rem]'>
-            <Link to='/contact'>
-              <li className='flex cursor-pointer hover:text-emerald-400 active:text-emerald-500 focus:outline-none focus:ring focus:ring-text-emerald-100  '>
-                Contact Us
+    <footer className='bg-[#0f7508] text-emerald-50'>
+      <div className='container mx-auto px-4 py-8 md:py-12 lg:py-16 xl:py-20'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
+          <div className='flex flex-col space-y-4'>
+            <h3 className='text-lg font-semibold'>Let Us Help You</h3>
+            <ul>
+              <li>
+                <Link to='/contact' className='hover:text-emerald-400'>
+                  Contact Us
+                </Link>
               </li>
-            </Link>
-
-            <Link to='/about'>
-              <li className='flex cursor-pointer hover:text-emerald-400 active:text-emerald-500 focus:outline-none focus:ring focus:ring-text-emerald-100  '>
-                About Us
+              <li>
+                <Link to='/about' className='hover:text-emerald-400'>
+                  About Us
+                </Link>
               </li>
-            </Link>
+            </ul>
+          </div>
 
-            <Link to='/terms'>
-              <li className='flex cursor-pointer hover:text-emerald-400 active:text-emerald-500 focus:outline-none focus:ring focus:ring-text-emerald-100  '>
-                Terms of Service
+          <div className='flex flex-col space-y-4'>
+            <h3 className='text-lg font-semibold'>About Ndembele</h3>
+            <ul>
+              <li>
+                <Link to='/terms' className='hover:text-emerald-400'>
+                  Terms
+                </Link>
               </li>
-            </Link>
-
-            <li className='flex cursor-pointer hover:text-emerald-400 active:text-emerald-500 focus:outline-none focus:ring focus:ring-text-emerald-100  '>
-              Privacy Policy
-            </li>
-
-            <Link to='/privacy-settings'>
-              <li className='flex cursor-pointer hover:text-emerald-400 active:text-emerald-500 focus:outline-none focus:ring focus:ring-text-emerald-100  '>
-                Privacy Settings
+              <li>
+                <Link to='#' className='hover:text-emerald-400'>
+                  Privacy Policy
+                </Link>
               </li>
-            </Link>
-          </ul>
-        </nav>
+              <li>
+                <Link to='/privacy-settings' className='hover:text-emerald-400'>
+                  Privacy Settings
+                </Link>
+              </li>
+            </ul>
+          </div>
 
-        <div className='mt-8 flex items-center justify-between'>
-          <p className='text-[#FBFBFF] uppercase text-sm md:text-base'>
-            Copyright © 2023 NDEMBELE. All Rights Reserved.
-          </p>
-
-          <div className='flex items-center space-x-4 text-indigo-800'>
-            <span className='bg-white hover:bg-emerald-400 shadow-lg border border-gray-300 border-opacity-30 rounded-full p-2 cursor-pointer'>
-              <SlSocialFacebook className='w-6 h-6' />
-            </span>
-
-            <span className='bg-white hover:bg-emerald-400 shadow-lg border border-gray-300 border-opacity-30 rounded-full p-2 cursor-pointer'>
-              <SlSocialTwitter className='w-6 h-6' />
-            </span>
-
-            <span className='bg-white hover:bg-emerald-400 shadow-lg border border-gray-300 border-opacity-30 rounded-full p-2 cursor-pointer'>
-              <SlSocialInstagram className='w-6 h-6' />
-            </span>
-
-            <span className='bg-white hover:bg-emerald-400 shadow-lg border border-gray-300 border-opacity-30 rounded-full p-2 cursor-pointer'>
-              <SlSocialLinkedin className='w-6 h-6' />
-            </span>
+          <div className='flex flex-col space-y-4'>
+            <h3 className='text-lg font-semibold'>Join Us On</h3>
+            <div className='flex items-center space-x-4 text-emerald-800'>
+              <Link
+                to='#'
+                className='bg-white hover:bg-emerald-400 shadow-lg border border-gray-300 border-opacity-30 rounded-full p-2'
+              >
+                <SlSocialFacebook className='w-6 h-6' />
+              </Link>
+              <Link
+                to='#'
+                className='bg-white hover:bg-emerald-400 shadow-lg border border-gray-300 border-opacity-30 rounded-full p-2'
+              >
+                <SlSocialTwitter className='w-6 h-6' />
+              </Link>
+              <Link
+                to='#'
+                className='bg-white hover:bg-emerald-400 shadow-lg border border-gray-300 border-opacity-30 rounded-full p-2'
+              >
+                <SlSocialInstagram className='w-6 h-6' />
+              </Link>
+              <Link
+                to='#'
+                className='bg-white hover:bg-emerald-400 shadow-lg border border-gray-300 border-opacity-30 rounded-full p-2'
+              >
+                <SlSocialLinkedin className='w-6 h-6' />
+              </Link>
+            </div>
           </div>
         </div>
-      </Container>
+
+        <div className='mt-8 md:mt-12 lg:mt-16'>
+          <p className='text-center text-emerald-50 uppercase text-sm md:text-base lg:text-lg'>
+            &copy; 2023 Ndembele. All rights reserved.
+          </p>
+        </div>
+      </div>
     </footer>
   )
 }
-
 export default Footer

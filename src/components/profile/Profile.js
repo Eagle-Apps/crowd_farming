@@ -22,6 +22,14 @@ const Profile = () => {
   const [farms, setFarms] = useState([])
   // const [farmId, setFarmId] = useState([])
 
+  useEffect(() => {
+    setLoading(true)
+    userData()
+    subscribeUser()
+    investmentsUser()
+    farmsUser()
+  }, [])
+
   const userData = () => {
     myAxios('/user')
       .then((user) => {
@@ -88,26 +96,10 @@ const Profile = () => {
       })
   }
 
-  useEffect(() => {
-    setLoading(true)
-    userData()
-    subscribeUser()
-    investmentsUser()
-    farmsUser()
-  }, [])
 
-  // console.log(userData)
-
-  // myAxios('/user').then((user) => {
-  //   setUserData((user.data);
-  //   console.log(user.data);
-  // })
-  //   .catch(error => {
-  //     console.log(error);
-  //   })
 
   return (
-    <div className='bg-gray-100 w-full h-screen pt-[5rem]'>
+    <div className='bg-gray-100 w-full h-full pt-[5rem]'>
       {loading ? (
         <CardSkeleton />
       ) : (
@@ -125,7 +117,7 @@ const Profile = () => {
             </div>
           </div>
           <div className='col-md-5 border-r-2'>
-            <div className='p-3 py-5'>
+            <div className='p-3 py-5 mt-12'>
               <div className='flex justify-between items-center mb-3'>
                 <h4 className='text-right'>Profile Settings</h4>
               </div>
@@ -214,7 +206,7 @@ const Profile = () => {
             </div>
           </div>
           <div className='col-md-4'>
-            <div className='p-3 py-5'>
+            <div className='p-3 py-5 mt-12'>
               {/* <div className='d-flex justify-content-between align-items-center experience'>
                
                 <span className='border px-3 p-1 add-experience'>
@@ -289,7 +281,9 @@ const Profile = () => {
                 <ul value={invests} className='grid grid-cols-2 ml-4'>
                   {invests?.map((invest) => (
                     <Link to={`/investment/${invest._id}`} key={invest._id}>
-                      <li className='cursor-pointer ml-4'>{invest.title}</li>
+                      <li key={invest._id} className='cursor-pointer ml-4'>
+                        {invest.title}
+                      </li>
                     </Link>
                   ))}
                 </ul>
@@ -304,7 +298,7 @@ const Profile = () => {
                   &nbsp; FARMS CREATED
                 </span>
               </div>
-       
+
               <div className='col-md-12'>
                 {/* <label className='labels'>Farm Name</label> */}
                 {/* <input
@@ -317,7 +311,9 @@ const Profile = () => {
                 <ul value={farms} className='flex flex-col ml-4'>
                   {farms?.map((farm) => (
                     <Link to={`/farm/${farm._id}`} key={farm._id}>
-                      <li className='cursor-pointer ml-4 '>{farm.name}</li>
+                      <li key={farm._id} className='cursor-pointer ml-4 '>
+                        {farm.name}
+                      </li>
                     </Link>
                   ))}
                 </ul>
