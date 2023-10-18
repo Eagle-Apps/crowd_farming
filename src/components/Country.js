@@ -4,26 +4,26 @@ const Country = () => {
   const [countries, setCountries] = useState([])
 
   useEffect(() => {
-    const fetchCountries = async () => {
-      const headers = new Headers()
-      headers.append('X-CSCAPI-KEY', 'API_KEY')
-
-      const requestOptions = {
-        method: 'GET',
-        headers: headers,
-        redirect: 'follow',
-      }
-
-      const response = await fetch(
-        'https://api.countrystatecity.in/v1/countries',
-        requestOptions
-      )
-      const data = await response.json()
-      setCountries(data)
-    }
-
     fetchCountries()
   }, [])
+
+  const fetchCountries = async () => {
+    const headers = new Headers()
+    headers.append('X-CSCAPI-KEY', 'API_KEY')
+
+    const requestOptions = {
+      method: 'GET',
+      headers: headers,
+      redirect: 'follow',
+    }
+
+    const response = await fetch(
+      'https://api.countrystatecity.in/v1/countries',
+      requestOptions
+    )
+    const data = await response.json()
+    setCountries(data)
+  }
 
   return (
     <div>
